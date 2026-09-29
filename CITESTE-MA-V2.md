@@ -33,3 +33,17 @@ cd adsnow-v2-preview && npx vercel deploy --prod --yes
    (build `astro build`, output `dist`). `vercel.json` cu `cleanUrls` rămâne.
 2. Nu seta `PREVIZUALIZARE` pe proiectul de producție.
 3. După deploy: toate URL-urile din sitemap dau 200, retrimite sitemap-ul în Search Console.
+
+## Stare la 29 septembrie 2026
+
+Făcut: 8 pagini (acasă, 3 pagini de serviciu, pensiuni, proiecte, audit, politică), schema `Service` +
+`BreadcrumbList` + `FAQPage` pe fiecare pagină, banner de cookie-uri cu Consent Mode v2, politica de
+confidențialitate corectată (varianta live spune că nu există Google Analytics, deși există).
+
+De completat înainte de lansare (apar ca note portocalii în previzualizare):
+
+- 3 recenzii reale de pe fișa Google, în `src/data/reviews.ts`
+- decizia despre prețurile pachetelor pentru pensiuni afișate public
+- exemple foto-video pe `/promovare-pensiuni` și `/social-media-foto-video`
+- studii de caz pe `/proiecte`
+- recitirea politicii de confidențialitate
