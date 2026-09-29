@@ -1,0 +1,206 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Faq from '../components/Faq.astro';
+import CtaFinal from '../components/CtaFinal.astro';
+import Todo from '../components/Todo.astro';
+import { SITE, BUSINESS_ID, CONTACT, breadcrumb, faqSchema } from '../data/site';
+
+const path = '/promovare-pensiuni';
+
+const faq = [
+  {
+    q: 'Trebuie să am site ca să lucrăm împreună?',
+    a: 'Nu. Majoritatea pensiunilor mici își primesc rezervările din Booking, din Instagram, din fișa Google și la telefon. Începem acolo unde sunt deja oaspeții tăi. Un site propriu are sens mai târziu, când vrei mai multe rezervări directe, fără comision.',
+  },
+  {
+    q: 'Cât durează, de la telefon până primesc materialele?',
+    a: 'Oferta scrisă o primești în câteva zile de la prima discuție. După ce stabilim ziua de filmare, montajul și configurarea conturilor durează aproximativ o săptămână.',
+  },
+  {
+    q: 'Ale cui sunt conturile, pozele și filmele?',
+    a: 'Ale tale. Instagramul, TikTokul și fișa Google se predau pe numele tău, cu parolele. Fotografiile și filmele le folosești unde vrei: pe Booking, pe site, în reclame, pe grupurile de WhatsApp.',
+  },
+  {
+    q: 'Merită Booking, cu tot cu comision?',
+    a: 'Depinde de casă. Comisionul e în jur de 15% din rezervare și îl spunem din prima. În schimb, Booking umple golurile dintre rezervările directe, aduce oaspeți străini și recenzii în engleză. Pentru listare ai nevoie de firmă sau PFA, de un cont bancar și, de regulă, de certificatul de clasificare. Contractul cu Booking îl semnezi tu.',
+  },
+  {
+    q: 'Pot face singur reclame după ce terminați?',
+    a: 'Da. Filmele rămân ale tale și sunt cel mai bun material de reclamă pe care îl ai. Îți arătăm cum pornești o reclamă pe Instagram sau TikTok cu bugetul tău, sau le administrăm noi, dacă preferi. Bugetul de reclamă e separat și nu intră în prețul pachetului.',
+  },
+  {
+    q: 'Lucrați și cu pensiuni din afara zonei Brașov?',
+    a: 'Pentru filmare, preferăm să fie la maxim o oră de Brașov: Bran, Moieciu, Șimon, Sohodol, Râșnov, Zărnești, Predeal, Poiana Brașov și satele din jur. Fișa Google, Booking și conturile se pot face de oriunde.',
+  },
+];
+
+const schema = [
+  {
+    '@type': 'Service',
+    '@id': `${SITE}${path}#service`,
+    name: 'Promovare pentru pensiuni și cabane',
+    serviceType: 'Marketing pentru unități de cazare',
+    description:
+      'Filmare și fotografie la pensiune, reels pentru Instagram și TikTok, fișă Google Business Profile, listare Booking.com și reclame, pentru pensiuni și cabane din zona Brașov.',
+    provider: { '@id': BUSINESS_ID },
+    areaServed: [
+      { '@type': 'City', name: 'Brașov' },
+      { '@type': 'Place', name: 'Bran' },
+      { '@type': 'Place', name: 'Moieciu' },
+      { '@type': 'Place', name: 'Râșnov' },
+    ],
+    offers: { '@type': 'AggregateOffer', lowPrice: '1000', priceCurrency: 'RON' },
+    url: `${SITE}${path}`,
+  },
+  breadcrumb([{ name: 'Promovare pensiuni', path }]),
+  faqSchema(faq),
+];
+---
+<Base
+  title="Promovare pensiuni și cabane Brașov, Bran · ADSNOW"
+  ogTitle="Promovare pentru pensiuni și cabane | ADSNOW"
+  description="Filmare și fotografie la pensiune, reels pentru Instagram și TikTok, fișă Google și Booking pentru pensiuni și cabane din zona Brașov. Pachete de la 1.000 lei, preț fix, plata 50/50."
+  path={path}
+  schema={schema}
+>
+  <PageHero
+    crumb="Promovare pensiuni"
+    title="Promovare pentru pensiuni și cabane din zona Brașov"
+    lead="O zi de filmare la tine, poze care arată ce laudă oaspeții în recenzii și conturi care lucrează pentru tine: Instagram, TikTok, fișa Google și Booking. Preț fix, stabilit înainte, plătit în două tranșe."
+    primary={{ href: CONTACT.whatsapp, label: 'Scrie-mi pe WhatsApp →', external: true }}
+    secondary={{ href: '#cum-decurge', label: 'Cum decurge' }}
+    meta={[
+      { label: 'Pachete', value: 'de la 1.000 lei' },
+      { label: 'Filmare', value: 'o zi, la tine' },
+      { label: 'Montaj', value: 'aproximativ o săptămână' },
+      { label: 'Plata', value: '50% avans, 50% la predare' },
+    ]}
+  />
+
+  <section class="section-muted section-padding">
+    <div class="container split">
+      <h2 class="section-title fade-in">Ce laudă oaspeții nu apare în poze</h2>
+      <div class="prose fade-in">
+        <p>Doar în Bran sunt peste 280 de unități de cazare listate pe turistinfo.ro. În Șimon, Sohodol sau Moieciu, alte câteva zeci. Cine caută o cabană pentru un weekend le vede pe toate în aceeași listă, cu aceeași poză cu foișorul și aceeași „priveliște superbă” în descriere.</p>
+        <p>Când citim recenziile pensiunilor cu care vorbim, dăm aproape de fiecare dată peste același lucru: <strong>ce laudă oaspeții nu apare în nicio poză.</strong> Priveliștea de pe terasa de la etaj, râul din spatele curții, gazda care pune prăjituri pe masă dimineața. Pozele arată camera cu becul aprins și parcarea.</p>
+        <p>Nu e vina nimănui. Pozele s-au făcut cu telefonul, într-o zi oarecare, ca să existe ceva pe anunț. Noi venim cu o zi întreagă doar pentru asta, și plecăm cu materialul care îi convinge pe oaspeți să aleagă casa ta dintre celelalte.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-light section-padding">
+    <div class="container">
+      <span class="eyebrow fade-in">Ce facem</span>
+      <h2 class="section-title fade-in">Tot ce vede un oaspete înainte să rezerve</h2>
+      <p class="section-desc fade-in">Alegi doar ce îți lipsește. Dacă ai deja poze bune sau o fișă Google în regulă, nu le mai plătești o dată.</p>
+      <div class="cards-grid">
+        <div class="card fade-in">
+          <span class="card-kicker">Video</span>
+          <h3>Filmare și reels</h3>
+          <p>O zi de filmare la tine și 3-4 reels montate pentru Instagram și TikTok. Le gândim după cine vine la tine: familii cu copii, grupuri de prieteni, cupluri, firme.</p>
+        </div>
+        <div class="card fade-in">
+          <span class="card-kicker">Foto</span>
+          <h3>Fotografii editate</h3>
+          <p>Între 15 și 30 de fotografii, la lumina zilei, cu camerele aranjate, curtea și împrejurimile. Bune pentru Booking, Google, site și social media.</p>
+        </div>
+        <div class="card fade-in">
+          <span class="card-kicker">Social media</span>
+          <h3>Instagram și TikTok</h3>
+          <p>Conturi create de la zero sau puse în ordine: nume, descriere, link de rezervare, primele postări. La final îți arătăm cum postezi singur.</p>
+        </div>
+        <div class="card fade-in">
+          <span class="card-kicker">Google</span>
+          <h3>Fișa Google Business Profile</h3>
+          <p>Creată și verificată de la zero sau actualizată: poze, facilități, program, răspunsuri la recenzii. E gratuită și e primul loc unde ajunge cine caută „cazare Bran” pe telefon.</p>
+        </div>
+        <div class="card fade-in">
+          <span class="card-kicker">Rezervări</span>
+          <h3>Listare pe Booking.com</h3>
+          <p>Configurăm anunțul, pozele și descrierea. Comisionul, în jur de 15%, îl spunem din prima. Booking umple golurile dintre rezervările directe și aduce oaspeți străini.</p>
+        </div>
+        <div class="card fade-in">
+          <span class="card-kicker">Reclame</span>
+          <h3>Reclame pe Instagram și TikTok</h3>
+          <p>Opțional. Îți arătăm cum pornești singur o reclamă cu bugetul tău, sau o administrăm noi. Filmul rămâne al tău după ce se termină bugetul.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-dark section-padding">
+    <div class="container">
+      <span class="eyebrow fade-in">Pachete</span>
+      <h2 class="section-title fade-in" style="color:var(--paper);">Cât costă</h2>
+      <p class="section-desc fade-in">Prețul final e fix și îl afli înainte de orice avans, în oferta scrisă. Bugetul de reclamă, dacă alegi reclame, e separat și rămâne al tău.</p>
+      <Todo title="Decizie: prețurile publice">Intervalele sunt cele din ofertele trimise în septembrie (Vila Angy 1.000 lei, Casa Sofia și Ștefan 1.250 lei, pachetul complet 3.000 lei). Confirmă dacă vrei să apară public sau doar „de la 1.000 lei”.</Todo>
+      <div class="cards-grid">
+        <div class="card fade-in">
+          <span class="card-kicker">Pentru început</span>
+          <h3>Vizibilitate</h3>
+          <ul>
+            <li>Fișă Google creată sau actualizată</li>
+            <li>Listare pe Booking.com</li>
+          </ul>
+          <p style="margin-top:14px;">Pentru casele care încă nu apar nicăieri în afară de site-urile de cazare.</p>
+          <div class="card-price">de la 1.000 lei<small>500 lei avans, 500 lei la predare</small></div>
+        </div>
+        <div class="card fade-in">
+          <span class="card-kicker">Poze noi</span>
+          <h3>Imagine</h3>
+          <ul>
+            <li>Fișă Google</li>
+            <li>15 fotografii editate</li>
+            <li>Un film de prezentare</li>
+          </ul>
+          <p style="margin-top:14px;">Pentru casele care sunt deja listate, dar arată mai modest decât sunt.</p>
+          <div class="card-price">de la 1.250 lei<small>plata în două tranșe egale</small></div>
+        </div>
+        <div class="card featured fade-in">
+          <span class="card-kicker">Pachetul complet</span>
+          <h3>Imagine și vizibilitate</h3>
+          <ul>
+            <li>O zi de filmare</li>
+            <li>3-4 reels montate</li>
+            <li>15 fotografii editate</li>
+            <li>Instagram și TikTok de la zero</li>
+            <li>Fișa Google pusă în ordine</li>
+          </ul>
+          <div class="card-price">în jur de 3.000 lei<small>50% avans la stabilirea zilei de filmare</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-muted section-padding">
+    <div class="container split">
+      <h2 class="section-title fade-in">Oferta ta, scrisă pentru casa ta</h2>
+      <div class="prose fade-in">
+        <p>Înainte să vorbim de bani, citim tot ce e public despre pensiunea ta: recenziile, pozele, fișa Google, cum arăți lângă vecinii din același sat.</p>
+        <p>Apoi îți trimitem oferta ca pe o pagină web făcută doar pentru tine: ce merge deja, ce lipsește, ce propunem și cât costă, cu pozele și recenziile tale. O citești în liniște, o arăți și celorlalți din familie și decizi când vrei.</p>
+        <p><strong>Nu primești o listă de prețuri copiată la toată lumea.</strong> Dacă ai deja ce îți trebuie, îți spunem asta în ofertă.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="cum-decurge" class="section-light section-padding">
+    <div class="container">
+      <h2 class="section-title fade-in">Cum decurge</h2>
+      <ol class="steps">
+        <li class="fade-in"><div><span class="step-when">15 minute</span><h3>Vorbim</h3><p>La telefon sau pe WhatsApp. Îmi spui câte camere ai, cine vine de obicei la tine și ce te încurcă acum.</p></div></li>
+        <li class="fade-in"><div><span class="step-when">în câteva zile</span><h3>Primești oferta scrisă</h3><p>Pagina ta, cu ce am găsit, ce propunem și prețul fix. Fără obligații.</p></div></li>
+        <li class="fade-in"><div><span class="step-when">o zi</span><h3>Ziua de filmare</h3><p>Stabilim împreună o zi. Tu ne arăți casa, noi filmăm și fotografiem. Atunci se plătește avansul.</p></div></li>
+        <li class="fade-in"><div><span class="step-when">aproximativ o săptămână</span><h3>Montaj și predare</h3><p>Primești reels-urile, fotografiile și conturile, cu parolele. Atunci se plătește a doua jumătate.</p></div></li>
+      </ol>
+      <Todo title="Exemple de adăugat">După primele filmări livrate: 2-3 reels și câteva poze „înainte și după” pe pagina asta. E dovada care lipsește acum.</Todo>
+    </div>
+  </section>
+
+  <Faq items={faq} title="Întrebări de la proprietari" />
+  <CtaFinal
+    title="Hai să ne uităm la casa ta"
+    desc="Scrie-mi pe WhatsApp numele pensiunii și satul. Mă uit la ce e public despre ea și îți spun sincer dacă te putem ajuta."
+    whatsappFirst
+  />
+</Base>

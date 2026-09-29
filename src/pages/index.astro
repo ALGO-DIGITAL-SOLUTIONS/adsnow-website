@@ -1,0 +1,301 @@
+---
+import Base from '../layouts/Base.astro';
+import Faq from '../components/Faq.astro';
+import CtaFinal from '../components/CtaFinal.astro';
+import ProjectGrid from '../components/ProjectGrid.astro';
+import HeroParticles from '../components/HeroParticles.astro';
+import Todo from '../components/Todo.astro';
+import { SITE, BUSINESS_ID, CONTACT, SERVICES, faqSchema } from '../data/site';
+import { REVIEWS, REVIEWS_SUMMARY } from '../data/reviews';
+
+const faq = [
+  {
+    q: 'Cu ce diferiți de o agenție obișnuită de marketing?',
+    a: 'Vorbești direct cu omul care îți conduce proiectul, nu cu un account manager care îi explică unui executant ce ai vrut să spui. Briefingul nu se pierde pe drum, deciziile se iau repede, iar dacă ai o problemă nu treci prin trei niveluri de escalare.',
+  },
+  {
+    q: 'Cât costă un website?',
+    a: 'Intervalul tipic e 4.000-6.500 RON, în funcție de complexitate: numărul de pagini, integrările, dacă intră și o sesiune foto. După auditul gratuit sau după primul call de 30 de minute îți dau un preț fix.',
+  },
+  {
+    q: 'Faceți și filmări și fotografii?',
+    a: 'Da. Filmăm și fotografiem la tine, în Brașov și în zona de până la o oră de mers: pensiuni, cabinete, ateliere, spații comerciale. Materialul se folosește pe site, pe social media și în reclame, deci îl plătești o dată și îl folosești peste tot.',
+  },
+  {
+    q: 'Lucrezi doar cu clienți din Brașov?',
+    a: 'Sunt în Brașov și înțeleg cel mai bine piața locală, dar lucrez și la distanță cu clienți din toată România. Pentru proiectele care au nevoie de filmare sau de ședință foto, prefer să fie la maxim o oră de Brașov.',
+  },
+  {
+    q: 'Ce se întâmplă dacă mergi în concediu sau ești bolnav?',
+    a: 'Toate proiectele au un calendar clar de la început, deci știi exact ce primești și când. Dacă apare ceva neașteptat, te anunț cu cel puțin o săptămână înainte și ajustăm calendarul. Pentru clienții lunari lucrăm câteva zile în avans, ca să nu apară goluri.',
+  },
+  {
+    q: 'Faci și magazine online?',
+    a: 'Magazine simple, da, până în 50-100 de produse, cu plată cu cardul sau ramburs. Magazine complexe, cu integrări ERP, stocuri în timp real sau mai mulți vânzători, nu. Pentru asta îți recomand pe cineva specializat.',
+  },
+];
+
+const schema = [
+  {
+    '@type': ['LocalBusiness', 'MarketingAgency'],
+    '@id': BUSINESS_ID,
+    name: 'ADSNOW',
+    legalName: 'ALGO Digital Solutions SRL',
+    description:
+      'Agenție de marketing digital din Brașov: site-uri de prezentare, SEO local, social media, foto-video și promovare pentru pensiuni.',
+    url: SITE,
+    telephone: CONTACT.phoneIntl,
+    email: CONTACT.email,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: CONTACT.street,
+      addressLocality: CONTACT.city,
+      addressRegion: 'BV',
+      postalCode: CONTACT.postalCode,
+      addressCountry: 'RO',
+    },
+    geo: { '@type': 'GeoCoordinates', latitude: 45.6427, longitude: 25.5887 },
+    founder: { '@type': 'Person', name: 'Alexandru Gogu', jobTitle: 'Fondator & Digital Strategist' },
+    foundingDate: '2023',
+    areaServed: [
+      { '@type': 'City', name: 'Brașov' },
+      { '@type': 'Country', name: 'România' },
+    ],
+    priceRange: '1000-6500 RON',
+    image: `${SITE}/assets/logo.webp`,
+    logo: `${SITE}/assets/logo.webp`,
+    sameAs: [
+      'https://www.facebook.com/adsnow.ro',
+      'https://www.instagram.com/adsnow.ro/',
+      'https://www.tiktok.com/@adsnow.ro',
+      CONTACT.gbp,
+    ],
+    openingHoursSpecification: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '09:00',
+      closes: '18:00',
+    },
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Servicii de marketing digital',
+      itemListElement: SERVICES.map((s) => ({
+        '@type': 'Offer',
+        itemOffered: { '@type': 'Service', '@id': `${SITE}${s.href}#service`, name: s.title, url: `${SITE}${s.href}` },
+      })),
+    },
+  },
+  {
+    '@type': 'WebSite',
+    '@id': `${SITE}/#website`,
+    url: SITE,
+    name: 'ADSNOW',
+    publisher: { '@id': BUSINESS_ID },
+    inLanguage: 'ro-RO',
+  },
+  {
+    '@type': 'WebPage',
+    '@id': `${SITE}/#webpage`,
+    url: `${SITE}/`,
+    name: 'Agenție de marketing digital Brașov | ADSNOW',
+    isPartOf: { '@id': `${SITE}/#website` },
+    about: { '@id': BUSINESS_ID },
+    inLanguage: 'ro-RO',
+  },
+  faqSchema(faq),
+];
+---
+<Base
+  title="Agenție de marketing digital Brașov | Site-uri și SEO · ADSNOW"
+  ogTitle="Agenție de marketing digital Brașov | ADSNOW"
+  description="Agenție de marketing digital din Brașov: site-uri de prezentare, SEO local și Google Maps, social media, foto-video și promovare pentru pensiuni. Audit gratuit în 2 minute."
+  path="/"
+  schema={schema}
+  preloadHero
+>
+  <section id="hero">
+    <div class="hero-content">
+      <div class="hero-eyebrow">Agenție de marketing digital · Brașov</div>
+      <h1 class="hero-title">Identitatea digitală a business-ului tău, construită cu atenția pe care o merită.</h1>
+      <p class="hero-sub">Site-uri de prezentare, SEO local, social media și foto-video pentru afaceri din Brașov și din zonă: cabinete, pensiuni, ateliere, clinici și firme cu echipe mici. Vorbești direct cu omul care îți face proiectul.</p>
+      <div class="hero-actions">
+        <a href="/audit-gratuit" class="btn-primary">Vezi unde stai online. Audit gratuit în 2 minute →</a>
+      </div>
+      <p class="hero-micro">Ai o pensiune sau o cabană? <a href="/promovare-pensiuni" style="color:var(--cobalt);text-decoration:underline;">Vezi ce facem pentru cazare →</a></p>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-orb"></div>
+      <canvas id="heroCanvas"></canvas>
+      <p class="hero-logo-text">ADSNOW</p>
+    </div>
+  </section>
+
+  <section id="cum-lucrez" class="section-light section-padding">
+    <div class="container">
+      <h2 class="section-title fade-in">Cum lucrez</h2>
+      <p class="section-desc fade-in">Trei principii.</p>
+      <div class="principles-grid">
+        <div class="principle-card fade-in">
+          <h3>Iau doar proiectele pe care le pot urmări personal</h3>
+          <p>Nu ajungi un nume pe o listă de treizeci de clienți. Fiecare proiect trece prin mâna mea, de la brief la livrare. Dacă ai un termen strâns, îți spun din prima dacă îl pot respecta. Nu te bag pe o „listă de așteptare”.</p>
+        </div>
+        <div class="principle-card fade-in">
+          <h3>Spun nu mai des decât spun da</h3>
+          <p>Primești doar serviciile care îți rezolvă efectiv o problemă. Nu vei plăti niciodată pentru „abonamente premium”, „pachete enterprise” sau complexitate inventată ca să umflu factura. Dacă nu ai nevoie de social media lunar, îți spun să economisești banii.</p>
+        </div>
+        <div class="principle-card fade-in">
+          <h3>Primești și veștile proaste</h3>
+          <p>Dacă o campanie nu funcționează, afli direct de la mine, înainte să se vadă în factură. Dacă site-ul tău actual e în regulă și nu are sens să-l refacem, îți spun asta în primul call, chiar dacă pierd vânzarea. Iei decizii bune doar cu date complete.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicii" class="section-dark section-padding">
+    <div class="container">
+      <h2 class="section-title fade-in" style="color:var(--paper);">Servicii de marketing digital în Brașov</h2>
+      <p class="section-desc fade-in">Nu vând pachete prefabricate. Fiecare serviciu are pagina lui, cu ce primești, cât durează și cât costă. După auditul gratuit îți spun exact de ce ai nevoie și de ce nu.</p>
+      <div class="services-grid four">
+        {SERVICES.map((s) => (
+          <a href={s.href} class="service-card fade-in">
+            {s.tag && <span class="service-tag">{s.tag}</span>}
+            <h3 class="service-title">{s.title}</h3>
+            <p class="service-desc">{s.desc}</p>
+            <div class="service-meta">
+              <div class="service-meta-line">Investiție: <strong>{s.price}</strong> ({s.priceNote})</div>
+              <div class="service-meta-line">Durată: <strong>{s.time}</strong></div>
+            </div>
+            <span class="service-more">Vezi detalii →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="pentru-cine" class="section-muted section-padding">
+    <div class="container">
+      <h2 class="section-title fade-in">Lucrez cel mai bine cu:</h2>
+      <div class="fit-grid">
+        <div class="fit-col fit-col-good fade-in">
+          <h3><span class="fit-icon-good">&#10003;</span> Sunt potrivit dacă ai:</h3>
+          <ul>
+            <li>Un business B2B cu echipă de 3-30 de oameni</li>
+            <li>O clinică medicală, un dezvoltator imobiliar sau orice business care vrea atenție reală, nu manager de cont</li>
+            <li>Un cabinet medical, de psihologie, stomatologic, kinetoterapie</li>
+            <li>O pensiune, o cabană, o vilă sau apartamente de închiriat în regim hotelier</li>
+            <li>Un atelier auto sau un service local</li>
+            <li>Un cabinet de avocatură, notariat sau contabilitate</li>
+            <li>O firmă mică de servicii (construcții, instalații, beauty, fitness)</li>
+          </ul>
+        </div>
+        <div class="fit-col fit-col-bad fade-in">
+          <h3><span class="fit-icon-bad">&#10007;</span> Nu sunt potrivit dacă:</h3>
+          <ul>
+            <li>Cauți cel mai ieftin site din Brașov. Există platforme de freelancing pentru asta</li>
+            <li>Vrei un magazin online complex cu mii de produse și integrări ERP</li>
+            <li>Te aștepți să decidem totul „din mers”, fără brief clar și scop definit</li>
+            <li>Vrei rezultate în Google în 2 săptămâni. SEO e maraton, nu sprint</li>
+            <li>Nu ai timp deloc să răspunzi la întrebări. Proiectele bune se fac împreună</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="recenzii" class="section-light section-padding">
+    <div class="container">
+      <div class="reviews-head">
+        <div>
+          <span class="eyebrow fade-in">Recenzii Google</span>
+          <h2 class="section-title fade-in">Ce spun clienții</h2>
+        </div>
+        <div class="fade-in">
+          <div class="reviews-score">{REVIEWS_SUMMARY.rating}<small>din {REVIEWS_SUMMARY.count} recenzii pe Google</small></div>
+          <div class="reviews-stars" aria-hidden="true">★★★★★</div>
+        </div>
+      </div>
+      {REVIEWS.length > 0 ? (
+        <div class="cards-grid">
+          {REVIEWS.map((r) => (
+            <figure class="card review-card fade-in">
+              <blockquote>„{r.text}”</blockquote>
+              <cite>{r.name} · {r.business}</cite>
+            </figure>
+          ))}
+        </div>
+      ) : (
+        <Todo title="Recenzii de adăugat">Copiază din fișa Google 3 fragmente reale (bucăți continue din text, fără reformulare), cu prenumele și tipul de afacere, în <code>src/data/reviews.ts</code>. Verifică și numărul de recenzii, e cel din 5 septembrie. Nu punem <code>aggregateRating</code> în schema: Google nu acceptă notele pe care un business și le afișează singur.</Todo>
+      )}
+      <div class="fade-in" style="margin-top:32px;">
+        <a href={CONTACT.gbp} target="_blank" rel="noopener" class="btn-secondary">Vezi toate recenziile pe Google →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="portofoliu" class="section-muted section-padding">
+    <div class="container">
+      <span class="eyebrow fade-in">Portofoliu</span>
+      <h2 class="section-title fade-in">Proiecte recente din Brașov și împrejurimi</h2>
+      <p class="section-desc fade-in">Câteva dintre proiectele la care am lucrat direct, de la concept la livrare.</p>
+      <ProjectGrid limit={3} />
+      <div style="text-align:center;margin-top:40px;">
+        <a href="/proiecte" class="btn-secondary portfolio-expand fade-in">Toate proiectele →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="despre" class="section-light section-padding">
+    <div class="container">
+      <h2 class="section-title fade-in">Cine sunt: agenția de marketing din Brașov cu un singur interlocutor</h2>
+      <div class="about-grid">
+        <div class="about-photo fade-in">
+          <img src="/assets/alex-gogu.webp" alt="Alexandru Gogu, fondator ADSNOW" width="400" height="600" loading="lazy"/>
+        </div>
+        <div>
+          <p class="about-text fade-in">Sunt Alex Gogu, fondatorul <strong>ADSNOW</strong>, agenție de marketing digital din Brașov. Eu sunt omul cu care vorbești de la primul mesaj până la livrare: eu ascult brief-ul, eu propun, eu răspund când ceva nu merge.</p>
+          <p class="about-text fade-in">La filmări, fotografie și social media lucrez cu o echipă mică, pe care o coordonez direct. Pentru tine asta înseamnă mai multe mâini pe proiect, dar tot un singur om care îți răspunde la telefon.</p>
+          <p class="about-text fade-in">Am lucrat cu o gamă variată de business-uri reale: ateliere auto, pensiuni, fabrici, clinici medicale, dezvoltatori imobiliari, dezvoltatori blockchain, artiști. La finalul zilei, fiecare business se promovează la fel în esență. Diferența e în atenția cu care înțelegi cine sunt oamenii din spate.</p>
+          <p class="about-text fade-in">Înainte de ALGO, am construit de la zero două business-uri de marketing: am pus fundațiile unei agenții la Montreal ca Project Manager și am co-fondat o firmă de marketing în Spania ca CTO. Acolo am văzut cum arată o agenție care îți adaugă servicii doar ca să-și acopere statul de plată. <strong>Nu vreau să mai fiu acolo.</strong></p>
+          <a href="/audit-gratuit" class="btn-primary fade-in" style="margin-top:24px;">Începe cu auditul gratuit →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="proces" class="section-muted section-padding">
+    <div class="container">
+      <h2 class="section-title fade-in">De la primul mesaj la proiect livrat</h2>
+      <div class="process-grid">
+        <div class="process-step fade-in">
+          <div class="process-num">01</div>
+          <h3>Audit gratuit</h3>
+          <div class="process-duration">2 minute completare</div>
+          <p>Completezi formularul online (5 întrebări). În 24h primești un raport scurt, cu 3 lucruri pe care le poți face singur.</p>
+        </div>
+        <div class="process-step fade-in">
+          <div class="process-num">02</div>
+          <h3>Call de descoperire</h3>
+          <div class="process-duration">30 minute</div>
+          <p>Dacă raportul îți pare util, vorbim. Îmi spui ce vrei, eu îți spun dacă te pot ajuta și un interval realist de preț. Fără PowerPoint, fără pitch.</p>
+        </div>
+        <div class="process-step fade-in">
+          <div class="process-num">03</div>
+          <h3>Propunere scrisă</h3>
+          <div class="process-duration">3 zile lucrătoare</div>
+          <p>Primești o propunere clară: scop concret, livrabile, calendar, preț fix (nu „de la”). Semnezi sau ceri ajustări. Avansul e 50%.</p>
+        </div>
+        <div class="process-step fade-in">
+          <div class="process-num">04</div>
+          <h3>Execuție și livrare</h3>
+          <div class="process-duration">după serviciu</div>
+          <p>Vezi progresul pe parcurs, cu update săptămânal pe email sau WhatsApp. La site-uri: training de o oră și 30 de zile de suport gratuit după lansare.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faq} desc="Răspunsuri scurte la lucrurile pe care le aud cel mai des. Dacă nu găsești răspunsul, scrie-mi direct." tone="light" />
+  <CtaFinal />
+
+  <HeroParticles slot="scripts" />
+</Base>

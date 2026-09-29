@@ -1,0 +1,30 @@
+---
+interface Props {
+  crumb: string;
+  title: string;
+  lead: string;
+  meta?: { label: string; value: string }[];
+  primary?: { href: string; label: string; external?: boolean };
+  secondary?: { href: string; label: string; external?: boolean };
+}
+const { crumb, title, lead, meta = [], primary, secondary } = Astro.props;
+const ext = (l?: { external?: boolean }) => (l?.external ? { target: '_blank', rel: 'noopener' } : {});
+---
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="/">Acasă</a><span>/</span>{crumb}</div>
+    <h1 class="page-title">{title}</h1>
+    <p class="page-lead">{lead}</p>
+    {(primary || secondary) && (
+      <div class="hero-actions">
+        {primary && <a href={primary.href} class="btn-primary" {...ext(primary)}>{primary.label}</a>}
+        {secondary && <a href={secondary.href} class="btn-secondary" {...ext(secondary)}>{secondary.label}</a>}
+      </div>
+    )}
+    {meta.length > 0 && (
+      <div class="page-meta">
+        {meta.map((m) => <div>{m.label}<strong>{m.value}</strong></div>)}
+      </div>
+    )}
+  </div>
+</section>

@@ -1,0 +1,28 @@
+---
+import { CONTACT } from '../data/site';
+interface Props { title?: string; desc?: string; whatsappFirst?: boolean }
+const {
+  title = 'Hai să vedem unde stai',
+  desc = 'Primul pas e mereu auditul gratuit. Dacă ne potrivim, mergem mai departe. Dacă nu, măcar pleci cu un raport util.',
+  whatsappFirst = false,
+} = Astro.props;
+const audit = { h: 'Începe cu auditul gratuit (2 min)', p: 'Formular online, raport personalizat pe email în 24h, fără obligații.', href: '/audit-gratuit', btn: 'Începe auditul →', ext: false };
+const wa = { h: 'Scrie-mi pe WhatsApp', p: 'Dacă ai întrebări sau vrei să vorbim înainte de orice formular.', href: CONTACT.whatsapp, btn: 'Scrie pe WhatsApp →', ext: true };
+const cards = whatsappFirst ? [wa, audit] : [audit, wa];
+---
+<section id="cta-final" class="section-dark section-padding">
+  <div class="container">
+    <h2 class="section-title fade-in" style="color:var(--paper);">{title}</h2>
+    <p class="section-desc fade-in">{desc}</p>
+    <div class="cta-grid">
+      {cards.map((c, i) => (
+        <div class:list={['cta-card', 'fade-in', { 'primary-card': i === 0 }]}>
+          <h3>{c.h}</h3>
+          <p>{c.p}</p>
+          <a href={c.href} class="btn-primary" {...(c.ext ? { target: '_blank', rel: 'noopener' } : {})}>{c.btn}</a>
+        </div>
+      ))}
+    </div>
+    <p class="cta-micro fade-in">Răspund personal în maxim 24h. Sau sună direct la <a href={`tel:${CONTACT.phoneIntl}`} style="color:var(--sky);text-decoration:underline;">{CONTACT.phone}</a>.</p>
+  </div>
+</section>

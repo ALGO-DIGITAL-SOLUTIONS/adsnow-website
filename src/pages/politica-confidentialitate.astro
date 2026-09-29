@@ -1,0 +1,114 @@
+---
+import Base from '../layouts/Base.astro';
+import Todo from '../components/Todo.astro';
+import { SITE, BUSINESS_ID, breadcrumb } from '../data/site';
+import '../styles/politica.css';
+
+const path = '/politica-confidentialitate';
+const schema = [
+  {
+    '@type': 'WebPage',
+    name: 'Politica de confidențialitate',
+    url: `${SITE}${path}`,
+    isPartOf: { '@id': `${SITE}/#website` },
+    publisher: { '@id': BUSINESS_ID },
+    inLanguage: 'ro-RO',
+  },
+  breadcrumb([{ name: 'Politica de confidențialitate', path }]),
+];
+---
+<Base
+  title="Politica de confidențialitate | ADSNOW · ALGO Digital Solutions SRL"
+  description="Cum colectează, folosește și protejează ADSNOW (ALGO Digital Solutions SRL) datele tale personale: formularul de audit, Google Analytics cu consimțământ, drepturile tale GDPR."
+  path={path}
+  schema={schema}
+>
+  <section class="policy-hero">
+    <div class="container" style="max-width:800px;margin:0 auto;">
+      <h1>Politica de confidențialitate</h1>
+      <p>Ultima actualizare: 29 septembrie 2026</p>
+    </div>
+  </section>
+
+  <section class="policy-content">
+    <div class="container">
+      <Todo title="De verificat înainte de publicare">Față de varianta live am corectat trei lucruri: secțiunea 7 spunea „Nu avem Google Analytics”, dar site-ul live are GA4 instalat; lipsea Formspree (serviciul prin care pleacă formularul de audit, din SUA); secțiunea 6 spunea că datele le vede doar Alex. Am pus și diacriticele. E text juridic: citește-l tu înainte să intre live.</Todo>
+
+      <h2>1. Cine suntem</h2>
+      <p><strong>ALGO Digital Solutions SRL</strong> (brand comercial: ADSNOW), cu sediul în Brașov, Strada Octavian Goga 7, județul Brașov, România. CUI: 490102793. Email de contact: <a href="mailto:alex@adsnow.ro">alex@adsnow.ro</a>. Telefon: <a href="tel:+40771587498">0771 587 498</a>.</p>
+
+      <h2>2. Ce date colectăm</h2>
+      <p>Colectăm datele pe care ni le dai direct, prin formularul de audit gratuit sau prin alte forme de contact:</p>
+      <ul>
+        <li>Nume și prenume</li>
+        <li>Adresa de email</li>
+        <li>Număr de telefon sau WhatsApp (opțional)</li>
+        <li>Numele afacerii și domeniul de activitate</li>
+        <li>Adresa site-ului tău (dacă există)</li>
+        <li>Răspunsurile din formularul de audit</li>
+      </ul>
+      <p>Dacă ești de acord cu cookie-urile de analiză, colectăm și date statistice despre vizită prin Google Analytics (vezi secțiunea 7). Nu colectăm date sensibile (de sănătate, financiare, biometrice).</p>
+
+      <h2>3. De ce colectăm aceste date</h2>
+      <ul>
+        <li>Ca să îți trimitem raportul de audit pe care l-ai cerut</li>
+        <li>Ca să răspundem la întrebările sau solicitările tale</li>
+        <li>Ca să îți trimitem o ofertă, doar dacă ai cerut-o</li>
+        <li>Ca să înțelegem ce pagini sunt citite și să îmbunătățim site-ul (statistici agregate)</li>
+      </ul>
+      <p><strong>Nu trimitem newsletter, nu facem spam și nu vindem datele tale nimănui.</strong></p>
+
+      <h2>4. Temeiul legal al prelucrării</h2>
+      <ul>
+        <li><strong>Consimțământul tău</strong>, când completezi formularul, ne contactezi sau accepți cookie-urile de analiză (art. 6 alin. 1 lit. a GDPR)</li>
+        <li><strong>Interesul nostru legitim</strong>, ca să răspundem la solicitări și să furnizăm serviciile cerute (art. 6 alin. 1 lit. f GDPR)</li>
+        <li><strong>Executarea unui contract</strong>, când devii client (art. 6 alin. 1 lit. b GDPR)</li>
+      </ul>
+
+      <h2>5. Cât timp păstrăm datele</h2>
+      <ul>
+        <li><strong>Formulare de audit:</strong> maxim 12 luni de la trimitere, dacă nu rezultă o colaborare</li>
+        <li><strong>Date de client:</strong> pe durata colaborării plus 5 ani (obligații fiscale și contabile)</li>
+        <li><strong>Date Google Analytics:</strong> 14 luni, apoi se șterg automat</li>
+        <li><strong>Cereri de ștergere:</strong> le procesăm în maxim 30 de zile</li>
+      </ul>
+
+      <h2>6. Cine are acces la datele tale</h2>
+      <p>Datele tale sunt accesate doar de echipa ADSNOW, strict pentru scopurile de mai sus. Folosim următorii furnizori, care prelucrează date în numele nostru:</p>
+      <ul>
+        <li><strong>Google Workspace</strong>, pentru email și documente</li>
+        <li><strong>Formspree</strong>, prin care se trimite formularul de audit (SUA, transfer pe baza clauzelor contractuale standard)</li>
+        <li><strong>Google Analytics</strong>, doar dacă ai acceptat cookie-urile de analiză</li>
+        <li><strong>Vercel</strong>, pentru găzduirea site-ului</li>
+      </ul>
+      <p>Nu transferăm date în afara Spațiului Economic European fără garanții adecvate.</p>
+
+      <h2>7. Cookie-uri</h2>
+      <p>Site-ul folosește <strong>Google Analytics 4</strong>, ca să vedem câte vizite are și ce pagini sunt citite. Analytics pornește <strong>doar după ce apeși „Sunt de acord”</strong> în bannerul de cookie-uri. Până atunci și dacă refuzi, nu se scrie niciun cookie de analiză. Nu folosim cookie-uri de publicitate, Facebook Pixel sau alte instrumente de urmărire.</p>
+      <p>Alegerea ta se păstrează în browser. O poți schimba oricând din linkul „Setări cookie-uri” din subsolul site-ului.</p>
+
+      <h2>8. Drepturile tale</h2>
+      <p>Conform GDPR, ai următoarele drepturi:</p>
+      <ul>
+        <li><strong>Dreptul de acces:</strong> poți cere să vezi ce date avem despre tine</li>
+        <li><strong>Dreptul la rectificare:</strong> poți cere corectarea datelor greșite</li>
+        <li><strong>Dreptul la ștergere</strong></li>
+        <li><strong>Dreptul la restricționarea prelucrării</strong></li>
+        <li><strong>Dreptul la portabilitatea datelor</strong></li>
+        <li><strong>Dreptul de a te opune prelucrării</strong></li>
+        <li><strong>Dreptul de a retrage consimțământul</strong> în orice moment</li>
+      </ul>
+      <p>Pentru oricare dintre ele, scrie-ne la <a href="mailto:alex@adsnow.ro">alex@adsnow.ro</a>. Răspundem în maxim 30 de zile.</p>
+
+      <h2>9. Plângeri</h2>
+      <p>Dacă consideri că datele tale nu sunt prelucrate corect, poți depune o plângere la <strong>Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal (ANSPDCP)</strong>:</p>
+      <ul>
+        <li>Site: <a href="https://www.dataprotection.ro" target="_blank" rel="noopener">www.dataprotection.ro</a></li>
+        <li>Email: anspdcp@dataprotection.ro</li>
+      </ul>
+
+      <h2>10. Modificări ale politicii</h2>
+      <p>Putem actualiza această politică. Orice modificare apare pe această pagină, cu data actualizării vizibilă. Pentru modificări importante, te anunțăm prin email, dacă avem adresa ta.</p>
+    </div>
+  </section>
+</Base>

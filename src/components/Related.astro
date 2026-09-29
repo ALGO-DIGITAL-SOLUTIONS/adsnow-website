@@ -1,0 +1,8 @@
+---
+import { SERVICES } from '../data/site';
+interface Props { current: string }
+const { current } = Astro.props;
+---
+<div class="related fade-in">
+  {SERVICES.filter((s) => s.href !== current).map((s) => <a href={s.href}>{s.short} →</a>)}
+</div>

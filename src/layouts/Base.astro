@@ -1,0 +1,203 @@
+---
+import '../styles/global.css';
+import '../styles/v2.css';
+import { SITE, PREVIEW, CONTACT, NAV, SERVICES } from '../data/site';
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  schema?: object[];
+  ogTitle?: string;
+  preloadHero?: boolean;
+}
+
+const { title, description, path, schema = [], ogTitle, preloadHero = false } = Astro.props;
+const canonical = `${SITE}${path === '/' ? '/' : path}`;
+const graph = schema.length ? { '@context': 'https://schema.org', '@graph': schema } : null;
+const isActive = (href: string) => href === path;
+---
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8"/>
+{!PREVIEW && (
+  <>
+    {/* Consent Mode v2: nimic nu se scrie în cookie-uri până nu acceptă vizitatorul. */}
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      var c = null; try { c = localStorage.getItem('adsnow-consent'); } catch(e) {}
+      gtag('consent', 'default', {
+        ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
+        analytics_storage: c === 'granted' ? 'granted' : 'denied'
+      });
+      gtag('js', new Date());
+      gtag('config', 'G-9NW9NYSJFF');
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9NW9NYSJFF"></script>
+  </>
+)}
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="theme-color" content="#0a0e14"/>
+<title>{title}</title>
+<meta name="description" content={description}/>
+<meta name="author" content="ADSNOW"/>
+<meta name="robots" content={PREVIEW ? 'noindex, nofollow' : 'index, follow'}/>
+<meta name="google-site-verification" content="AIO6Fm5UwWBUt9lcUYRM854dxAnYmcJtU6Bd47AzMcs"/>
+<link rel="canonical" href={canonical}/>
+<meta property="og:title" content={ogTitle ?? title}/>
+<meta property="og:description" content={description}/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content={canonical}/>
+<meta property="og:image" content={`${SITE}/assets/og-image.jpg`}/>
+<meta property="og:locale" content="ro_RO"/>
+<meta property="og:site_name" content="ADSNOW"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="geo.region" content="RO-BV"/>
+<meta name="geo.placename" content="Brașov"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
+<link rel="icon" type="image/svg+xml" href="/assets/logo-icon.svg"/>
+<link rel="icon" href="/favicon.ico" sizes="32x32"/>
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"/>
+{preloadHero && (
+  <>
+    <link rel="preload" as="image" href="/assets/hero-desktop.webp" media="(min-width:769px)"/>
+    <link rel="preload" as="image" href="/assets/hero-mobile.webp" media="(max-width:768px)"/>
+  </>
+)}
+{graph && <script type="application/ld+json" set:html={JSON.stringify(graph)} />}
+<slot name="head" />
+</head>
+<body class={PREVIEW ? 'is-preview' : undefined}>
+{PREVIEW && <div class="preview-bar">PREVIZUALIZARE v2 · nu e site-ul live</div>}
+
+<nav id="navbar">
+  <div class="nav-brand">
+    <a href="/"><img src="/assets/logo-icon.svg" alt="ADSNOW" class="nav-logo" width="52" height="52"/></a>
+    <span class="nav-tagline">Your Online Identity Advisor</span>
+  </div>
+  <div class="nav-links">
+    {NAV.map((n) => <a href={n.href} class:list={['nav-link', { active: isActive(n.href) }]}>{n.label}</a>)}
+    <a href="/audit-gratuit" class="nav-cta">Audit gratuit</a>
+  </div>
+  <button type="button" class="hamburger" id="hamburger" aria-label="Meniu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-overlay" id="navOverlay">
+  <a href="/" class:list={['ov-link', { active: path === '/' }]}>Acasă</a>
+  {NAV.map((n) => <a href={n.href} class:list={['ov-link', { active: isActive(n.href) }]}>{n.label}</a>)}
+  <a href="/audit-gratuit" class="ov-link">Audit gratuit</a>
+</div>
+
+<main>
+  <slot />
+</main>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <img src="/assets/logo.webp" alt="ADSNOW" class="footer-logo" width="28" height="28"/>
+      <div class="footer-tagline">Agenție de marketing digital din Brașov</div>
+      <p class="footer-brand-text">Site-uri de prezentare, SEO local, social media și foto-video pentru afaceri din Brașov și din zonă. {CONTACT.street}, {CONTACT.city}. Tel: {CONTACT.phone}.</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Servicii</div>
+      {SERVICES.map((s) => <a href={s.href}>{s.short}</a>)}
+      <a href="/proiecte">Proiecte</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Contact</div>
+      <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
+      <a href={`tel:${CONTACT.phoneIntl}`}>{CONTACT.phone}</a>
+      <a href={CONTACT.gbp} target="_blank" rel="noopener">{CONTACT.city}, {CONTACT.street}</a>
+      <a href="/audit-gratuit">Audit gratuit</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Social și legal</div>
+      <a href="https://www.facebook.com/adsnow.ro" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.instagram.com/adsnow.ro/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.tiktok.com/@adsnow.ro" target="_blank" rel="noopener">TikTok</a>
+      <a href={CONTACT.gbp} target="_blank" rel="noopener">Google Business</a>
+      <a href="/politica-confidentialitate">Politică de Confidențialitate</a>
+      <button type="button" class="link-btn" id="consentReopen">Setări cookie-uri</button>
+      <a href="https://www.anpc.gov.ro/" target="_blank" rel="noopener">ANPC</a>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <span class="footer-copy">&copy; 2026 ADSNOW (ALGO Digital Solutions SRL). Toate drepturile rezervate.</span>
+  </div>
+</footer>
+
+<div class="consent" id="consent" role="dialog" aria-label="Cookie-uri">
+  <p>Folosim Google Analytics ca să vedem ce pagini sunt citite. Nu pornește decât dacă ești de acord. Detalii în <a href="/politica-confidentialitate">politica de confidențialitate</a>.</p>
+  <div class="consent-actions">
+    <button type="button" class="accept" data-consent="granted">Sunt de acord</button>
+    <button type="button" data-consent="denied">Refuz</button>
+  </div>
+</div>
+
+<script is:inline>
+(function(){
+  var navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', function(){
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  }, {passive:true});
+
+  var hamburger = document.getElementById('hamburger');
+  var overlay = document.getElementById('navOverlay');
+  hamburger.addEventListener('click', function(){
+    hamburger.classList.toggle('active');
+    overlay.classList.toggle('open');
+  });
+  overlay.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      hamburger.classList.remove('active');
+      overlay.classList.remove('open');
+    });
+  });
+
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){ entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.fade-in').forEach(function(el){ observer.observe(el); });
+
+  function accordion(btnSel, itemSel){
+    document.querySelectorAll(btnSel).forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var item = this.closest(itemSel);
+        var wasOpen = item.classList.contains('open');
+        document.querySelectorAll(itemSel + '.open').forEach(function(i){
+          i.classList.remove('open');
+          i.querySelector(btnSel).setAttribute('aria-expanded','false');
+        });
+        if(!wasOpen){ item.classList.add('open'); this.setAttribute('aria-expanded','true'); }
+      });
+    });
+  }
+  accordion('.faq-question', '.faq-item');
+  accordion('.service-toggle', '.service-card');
+
+  // Consimțământ
+  var box = document.getElementById('consent');
+  var saved = null; try { saved = localStorage.getItem('adsnow-consent'); } catch(e) {}
+  if(!saved) box.classList.add('show');
+  box.querySelectorAll('[data-consent]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var v = this.getAttribute('data-consent');
+      try { localStorage.setItem('adsnow-consent', v); } catch(e) {}
+      if(typeof gtag === 'function') gtag('consent', 'update', { analytics_storage: v });
+      box.classList.remove('show');
+    });
+  });
+  document.getElementById('consentReopen').addEventListener('click', function(){ box.classList.add('show'); });
+})();
+</script>
+<slot name="scripts" />
+</body>
+</html>

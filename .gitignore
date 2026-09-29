@@ -5,3 +5,9 @@
 Thumbs.db
 desktop.ini
 .DS_Store
+node_modules
+dist
+.astro
+.vercel
+.env
+adsnow-v2-preview

@@ -1,0 +1,7 @@
+---
+// Notă de lucru: apare doar în previzualizare (PREVIZUALIZARE=1), niciodată pe site-ul live.
+import { PREVIEW } from '../data/site';
+interface Props { title?: string }
+const { title = 'De completat' } = Astro.props;
+---
+{PREVIEW && <div class="todo"><strong>{title}</strong><slot /></div>}

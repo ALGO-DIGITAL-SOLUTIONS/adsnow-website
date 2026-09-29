@@ -1,0 +1,161 @@
+---
+// Logo-ul din particule din hero (preluat din site-ul vechi).
+---
+<script is:inline>
+(function(){
+  function initParticles(){
+    var canvas = document.getElementById('heroCanvas');
+    if(!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var rect = canvas.getBoundingClientRect();
+    var dpr = window.devicePixelRatio || 1;
+    var W = Math.round(rect.width);
+    var H = Math.round(rect.height);
+    canvas.width = W * dpr;
+    canvas.height = H * dpr;
+    ctx.scale(dpr, dpr);
+
+    var particles = [];
+    var mouse = { x: -9999, y: -9999, radius: 80, active: false };
+    var assembled = false;
+    var animFrameId = null;
+    var settledFrames = 0;
+    var GAP = 4;
+    var PARTICLE_SIZE = 2;
+
+    // Load full logo PNG (with transparent background) and sample pixels
+    var img = new Image();
+    img.onload = function(){
+      try {
+        var off = document.createElement('canvas');
+        var sW = W, sH = Math.round(W * (img.height / img.width));
+        off.width = sW; off.height = sH;
+        var offCtx = off.getContext('2d');
+        offCtx.drawImage(img, 0, 0, sW, sH);
+        var data = offCtx.getImageData(0, 0, sW, sH).data;
+
+        var offY = Math.round((H - sH) / 2);
+
+        for(var y = 0; y < sH; y += GAP){
+          for(var x = 0; x < sW; x += GAP){
+            var i = (y * sW + x) * 4;
+            var a = data[i + 3];
+            if(a < 30) continue; // skip transparent pixels
+            var r = data[i], g = data[i+1], b = data[i+2];
+            particles.push({
+              homeX: x, homeY: y + offY,
+              x: W / 2 + (Math.random() - 0.5) * W * 1.5,
+              y: H / 2 + (Math.random() - 0.5) * H * 1.5,
+              color: 'rgba('+r+','+g+','+b+','+(a/255).toFixed(2)+')',
+              vx: 0, vy: 0, alpha: 0
+            });
+          }
+        }
+        assembled = false;
+        animate();
+      } catch(e) {
+        console.error('Particle init failed:', e);
+      }
+    };
+    img.onerror = function(){ console.error('Failed to load hero image'); };
+    // On mobile (<=768px): ADS-only particles + HTML text below; desktop: full logo particles
+    var isMobile = window.innerWidth <= 768;
+    if(isMobile){
+      img.src = '/assets/hero-mobile.webp';
+    } else {
+      img.src = '/assets/hero-desktop.webp';
+    }
+
+    // Mouse tracking (desktop) - ignore synthetic mouse events from touch
+    var isTouchDevice = false;
+    function ensureAnimating(){
+      if(!animFrameId){ settledFrames = 0; animate(); }
+    }
+    canvas.addEventListener('mousemove', function(e){
+      if(isTouchDevice) return;
+      var r = canvas.getBoundingClientRect();
+      mouse.x = e.clientX - r.left;
+      mouse.y = e.clientY - r.top;
+      mouse.active = true;
+      ensureAnimating();
+    });
+    canvas.addEventListener('mouseleave', function(){
+      mouse.active = false;
+      mouse.x = -9999; mouse.y = -9999;
+    });
+
+    // Touch tracking (mobile) - only swipe activates particles, not tap
+    canvas.addEventListener('touchstart', function(){ isTouchDevice = true; }, { passive: true });
+    canvas.addEventListener('touchmove', function(e){
+      e.preventDefault(); // block scroll only when touching the canvas
+      var touch = e.touches[0];
+      var r = canvas.getBoundingClientRect();
+      mouse.x = touch.clientX - r.left;
+      mouse.y = touch.clientY - r.top;
+      mouse.active = true;
+      ensureAnimating();
+    }, { passive: false });
+    canvas.addEventListener('touchend', function(){
+      mouse.active = false;
+      mouse.x = -9999; mouse.y = -9999;
+    }, { passive: true });
+
+    function animate(){
+      ctx.clearRect(0, 0, W, H);
+      var allHome = true;
+
+      for(var i = 0; i < particles.length; i++){
+        var p = particles[i];
+
+        // Spring force to home position
+        var dx = p.homeX - p.x;
+        var dy = p.homeY - p.y;
+        p.vx += dx * 0.06;
+        p.vy += dy * 0.06;
+
+        // Mouse repulsion
+        if(mouse.active){
+          var mx = p.x - mouse.x;
+          var my = p.y - mouse.y;
+          var dist = Math.sqrt(mx * mx + my * my);
+          if(dist < mouse.radius && dist > 0){
+            var force = (mouse.radius - dist) / mouse.radius;
+            var angle = Math.atan2(my, mx);
+            p.vx += Math.cos(angle) * force * 8;
+            p.vy += Math.sin(angle) * force * 8;
+          }
+        }
+
+        // Friction
+        p.vx *= 0.85;
+        p.vy *= 0.85;
+
+        p.x += p.vx;
+        p.y += p.vy;
+
+        // Fade in alpha
+        if(p.alpha < 1) p.alpha = Math.min(1, p.alpha + 0.02);
+
+        // Check if settled
+        if(Math.abs(dx) > 0.5 || Math.abs(dy) > 0.5) allHome = false;
+
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = p.alpha;
+        ctx.fillRect(p.x, p.y, PARTICLE_SIZE, PARTICLE_SIZE);
+      }
+      ctx.globalAlpha = 1;
+
+      if(allHome && !mouse.active){
+        settledFrames++;
+        if(settledFrames > 30){ animFrameId = null; return; }
+      } else {
+        settledFrames = 0;
+      }
+      animFrameId = requestAnimationFrame(animate);
+    }
+  }
+  window.addEventListener('load', function(){
+    setTimeout(function(){ window.requestIdleCallback ? requestIdleCallback(initParticles) : setTimeout(initParticles, 100); }, 200);
+  });
+})();
+</script>

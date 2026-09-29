@@ -1,0 +1,152 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Faq from '../components/Faq.astro';
+import CtaFinal from '../components/CtaFinal.astro';
+import ProjectGrid from '../components/ProjectGrid.astro';
+import Related from '../components/Related.astro';
+import Todo from '../components/Todo.astro';
+import { SITE, BUSINESS_ID, breadcrumb, faqSchema } from '../data/site';
+
+const path = '/social-media-foto-video';
+
+const faq = [
+  {
+    q: 'Bugetul de reclame intră în preț?',
+    a: 'Nu. Prețul de la 2.000 RON/lună e pentru administrarea campaniilor: strategie, materiale, testare, optimizare și raport. Bugetul pe care îl plătești către Meta e separat, îl stabilim împreună și îl vezi direct în contul tău.',
+  },
+  {
+    q: 'Cine face pozele și filmările?',
+    a: 'Echipa noastră, la tine, în Brașov și în zona de până la o oră de mers. Nu folosim imagini de stoc pentru postările tale.',
+  },
+  {
+    q: 'Aprob eu postările înainte să apară?',
+    a: 'Da. Primești planul editorial lunar înainte, cu textele și imaginile, și nimic nu se publică fără acordul tău.',
+  },
+  {
+    q: 'Postați și pe TikTok?',
+    a: 'Da, acolo unde clienții tăi sunt pe TikTok. Pentru pensiuni, restaurante sau afaceri cu public tânăr, de multe ori aduce mai mult decât Facebook.',
+  },
+  {
+    q: 'De ce contract minim de 3 luni la social media?',
+    a: 'Pentru că în prima lună stabilim tonul, formatele și ritmul, iar abia în a doua și a treia se vede ce funcționează. La Meta Ads, contractul e lunar, pentru că rezultatele se măsoară mai repede.',
+  },
+];
+
+const schema = [
+  {
+    '@type': 'Service',
+    '@id': `${SITE}${path}#service`,
+    name: 'Social media, Meta Ads și producție foto-video',
+    serviceType: 'Social media marketing',
+    description:
+      'Administrare Instagram, Facebook și TikTok, campanii Meta Ads și producție foto-video pentru afaceri din Brașov.',
+    provider: { '@id': BUSINESS_ID },
+    areaServed: { '@type': 'City', name: 'Brașov' },
+    offers: [
+      {
+        '@type': 'Offer',
+        name: 'Social Media Management',
+        priceSpecification: { '@type': 'UnitPriceSpecification', minPrice: '1500', priceCurrency: 'RON', unitText: 'lună' },
+      },
+      {
+        '@type': 'Offer',
+        name: 'Meta Ads (Facebook și Instagram)',
+        priceSpecification: { '@type': 'UnitPriceSpecification', minPrice: '2000', priceCurrency: 'RON', unitText: 'lună' },
+      },
+    ],
+    url: `${SITE}${path}`,
+  },
+  breadcrumb([{ name: 'Social media și foto-video', path }]),
+  faqSchema(faq),
+];
+---
+<Base
+  title="Social media, Meta Ads și foto-video Brașov · ADSNOW"
+  ogTitle="Social media, Meta Ads și foto-video în Brașov | ADSNOW"
+  description="Administrare Instagram, Facebook și TikTok, campanii Meta Ads și filmări sau fotografii făcute la tine, în Brașov. Social media de la 1.500 RON/lună, Meta Ads de la 2.000 RON/lună."
+  path={path}
+  schema={schema}
+>
+  <PageHero
+    crumb="Social media și foto-video"
+    title="Social media, Meta Ads și foto-video în Brașov"
+    lead="Prezență consistentă pe Instagram, Facebook și TikTok, cu material filmat și fotografiat de noi, nu imagini de stoc. Și, când e cazul, reclame care se măsoară în cereri, nu în like-uri."
+    primary={{ href: '/audit-gratuit', label: 'Cere ofertă prin audit gratuit →' }}
+    meta={[
+      { label: 'Social media', value: 'de la 1.500 RON/lună' },
+      { label: 'Meta Ads', value: 'de la 2.000 RON/lună' },
+      { label: 'Foto-video', value: 'preț după audit' },
+    ]}
+  />
+
+  <section class="section-muted section-padding">
+    <div class="container">
+      <h2 class="section-title fade-in">Trei servicii, pe care le poți lua separat</h2>
+      <div class="cards-grid">
+        <div class="card fade-in">
+          <span class="card-kicker">Lunar · minim 3 luni</span>
+          <h3>Social Media Management</h3>
+          <p>Pentru afacerile care vor o prezență consistentă, nu postări haotice.</p>
+          <ul>
+            <li>Strategie de brand și teme de conținut</li>
+            <li>Plan editorial lunar, aprobat de tine</li>
+            <li>Texte, grafică și video scurt</li>
+            <li>Postare, comentarii și mesaje</li>
+            <li>Analiză și ajustare lunară</li>
+          </ul>
+          <div class="card-price">de la 1.500 RON/lună</div>
+        </div>
+        <div class="card featured fade-in">
+          <span class="card-kicker">Lunar · reînnoibil</span>
+          <h3>Meta Ads (Facebook și Instagram)</h3>
+          <p>Pentru afacerile care vor clienți noi repede și măsurabil.</p>
+          <ul>
+            <li>Strategie: cui vorbim și cu ce ofertă</li>
+            <li>Audiențe și unghiuri de mesaj</li>
+            <li>Materiale: texte, scripturi video, carusele</li>
+            <li>Testare și optimizare</li>
+            <li>Scalare pe ce convertește, raport bilunar</li>
+          </ul>
+          <div class="card-price">de la 2.000 RON/lună<small>fără bugetul de reclame</small></div>
+        </div>
+        <div class="card fade-in">
+          <span class="card-kicker">Pe proiect</span>
+          <h3>Producție foto-video</h3>
+          <p>Filmări și fotografii la tine, pentru site, social media și reclame.</p>
+          <ul>
+            <li>Plan de filmare după ce vrei să comunici</li>
+            <li>O zi de producție la locație</li>
+            <li>Reels și filme scurte montate</li>
+            <li>Fotografii editate, gata de folosit</li>
+            <li>Material pe care îl folosești oriunde</li>
+          </ul>
+          <div class="card-price">preț după audit<small>în funcție de zile și volum</small></div>
+        </div>
+      </div>
+      <Todo title="Exemple de adăugat">2-3 reels sau fotografii din producțiile recente, cu acordul clienților. O pagină despre foto-video fără niciun exemplu vizual convinge greu.</Todo>
+    </div>
+  </section>
+
+  <section class="section-light section-padding">
+    <div class="container split">
+      <h2 class="section-title fade-in">Când nu ai nevoie de social media lunar</h2>
+      <div class="prose fade-in">
+        <p>Dacă ai un cabinet cu programul plin din recomandări, un Instagram postat de trei ori pe săptămână nu îți aduce nimic în plus. Uneori e suficientă o zi de filmare pe an, niște fotografii bune și o <a href="/seo-local-brasov">fișă Google în regulă</a>.</p>
+        <p><strong>Îți spun asta înainte să semnăm, nu după trei luni de abonament.</strong> La fel la reclame: dacă oferta sau site-ul nu sunt pregătite, banii dați pe Meta se duc degeaba, și îți spun ce trebuie reparat întâi.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-muted section-padding">
+    <div class="container">
+      <span class="eyebrow fade-in">Portofoliu</span>
+      <h2 class="section-title fade-in">Proiecte cu social media și reclame</h2>
+      <ProjectGrid filter="social" />
+      <Related current={path} />
+    </div>
+  </section>
+
+  <Faq items={faq} title="Întrebări despre social media și reclame" tone="light" />
+  <CtaFinal />
+</Base>

@@ -1,0 +1,20 @@
+---
+import { PROJECTS } from '../data/site';
+interface Props { filter?: string; limit?: number; descs?: Record<string, string> }
+const { filter, limit, descs = {} } = Astro.props;
+let list = filter ? PROJECTS.filter((p) => p.services.includes(filter)) : PROJECTS;
+if (limit) list = list.slice(0, limit);
+---
+<div class="portfolio-grid">
+  {list.map((p) => (
+    <div class="portfolio-card fade-in">
+      <img src={p.img} alt={p.alt} width="600" height="200" loading="lazy"/>
+      <div class="portfolio-info">
+        <div class="portfolio-name">{p.name}</div>
+        <div class="portfolio-type">{p.type}</div>
+        {descs[p.name] && <p class="portfolio-desc">{descs[p.name]}</p>}
+        <a href={p.url} target="_blank" rel="noopener" class="portfolio-link">{p.url.replace('https://', '')} →</a>
+      </div>
+    </div>
+  ))}
+</div>

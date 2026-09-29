@@ -1,0 +1,162 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Faq from '../components/Faq.astro';
+import CtaFinal from '../components/CtaFinal.astro';
+import ProjectGrid from '../components/ProjectGrid.astro';
+import Related from '../components/Related.astro';
+import { SITE, BUSINESS_ID, breadcrumb, faqSchema } from '../data/site';
+
+const path = '/creare-site-brasov';
+
+const faq = [
+  {
+    q: 'Cât costă un site de prezentare?',
+    a: 'Intervalul tipic e 4.000-6.500 RON, în funcție de numărul de pagini, de integrări și de faptul că intră sau nu o sesiune foto. Identitatea vizuală de bază e inclusă. După auditul gratuit sau după primul call îți dau un preț fix, nu „de la”.',
+  },
+  {
+    q: 'În cât timp îmi e gata site-ul?',
+    a: 'Între 3 și 6 săptămâni de la avans. Cea mai mare variabilă e cât de repede răspunzi la întrebări și aprobi machetele. Proiectele bune se fac împreună, nu predând brief-ul și revenind peste o lună.',
+  },
+  {
+    q: 'Cu ce tehnologie construiești site-urile?',
+    a: 'Cu unelte moderne, fără WordPress și fără plugin-uri care se strică la fiecare actualizare. Rezultatul sunt site-uri care se încarcă în sub două secunde, pregătite pentru Google, livrate în săptămâni, nu în luni, și la un cost mai mic decât la o agenție tradițională.',
+  },
+  {
+    q: 'Pot să modific eu site-ul după livrare?',
+    a: 'Da. La final primești un training de o oră, parolele de acces și instrucțiuni clare pentru lucrurile uzuale: texte, imagini, articole noi. Nu te închid în „trebuie să mă suni de fiecare dată”.',
+  },
+  {
+    q: 'Ce se întâmplă după ce mi-e livrat site-ul?',
+    a: 'Ai 30 de zile de suport gratuit pentru orice ajustare mică. După aceea, dacă vrei mentenanță continuă, discutăm un serviciu lunar. Dacă vrei să-l administrezi tu, site-ul îți rămâne complet.',
+  },
+  {
+    q: 'Faci și magazine online?',
+    a: 'Magazine simple, până în 50-100 de produse, cu plată cu cardul sau ramburs, da. Magazine complexe, cu integrări ERP și stocuri în timp real, nu. Pentru asta îți recomand pe cineva specializat.',
+  },
+];
+
+const schema = [
+  {
+    '@type': 'Service',
+    '@id': `${SITE}${path}#service`,
+    name: 'Creare site de prezentare și branding',
+    serviceType: 'Web design',
+    description:
+      'Site de prezentare cu identitate vizuală inclusă, pentru afaceri din Brașov: design, texte, SEO tehnic, formulare, training și 30 de zile de suport.',
+    provider: { '@id': BUSINESS_ID },
+    areaServed: { '@type': 'City', name: 'Brașov' },
+    offers: {
+      '@type': 'Offer',
+      priceSpecification: { '@type': 'PriceSpecification', minPrice: '4000', maxPrice: '6500', priceCurrency: 'RON' },
+    },
+    url: `${SITE}${path}`,
+  },
+  breadcrumb([{ name: 'Creare site Brașov', path }]),
+  faqSchema(faq),
+];
+---
+<Base
+  title="Creare site de prezentare Brașov | Web design · ADSNOW"
+  ogTitle="Creare site de prezentare în Brașov | ADSNOW"
+  description="Creare site de prezentare în Brașov, cu identitate vizuală inclusă: design pentru telefon, texte care vând, SEO tehnic din prima zi. 4.000-6.500 RON, livrare în 3-6 săptămâni."
+  path={path}
+  schema={schema}
+>
+  <PageHero
+    crumb="Creare site Brașov"
+    title="Creare site de prezentare în Brașov"
+    lead="Un site care îi spune clientului în cinci secunde ce faci, pentru cine și cum te contactează. Rapid, făcut întâi pentru telefon și pregătit pentru Google din prima zi. Identitatea vizuală e inclusă."
+    primary={{ href: '/audit-gratuit', label: 'Cere ofertă prin audit gratuit →' }}
+    meta={[
+      { label: 'Investiție', value: '4.000 - 6.500 RON' },
+      { label: 'Livrare', value: '3-6 săptămâni' },
+      { label: 'Suport inclus', value: '30 de zile' },
+      { label: 'Plata', value: '50% avans' },
+    ]}
+  />
+
+  <section class="section-muted section-padding">
+    <div class="container split">
+      <h2 class="section-title fade-in">Când are sens un site nou, și când nu</h2>
+      <div class="prose fade-in">
+        <p>Un site nou are sens când cel vechi te face să pierzi clienți: nu se vede bine pe telefon, se încarcă greu, nu mai spune ce faci azi sau nu apare deloc în Google. Are sens și când pornești de la zero și ai nevoie de un loc al tău, nu doar de o pagină de Facebook.</p>
+        <p>Nu are sens când site-ul tău e în regulă și problema e în altă parte: nimeni nu ajunge pe el, sau ajung, dar nu sună. <strong>Atunci îți spun asta din primul call</strong> și ne uităm la <a href="/seo-local-brasov">SEO local</a> sau la <a href="/social-media-foto-video">reclame</a>, nu la un site nou.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-light section-padding">
+    <div class="container">
+      <span class="eyebrow fade-in">Ce primești</span>
+      <h2 class="section-title fade-in">Un site gata de lucru, nu doar frumos</h2>
+      <div class="cards-grid">
+        <div class="card fade-in">
+          <h3>Design făcut pentru tine</h3>
+          <p>Machete desenate pentru afacerea ta, nu un șablon cumpărat. Întâi pentru telefon, pentru că de acolo vin majoritatea vizitatorilor.</p>
+        </div>
+        <div class="card fade-in">
+          <h3>Identitate vizuală inclusă</h3>
+          <p>Logo, culori, fonturi și un brand book de bază, folosite apoi la fel pe site, pe social media și pe cărțile de vizită.</p>
+        </div>
+        <div class="card fade-in">
+          <h3>Texte care vând</h3>
+          <p>Scriem împreună textele, cu cuvintele pe care le folosesc clienții tăi când te caută, nu cu jargonul din domeniu.</p>
+        </div>
+        <div class="card fade-in">
+          <h3>Pregătit pentru Google</h3>
+          <p>Viteză, date structurate, sitemap, Search Console, Google Analytics și legătura cu fișa Google, puse din prima zi.</p>
+        </div>
+        <div class="card fade-in">
+          <h3>Contact fără pași în plus</h3>
+          <p>Buton de WhatsApp, telefon, formular și, unde e cazul, programări online. Cine vrea să te contacteze nu trebuie să caute.</p>
+        </div>
+        <div class="card fade-in">
+          <h3>Predare completă</h3>
+          <p>Training de o oră, toate parolele, instrucțiuni scrise și 30 de zile de suport gratuit pentru ajustări.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-dark section-padding">
+    <div class="container">
+      <h2 class="section-title fade-in" style="color:var(--paper);">Cum lucrăm</h2>
+      <ol class="steps">
+        <li class="fade-in"><div><span class="step-when">săptămâna 1</span><h3>Discovery și strategie</h3><p>Înțelegem afacerea, clienții și ce trebuie să facă site-ul: să aducă programări, cereri de ofertă sau doar încredere.</p></div></li>
+        <li class="fade-in"><div><span class="step-when">săptămâna 1-2</span><h3>Structură și machete</h3><p>Ce pagini sunt, ce spune fiecare și în ce ordine. Aprobi structura înainte de design.</p></div></li>
+        <li class="fade-in"><div><span class="step-when">săptămâna 2-3</span><h3>Design</h3><p>Machete finale, pe telefon și pe calculator, cu identitatea vizuală aplicată.</p></div></li>
+        <li class="fade-in"><div><span class="step-when">săptămâna 3-5</span><h3>Dezvoltare și integrări</h3><p>Construcție, formulare, analytics, viteză. Vezi progresul pe un link de test.</p></div></li>
+        <li class="fade-in"><div><span class="step-when">lansare</span><h3>Lansare și garanție</h3><p>Testare, publicare, training și 30 de zile în care orice corecție e inclusă.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section-muted section-padding">
+    <div class="container split">
+      <h2 class="section-title fade-in">Doar branding, fără site</h2>
+      <div class="prose fade-in">
+        <p>Dacă ai deja site sau o prezență care funcționează, dar vrei o identitate vizuală definită corect, o facem separat: logo, sistem de culori, tipografie și un brand book aplicabil oriunde.</p>
+        <ul>
+          <li>Atelier despre afacere, valori, public și concurență</li>
+          <li>Moodboard cu direcții vizuale, alegem împreună</li>
+          <li>Logo, culori, tipografie, elemente grafice</li>
+          <li>Brand book cu aplicații concrete: cărți de vizită, semnături de email, șabloane pentru social media</li>
+        </ul>
+        <p><strong>Durată: 2-4 săptămâni.</strong> Prețul se stabilește după audit, în funcție de cât de mult e de construit.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-light section-padding">
+    <div class="container">
+      <span class="eyebrow fade-in">Portofoliu</span>
+      <h2 class="section-title fade-in">Site-uri livrate în Brașov</h2>
+      <ProjectGrid filter="site" />
+      <Related current={path} />
+    </div>
+  </section>
+
+  <Faq items={faq} title="Întrebări despre site-uri" />
+  <CtaFinal />
+</Base>

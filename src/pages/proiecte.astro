@@ -1,0 +1,47 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaFinal from '../components/CtaFinal.astro';
+import ProjectGrid from '../components/ProjectGrid.astro';
+import Related from '../components/Related.astro';
+import Todo from '../components/Todo.astro';
+import { SITE, BUSINESS_ID, breadcrumb } from '../data/site';
+
+const path = '/proiecte';
+
+const schema = [
+  {
+    '@type': 'CollectionPage',
+    '@id': `${SITE}${path}#webpage`,
+    name: 'Proiecte ADSNOW',
+    url: `${SITE}${path}`,
+    about: { '@id': BUSINESS_ID },
+    inLanguage: 'ro-RO',
+  },
+  breadcrumb([{ name: 'Proiecte', path }]),
+];
+---
+<Base
+  title="Proiecte: site-uri, SEO local și campanii din Brașov · ADSNOW"
+  ogTitle="Proiecte ADSNOW"
+  description="Site-uri de prezentare, SEO local și campanii Meta Ads făcute de ADSNOW pentru afaceri din Brașov: clinici, cabinete, imobiliare, servicii auto, arhitectură."
+  path={path}
+  schema={schema}
+>
+  <PageHero
+    crumb="Proiecte"
+    title="Proiecte din Brașov și împrejurimi"
+    lead="Site-uri, SEO local și campanii la care am lucrat direct, de la concept la livrare. Fiecare e live, poți intra pe el."
+  />
+
+  <section class="section-muted section-padding" style="padding-top:64px;">
+    <div class="container">
+      <ProjectGrid />
+      <Todo title="Studii de caz de adăugat">Trei proiecte cu pagină proprie: problema, ce am făcut, cifra de după (apeluri, poziții, cereri). Candidați buni: Armour Glass (SEO local), Soul Synergy (Meta Ads), unul dintre site-uri. Sunt și cele mai bune pagini pentru Google pe „agenție marketing Brașov”.</Todo>
+      <Todo title="Pensiuni">Secțiune separată pentru pensiuni și cabane, după primele filmări livrate.</Todo>
+      <Related current={path} />
+    </div>
+  </section>
+
+  <CtaFinal />
+</Base>

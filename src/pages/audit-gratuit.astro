@@ -1,0 +1,296 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE, BUSINESS_ID, breadcrumb } from '../data/site';
+import '../styles/audit.css';
+
+const path = '/audit-gratuit';
+const schema = [
+  {
+    '@type': 'WebPage',
+    name: 'Audit gratuit prezență online',
+    description: 'Audit gratuit al prezenței tale online. Formular în 2 minute, raport personalizat în 24h.',
+    url: `${SITE}${path}`,
+    isPartOf: { '@id': `${SITE}/#website` },
+    provider: { '@id': BUSINESS_ID },
+    inLanguage: 'ro-RO',
+  },
+  breadcrumb([{ name: 'Audit gratuit', path }]),
+];
+---
+<Base
+  title="Audit gratuit prezență online Brașov | ADSNOW"
+  description="Audit gratuit al prezenței tale online: 5 întrebări, 2 minute. În 24h primești un raport cu 3 lucruri concrete pe care le poți face singur și o recomandare sinceră."
+  path={path}
+  schema={schema}
+>
+<!-- ======== AUDIT HERO ======== -->
+<section class="audit-hero">
+  <div class="container">
+    <h1>Audit gratuit: unde stai online și ce ai de făcut</h1>
+    <p>Răspunzi la 5 întrebări în 2 minute. În maxim 24h primești pe email un mini-raport personalizat cu 3 lucruri concrete pe care le poți face singur, plus o evaluare clară: ai nevoie de ajutor extern sau nu.</p>
+  </div>
+</section>
+
+<!-- ======== AUDIT FORM ======== -->
+<section class="audit-form-section">
+  <div class="container">
+    <form id="auditForm" novalidate>
+      <!-- Honeypot -->
+      <div class="hp-field">
+        <label for="website_url_hp">Website</label>
+        <input type="text" id="website_url_hp" name="website_url_hp" tabindex="-1" autocomplete="off"/>
+      </div>
+
+      <!-- Q1 -->
+      <div class="form-step" data-required="radio" data-group="q1">
+        <div class="form-step-label">Întrebarea 1 din 5</div>
+        <div class="form-step-question">Ce ai online acum?</div>
+        <div class="radio-group">
+          <label class="radio-option">
+            <input type="radio" name="q1" value="Site funcțional, dar nu sunt mulțumit de el"/>
+            <span>Site funcțional, dar nu sunt mulțumit de el</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="q1" value="Site vechi care nu mai reprezintă business-ul"/>
+            <span>Site vechi care nu mai reprezintă business-ul</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="q1" value="Doar pagina de Facebook/Instagram, fără site"/>
+            <span>Doar pagina de Facebook/Instagram, fără site</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="q1" value="Nu am nimic încă, pornesc de la zero"/>
+            <span>Nu am nimic încă, pornesc de la zero</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="q1" value="Site nou-nouț, vreau doar o părere externă"/>
+            <span>Site nou-nouț, vreau doar o părere externă</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Q2 -->
+      <div class="form-step" data-required="radio" data-group="q2">
+        <div class="form-step-label">Întrebarea 2 din 5</div>
+        <div class="form-step-question">Care e problema principală pe care vrei să o rezolvi?</div>
+        <div class="radio-group">
+          <label class="radio-option">
+            <input type="radio" name="q2" value="Vreau să primesc mai multe programări/comenzi"/>
+            <span>Vreau să primesc mai multe programări/comenzi</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="q2" value="Vreau să arăt mai profesional pentru clienții pe care îi am deja"/>
+            <span>Vreau să arăt mai profesional pentru clienții pe care îi am deja</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="q2" value="Nu apar în Google când mă caută cineva"/>
+            <span>Nu apar în Google când mă caută cineva</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="q2" value="Pierd ore săptămânal cu lucruri care ar putea fi automatizate"/>
+            <span>Pierd ore săptămânal cu lucruri care ar putea fi automatizate (programări, răspunsuri repetitive)</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="q2" value="Vreau să-mi construiesc un brand consistent"/>
+            <span>Vreau să-mi construiesc un brand consistent, nu doar "să exist"</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Q3 -->
+      <div class="form-step" data-required="select">
+        <div class="form-step-label">Întrebarea 3 din 5</div>
+        <div class="form-step-question">Cu ce te ocupi?</div>
+        <div class="select-wrapper">
+          <select name="q3_category" required>
+            <option value="" disabled selected>Alege o categorie</option>
+            <option value="Cabinet medical / wellness">Cabinet medical / wellness</option>
+            <option value="Cazare / turism">Cazare / turism</option>
+            <option value="Atelier auto / service">Atelier auto / service</option>
+            <option value="Producător local">Producător local (mobilă, ceramică, croitorie etc.)</option>
+            <option value="Servicii profesionale">Servicii profesionale (avocat, contabil, notariat)</option>
+            <option value="Studio creativ">Studio creativ (foto, video, design)</option>
+            <option value="Servicii">Servicii (construcții, instalații, beauty, fitness)</option>
+            <option value="Altceva">Altceva</option>
+          </select>
+        </div>
+        <div class="form-textarea-label">Spune-mi în 1-2 propoziții ce faci și pentru cine</div>
+        <textarea class="form-textarea" name="q3_description" placeholder='Ex: "Cabinet de psihologie pentru adulți, focusat pe anxietate și relații."' rows="3"></textarea>
+      </div>
+
+      <!-- Q4 -->
+      <div class="form-step" data-required="radio" data-group="q4">
+        <div class="form-step-label">Întrebarea 4 din 5</div>
+        <div class="form-step-question">Bugetul aproximativ pe care îl poți investi?</div>
+        <div class="radio-group">
+          <label class="radio-option">
+            <input type="radio" name="q4" value="Sub 2.000 RON"/>
+            <span>Sub 2.000 RON (caut soluție low-cost sau DIY)</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="q4" value="2.000-4.000 RON"/>
+            <span>2.000-4.000 RON (vreau ceva profesional, dar fără excese)</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="q4" value="4.000-8.000 RON"/>
+            <span>4.000-8.000 RON (vreau identitate completă)</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="q4" value="Peste 8.000 RON"/>
+            <span>Peste 8.000 RON (proiect mai complex sau retainer lunar)</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="q4" value="Nu știu încă"/>
+            <span>Nu știu încă, vreau să înțeleg ce înseamnă fiecare nivel</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Q5 -->
+      <div class="form-step">
+        <div class="form-step-label">Întrebarea 5 din 5</div>
+        <div class="form-step-question">Cum te contactez?</div>
+        <div class="contact-fields">
+          <div class="contact-field">
+            <label for="audit-name">Nume *</label>
+            <input type="text" id="audit-name" name="name" required placeholder="Numele tău"/>
+          </div>
+          <div class="contact-field">
+            <label for="audit-email">Email *</label>
+            <input type="email" id="audit-email" name="email" required placeholder="email@exemplu.ro"/>
+          </div>
+          <div class="contact-field">
+            <label for="audit-phone">WhatsApp (recomandat)</label>
+            <input type="tel" id="audit-phone" name="phone" placeholder="07xx xxx xxx"/>
+            <span class="optional-hint">Opțional, dar așa răspund mai repede</span>
+          </div>
+          <div class="contact-field">
+            <label for="audit-site">URL site actual</label>
+            <input type="text" id="audit-site" name="current_site" placeholder="https://site-ul-tau.ro"/>
+            <span class="optional-hint">Opțional</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUBMIT -->
+      <div class="submit-area">
+        <button type="submit" class="submit-btn">
+          Trimite și primește raportul în 24h →
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+        <p class="submit-micro">Nu spam, nu liste de email, nu telemarketing. Doar raportul tău și, dacă vrei, un call de 30 de minute. Fără obligații.</p>
+      </div>
+    </form>
+
+    <!-- CONFIRMATION -->
+    <div class="confirmation" id="auditConfirmation">
+      <h2>Mulțumesc!</h2>
+      <p>Am primit auditul tău. Îți răspund pe email în maxim 24 de ore (de obicei mai repede). Verifică și folderul de spam: uneori automatizările ajung acolo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======== CE PRIMESTI ======== -->
+<section class="section-muted section-padding">
+  <div class="container-wide">
+    <h2 class="section-title">Ce primești în raport</h2>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <h3>Diagnostic clar al situației actuale</h3>
+        <p>O evaluare onestă a prezenței tale online: ce funcționează, ce nu, și unde stai față de concurența din Brașov.</p>
+      </div>
+      <div class="benefit-card">
+        <h3>3 lucruri concrete pe care le poți face singur</h3>
+        <p>Acțiuni clare, gratuite sau low-cost, pe care le poți implementa săptămâna asta fără să mă plătești pe mine sau pe altcineva.</p>
+      </div>
+      <div class="benefit-card">
+        <h3>Recomandare onestă</h3>
+        <p>Una din 3 variante: "ești ok, nu cheltui acum", "ai nevoie de un boost mic", sau "e timpul pentru refacere completă". Cu range de preț estimat, dacă e cazul.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== MICRO CTA ======== -->
+<div class="micro-cta">
+  <p>Nu ești pregătit pentru audit acum? Poți programa direct un call de 30 minute.</p>
+  <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ38JrGsAlyvinUx2IY6KHYyI7IQ-QaifvAz9diIDscT3oKh-S-_tG2_Kgkv_CYFaGW_RxtNrH73" target="_blank" rel="noopener">Programează un call →</a>
+</div>
+
+
+  <script is:inline slot="scripts">
+(function(){
+  // Form submission
+  var form = document.getElementById('auditForm');
+  var confirmation = document.getElementById('auditConfirmation');
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+
+    // Honeypot check
+    var hp = form.querySelector('[name="website_url_hp"]');
+    if(hp && hp.value) return;
+
+    // Validate required radio groups
+    var valid = true;
+    var radioGroups = ['q1', 'q2', 'q4'];
+    radioGroups.forEach(function(group){
+      var checked = form.querySelector('input[name="'+group+'"]:checked');
+      var step = form.querySelector('[data-group="'+group+'"]');
+      if(!checked){
+        if(step) step.classList.add('error');
+        valid = false;
+      } else {
+        if(step) step.classList.remove('error');
+      }
+    });
+
+    // Validate select
+    var cat = form.querySelector('[name="q3_category"]');
+    if(!cat.value){
+      valid = false;
+    }
+
+    // Validate name and email
+    var nameField = form.querySelector('[name="name"]');
+    var emailField = form.querySelector('[name="email"]');
+    if(!nameField.value.trim() || !emailField.value.trim() || !emailField.validity.valid){
+      valid = false;
+    }
+
+    if(!valid){
+      // Scroll to first error
+      var firstError = form.querySelector('.error, :invalid');
+      if(firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    // Collect form data and send to Formspree
+    var data = new FormData(form);
+    var submitBtn = form.querySelector('.submit-btn');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Se trimite...';
+
+    fetch('https://formspree.io/f/xaqvrkwe', {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    }).then(function(response){
+      if(response.ok){
+        form.style.display = 'none';
+        confirmation.classList.add('show');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Trimite auditul gratuit →';
+        alert('A apărut o eroare. Te rog încearcă din nou sau scrie-mi direct la alex@adsnow.ro');
+      }
+    }).catch(function(){
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Trimite auditul gratuit →';
+      alert('A apărut o eroare de conexiune. Te rog încearcă din nou.');
+    });
+  });
+})();
+  </script>
+</Base>

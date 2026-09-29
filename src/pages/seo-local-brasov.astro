@@ -1,0 +1,146 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Faq from '../components/Faq.astro';
+import CtaFinal from '../components/CtaFinal.astro';
+import ProjectGrid from '../components/ProjectGrid.astro';
+import Related from '../components/Related.astro';
+import { SITE, BUSINESS_ID, breadcrumb, faqSchema } from '../data/site';
+
+const path = '/seo-local-brasov';
+
+const faq = [
+  {
+    q: 'Cât durează până se vede o schimbare?',
+    a: 'Depinde de cât de aglomerat e domeniul tău în Brașov. Schimbările pe hartă apar de obicei mai repede decât cele din rezultatele organice, pentru că fișa Google se optimizează direct. Pe organic vorbim de luni, nu de săptămâni. De aceea contractul minim e de 3 luni.',
+  },
+  {
+    q: 'De ce contract minim de 3 luni?',
+    a: 'Pentru că prima lună e în mare parte fundație: audit, fișa Google, citări, corecturi tehnice. Efectul lor se vede în lunile următoare. Un contract de o lună te-ar face să plătești exact partea care încă nu se vede.',
+  },
+  {
+    q: 'Am nevoie de site pentru SEO local?',
+    a: 'Pentru hartă, fișa Google contează cel mai mult. Un site legat de fișă, cu pagini pentru fiecare serviciu, ajută însă mult, și e singura cale spre rezultatele organice de sub hartă. Dacă nu ai site, îți spun sincer dacă merită să începi cu el sau doar cu fișa.',
+  },
+  {
+    q: 'Cumpărați recenzii sau linkuri?',
+    a: 'Nu. Recenziile false încalcă regulile Google și pot duce la suspendarea fișei. Facem un sistem simplu prin care îi rogi pe clienții mulțumiți să lase o recenzie, și construim linkuri din surse locale reale.',
+  },
+  {
+    q: 'Îmi garantați locul 1?',
+    a: 'Nu, și nimeni nu poate garanta asta cinstit. Distanța față de cel care caută nu o controlează nimeni. Îți garantăm muncă vizibilă în fiecare lună și un raport din care înțelegi ce s-a schimbat.',
+  },
+];
+
+const schema = [
+  {
+    '@type': 'Service',
+    '@id': `${SITE}${path}#service`,
+    name: 'SEO local și Google Business Profile',
+    serviceType: 'SEO local',
+    description:
+      'Optimizare pentru căutări locale în Brașov: Google Business Profile, citări locale, optimizare on-page, recenzii, articole SEO și raport lunar.',
+    provider: { '@id': BUSINESS_ID },
+    areaServed: { '@type': 'City', name: 'Brașov' },
+    offers: {
+      '@type': 'Offer',
+      priceSpecification: { '@type': 'UnitPriceSpecification', minPrice: '1500', priceCurrency: 'RON', unitText: 'lună' },
+    },
+    url: `${SITE}${path}`,
+  },
+  breadcrumb([{ name: 'SEO local Brașov', path }]),
+  faqSchema(faq),
+];
+---
+<Base
+  title="SEO local Brașov | Google Maps și fișa Google · ADSNOW"
+  ogTitle="SEO local în Brașov | ADSNOW"
+  description="SEO local în Brașov: fișa Google Business Profile pusă în ordine, citări, pagini pe servicii, recenzii reale și raport lunar. De la 1.500 RON/lună, contract minim 3 luni."
+  path={path}
+  schema={schema}
+>
+  <PageHero
+    crumb="SEO local Brașov"
+    title="SEO local în Brașov: apari când te caută cineva din zonă"
+    lead="Când cineva scrie pe telefon „dentist Brașov” sau „service auto aproape de mine”, Google arată întâi o hartă cu trei firme. Lucrăm ca tu să fii una dintre ele, și ca site-ul tău să apară imediat sub hartă."
+    primary={{ href: '/audit-gratuit', label: 'Vezi unde stai acum. Audit gratuit →' }}
+    meta={[
+      { label: 'Investiție', value: 'de la 1.500 RON/lună' },
+      { label: 'Contract minim', value: '3 luni' },
+      { label: 'Raportare', value: 'lunară' },
+    ]}
+  />
+
+  <section class="section-muted section-padding">
+    <div class="container split">
+      <h2 class="section-title fade-in">Cum decide Google pe cine arată pe hartă</h2>
+      <div class="prose fade-in">
+        <p>Google spune public că ține cont de trei lucruri când alege firmele de pe hartă:</p>
+        <ul>
+          <li><strong>Relevanța:</strong> cât de bine se potrivește fișa ta cu ce a căutat omul.</li>
+          <li><strong>Distanța:</strong> cât de aproape ești de el sau de zona pe care a scris-o.</li>
+          <li><strong>Notorietatea:</strong> recenziile, linkurile, cât de cunoscută e afacerea în general.</li>
+        </ul>
+        <p>Distanța n-o poate schimba nimeni. Pe celelalte două se poate lucra, și acolo majoritatea firmelor din Brașov lasă loc liber: fișe completate pe jumătate, categorii greșite, recenzii fără răspuns, site-uri care nu spun nicăieri în ce oraș lucrează.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-light section-padding">
+    <div class="container">
+      <span class="eyebrow fade-in">Ce facem</span>
+      <h2 class="section-title fade-in">Munca lunară, pe bucăți</h2>
+      <div class="cards-grid">
+        <div class="card fade-in">
+          <h3>Fișa Google completată 100%</h3>
+          <p>Categoriile corecte, serviciile, pozele, programul, postările și răspunsurile la recenzii. E cea mai mare pârghie pentru hartă.</p>
+        </div>
+        <div class="card fade-in">
+          <h3>Site pregătit pentru căutări locale</h3>
+          <p>Pagini pentru fiecare serviciu, termenii pe care îi folosesc oamenii când caută, date structurate și viteză.</p>
+        </div>
+        <div class="card fade-in">
+          <h3>Citări locale</h3>
+          <p>Același nume, aceeași adresă și același telefon în directoarele care contează. Neconcordanțele îl încurcă pe Google.</p>
+        </div>
+        <div class="card fade-in">
+          <h3>Recenzii reale</h3>
+          <p>Un mod simplu prin care clienții mulțumiți lasă o recenzie, plus răspunsuri la fiecare. Fără recenzii cumpărate.</p>
+        </div>
+        <div class="card fade-in">
+          <h3>Articole SEO</h3>
+          <p>Texte care răspund la întrebările clienților tăi și aduc pe site oameni care încă se informează.</p>
+        </div>
+        <div class="card fade-in">
+          <h3>Raport lunar</h3>
+          <p>Poziții, apeluri, vizualizări pe hartă, cereri de indicații. Ce a mers, ce nu, ce facem luna următoare.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-dark section-padding">
+    <div class="container">
+      <h2 class="section-title fade-in" style="color:var(--paper);">Cum lucrăm</h2>
+      <ol class="steps">
+        <li class="fade-in"><div><span class="step-when">luna 1</span><h3>Audit și cercetare</h3><p>Unde apari acum, pe ce căutări, cine e înaintea ta și de ce. Alegem termenii care aduc clienți, nu doar vizite.</p></div></li>
+        <li class="fade-in"><div><span class="step-when">luna 1</span><h3>Fundația</h3><p>Fișa Google, citările locale și datele structurate de pe site.</p></div></li>
+        <li class="fade-in"><div><span class="step-when">luna 2</span><h3>Optimizare pe site</h3><p>Conținut pe servicii, structură, viteză și versiunea de telefon.</p></div></li>
+        <li class="fade-in"><div><span class="step-when">lunar</span><h3>Autoritate</h3><p>Recenzii, linkuri locale, parteneriate cu afaceri din zonă.</p></div></li>
+        <li class="fade-in"><div><span class="step-when">lunar</span><h3>Monitorizare și raport</h3><p>Ce s-a schimbat, în cifre pe care le înțelegi, și ce urmează.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section-light section-padding">
+    <div class="container">
+      <span class="eyebrow fade-in">Portofoliu</span>
+      <h2 class="section-title fade-in">Proiecte de SEO local</h2>
+      <ProjectGrid filter="seo" />
+      <Related current={path} />
+    </div>
+  </section>
+
+  <Faq items={faq} title="Întrebări despre SEO local" />
+  <CtaFinal />
+</Base>

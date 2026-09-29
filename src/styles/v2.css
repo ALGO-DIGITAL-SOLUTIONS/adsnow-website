@@ -1,0 +1,239 @@
+/* Stiluri adăugate în v2 (multi-page). global.css rămâne CSS-ul site-ului vechi. */
+
+/* ============ NAV ACTIV ============ */
+.nav-link.active { color: var(--ink); }
+.nav-overlay a.active { color: var(--cobalt); }
+
+/* ============ PAGINI INTERIOARE ============ */
+.page-hero {
+  padding: 160px 48px 96px;
+  background: var(--paper);
+}
+.page-hero .container { max-width: 1200px; }
+.breadcrumb {
+  font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(10,14,20,0.45);
+  margin-bottom: 28px;
+}
+.breadcrumb a:hover { color: var(--cobalt); }
+.breadcrumb span { margin: 0 8px; }
+.page-title {
+  font-family: var(--font-display);
+  font-weight: 500; letter-spacing: -0.02em;
+  line-height: 1.1;
+  font-size: clamp(34px, 5vw, 64px);
+  max-width: 900px;
+}
+.page-lead {
+  font-size: 19px; font-weight: 300; line-height: 1.6;
+  color: rgba(10,14,20,0.65);
+  margin-top: 28px; max-width: 680px;
+}
+.page-meta {
+  display: flex; flex-wrap: wrap; gap: 12px 40px;
+  margin-top: 36px; padding-top: 24px;
+  border-top: 1px solid var(--rule-light);
+  max-width: 900px;
+}
+.page-meta div {
+  font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(10,14,20,0.5);
+}
+.page-meta strong {
+  display: block; margin-top: 6px;
+  font-family: var(--font-display); font-size: 18px;
+  letter-spacing: 0; text-transform: none;
+  color: var(--ink); font-weight: 500;
+}
+
+/* Text lung: titlu în stânga, text în dreapta */
+.split {
+  display: grid; grid-template-columns: 1fr 1.6fr;
+  gap: 64px; align-items: start;
+}
+.split .section-title { font-size: clamp(28px, 3.2vw, 44px); }
+.prose p, .prose li {
+  font-size: 17px; line-height: 1.75;
+  color: rgba(10,14,20,0.72);
+}
+.section-dark .prose p, .section-dark .prose li { color: rgba(244,241,236,0.7); }
+.prose p + p { margin-top: 18px; }
+.prose strong { color: var(--ink); font-weight: 600; }
+.section-dark .prose strong { color: var(--paper); }
+.prose ul { list-style: none; margin-top: 18px; }
+.prose li { padding: 6px 0 6px 28px; position: relative; }
+.prose li::before { content: "\2192"; position: absolute; left: 0; color: var(--cobalt); }
+.section-dark .prose li::before { color: var(--sky); }
+.prose h3 {
+  font-family: var(--font-display); font-size: 21px; font-weight: 500;
+  margin: 36px 0 12px; color: var(--ink);
+}
+.section-dark .prose h3 { color: var(--paper); }
+.prose a { color: var(--cobalt); text-decoration: underline; text-underline-offset: 3px; }
+.section-dark .prose a { color: var(--sky); }
+
+/* Carduri generice */
+.cards-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 24px; margin-top: 48px;
+}
+.cards-grid.two { grid-template-columns: repeat(2, 1fr); }
+.card {
+  padding: 36px 30px;
+  background: var(--paper);
+  border: 1px solid var(--rule-light);
+  display: flex; flex-direction: column;
+}
+.section-light .card { background: var(--paper-2); }
+.card h3 {
+  font-family: var(--font-display);
+  font-size: 20px; font-weight: 500; line-height: 1.3;
+  margin-bottom: 14px;
+}
+.card p, .card li { font-size: 15px; line-height: 1.65; color: rgba(10,14,20,0.65); }
+.card p + p { margin-top: 10px; }
+.card ul { list-style: none; margin-top: 10px; }
+.card li { padding: 4px 0 4px 22px; position: relative; }
+.card li::before { content: "\2713"; position: absolute; left: 0; color: #2e9e5a; font-weight: 600; }
+.card-kicker {
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--cobalt); margin-bottom: 14px; display: block;
+}
+.card-price {
+  margin-top: auto; padding-top: 20px;
+  font-family: var(--font-display); font-size: 24px; font-weight: 500; color: var(--ink);
+}
+.card-price small {
+  display: block; font-family: var(--font-body); font-size: 13px;
+  font-weight: 400; color: rgba(10,14,20,0.5); margin-top: 4px;
+}
+.card.featured { border: 2px solid var(--cobalt); }
+
+/* Carduri de serviciu ca linkuri (homepage) */
+a.service-card { color: inherit; }
+.service-more {
+  margin-top: auto; padding-top: 24px;
+  font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--sky); transition: color .25s;
+}
+a.service-card:hover .service-more { color: var(--paper); }
+.service-tag {
+  display: inline-block; align-self: flex-start;
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--ink); background: var(--sky);
+  padding: 4px 10px; margin-bottom: 18px;
+}
+.services-grid.four { grid-template-columns: repeat(2, 1fr); }
+.service-card .service-meta { margin-bottom: 0; }
+
+/* Pași numerotați */
+.steps { list-style: none; margin-top: 48px; counter-reset: s; max-width: 900px; }
+.steps li {
+  counter-increment: s;
+  display: grid; grid-template-columns: 72px 1fr; gap: 16px;
+  padding: 28px 0; border-top: 1px solid var(--rule-light);
+}
+.section-dark .steps li { border-color: rgba(244,241,236,0.1); }
+.steps li::before {
+  content: counter(s, decimal-leading-zero);
+  font-family: var(--font-mono); font-size: 28px; color: var(--sky);
+}
+.steps h3 { font-family: var(--font-display); font-size: 20px; font-weight: 500; margin-bottom: 8px; }
+.steps p { font-size: 15px; line-height: 1.65; color: rgba(10,14,20,0.65); }
+.section-dark .steps p { color: rgba(244,241,236,0.6); }
+.steps .step-when {
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--cobalt); margin-bottom: 8px; display: block;
+}
+.section-dark .steps .step-when { color: var(--sky); }
+
+/* Recenzii */
+.reviews-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.reviews-score { font-family: var(--font-display); font-size: 56px; font-weight: 500; line-height: 1; }
+.reviews-score small { font-size: 16px; font-family: var(--font-body); color: rgba(10,14,20,0.55); margin-left: 8px; }
+.reviews-stars { color: #e3a008; letter-spacing: 4px; font-size: 20px; margin-top: 8px; }
+.review-card blockquote { font-size: 16px; line-height: 1.65; color: rgba(10,14,20,0.75); }
+.review-card cite {
+  display: block; margin-top: 16px; font-style: normal;
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(10,14,20,0.5);
+}
+
+/* Notă vizibilă doar în previzualizare */
+.todo {
+  border: 2px dashed #d97706; background: #fff7e6; color: #7c3d00;
+  padding: 16px 20px; margin: 24px 0; font-size: 14px; line-height: 1.55;
+  font-family: var(--font-body);
+}
+.todo strong {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em;
+  text-transform: uppercase; display: block; margin-bottom: 4px; color: #b45309;
+}
+.section-dark .todo { background: #2a1d05; color: #fcd9a0; border-color: #f59e0b; }
+.section-dark .todo strong { color: #fbbf24; }
+
+/* Legături către celelalte servicii */
+.related { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+.related a {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+  border: 1px solid var(--rule-light); padding: 12px 18px;
+  transition: border-color .25s, color .25s;
+}
+.related a:hover { border-color: var(--cobalt); color: var(--cobalt); }
+.section-dark .related a { border-color: rgba(244,241,236,0.2); color: var(--paper); }
+.section-dark .related a:hover { border-color: var(--sky); color: var(--sky); }
+
+/* Proiecte: descriere sub card */
+.portfolio-desc { font-size: 14px; line-height: 1.6; color: rgba(244,241,236,0.6); margin-top: 10px; }
+
+/* Consimțământ cookie-uri */
+.consent {
+  position: fixed; left: 24px; right: 24px; bottom: 24px; z-index: 9000;
+  max-width: 560px; margin-left: auto;
+  background: var(--ink); color: var(--paper);
+  padding: 22px 24px; box-shadow: 0 12px 40px rgba(0,0,0,.25);
+  display: none;
+}
+.consent.show { display: block; }
+.consent p { font-size: 14px; line-height: 1.6; color: rgba(244,241,236,0.75); }
+.consent a { color: var(--sky); text-decoration: underline; }
+.consent-actions { display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
+.consent button {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 12px 20px; cursor: pointer; border: 1px solid rgba(244,241,236,0.3);
+  background: none; color: var(--paper);
+}
+.consent button.accept { background: var(--sky); color: var(--ink); border-color: var(--sky); }
+.footer-col button.link-btn {
+  background: none; border: none; padding: 4px 0; cursor: pointer;
+  font-size: 14px; color: rgba(244,241,236,0.55); text-align: left;
+}
+.footer-col button.link-btn:hover { color: var(--sky); }
+
+/* Banda de previzualizare */
+.preview-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 9500;
+  background: #d97706; color: #fff; text-align: center;
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em;
+  padding: 4px 8px;
+}
+body.is-preview nav { top: 22px; }
+
+@media (max-width: 1024px) {
+  .cards-grid, .cards-grid.two { grid-template-columns: 1fr; }
+  .split { grid-template-columns: 1fr; gap: 24px; }
+}
+@media (max-width: 768px) {
+  .page-hero { padding: 120px 24px 64px; }
+  .page-lead { font-size: 17px; }
+  .services-grid.four { grid-template-columns: 1fr; }
+  .steps li { grid-template-columns: 52px 1fr; }
+  .steps li::before { font-size: 22px; }
+  .reviews-score { font-size: 44px; }
+  .consent { left: 12px; right: 12px; bottom: 12px; }
+}

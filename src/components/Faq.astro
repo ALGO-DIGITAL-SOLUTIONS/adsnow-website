@@ -1,0 +1,18 @@
+---
+interface Props { items: { q: string; a: string }[]; title?: string; desc?: string; tone?: 'muted' | 'light' }
+const { items, title = 'Întrebări frecvente', desc, tone = 'muted' } = Astro.props;
+---
+<section id="faq" class={`section-${tone} section-padding`}>
+  <div class="container">
+    <h2 class="section-title fade-in">{title}</h2>
+    {desc && <p class="section-desc fade-in">{desc}</p>}
+    <div class="faq-list">
+      {items.map((f) => (
+        <div class="faq-item fade-in">
+          <button type="button" class="faq-question" aria-expanded="false">{f.q} <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+          <div class="faq-answer"><p>{f.a}</p></div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
