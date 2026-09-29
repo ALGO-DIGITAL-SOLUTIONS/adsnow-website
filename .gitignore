@@ -11,3 +11,5 @@ dist
 .vercel
 .env
 adsnow-v2-preview
+
+.env*

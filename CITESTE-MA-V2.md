@@ -12,7 +12,7 @@ PREVIZUALIZARE=1 npx astro build     # build de previzualizare (noindex, note �
 npx astro build                      # build de producție
 ```
 
-Republicare previzualizare:
+Republicare previzualizare: automat, la fiecare push pe `v2-multipage` (proiectul Vercel e legat de repo, cu producția pe acest branch). Varianta manuală, doar dacă e nevoie:
 
 ```bash
 PREVIZUALIZARE=1 npx astro build && cp -r dist/. adsnow-v2-preview/
