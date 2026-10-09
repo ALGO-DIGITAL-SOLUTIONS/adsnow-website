@@ -49,6 +49,7 @@
       "@type": ["LocalBusiness", "MarketingAgency"],
       "@id": "https://adsnow.ro/#business",
       "name": "ADSNOW",
+      "alternateName": ["ALGO Digital Solutions", "ADSNOW Brașov"],
       "legalName": "ALGO Digital Solutions SRL",
       "description": "Agenție digital marketing în Brașov. Website-uri, branding, SEO și prezență online pentru business-uri mici.",
       "url": "https://adsnow.ro",
@@ -67,11 +68,18 @@
         "latitude": 45.6427,
         "longitude": 25.5887
       },
-      "founder": {
-        "@type": "Person",
-        "name": "Alexandru Gogu",
-        "jobTitle": "Fondator & Digital Strategist"
-      },
+      "founder": {"@id": "https://adsnow.ro/#alex"},
+      "hasMap": "https://www.google.com/search?kgmid=/g/11yt4l2544",
+      "knowsAbout": [
+        "Web design",
+        "SEO local",
+        "Google Business Profile",
+        "Meta Ads",
+        "Branding",
+        "Social media marketing",
+        "Website-uri pentru pensiuni",
+        "Website-uri pentru cabinete medicale"
+      ],
       "foundingDate": "2023",
       "areaServed": [
         {
@@ -99,7 +107,7 @@
         "https://www.facebook.com/adsnow.ro",
         "https://www.instagram.com/adsnow.ro/",
         "https://www.tiktok.com/@adsnow.ro",
-        "https://share.google/VeFOuazxszxVcgFcH"
+        "https://www.google.com/search?kgmid=/g/11yt4l2544"
       ],
       "openingHoursSpecification": {
         "@type": "OpeningHoursSpecification",
@@ -209,14 +217,54 @@
       "isPartOf": {"@id": "https://adsnow.ro/#website"},
       "about": {"@id": "https://adsnow.ro/#business"},
       "description": "Agenție digital marketing în Brașov. Website-uri, branding, SEO și prezență online pentru business-uri mici.",
-      "inLanguage": "ro-RO"
+      "inLanguage": "ro-RO",
+      "dateModified": "2026-10-09",
+      "primaryImageOfPage": "https://adsnow.ro/assets/og-image.jpg",
+      "mainEntity": {"@id": "https://adsnow.ro/#business"}
+    },
+    {
+      "@type": "Person",
+      "@id": "https://adsnow.ro/#alex",
+      "name": "Alexandru Gogu",
+      "alternateName": "Alex Gogu",
+      "jobTitle": "Fondator & Digital Strategist",
+      "description": "Fondatorul ADSNOW, agenție de marketing digital din Brașov. Anterior Project Manager la o agenție de marketing din Montreal și co-fondator (CTO) al unei firme de marketing din Spania.",
+      "image": "https://adsnow.ro/assets/alex-gogu.webp",
+      "url": "https://adsnow.ro/#despre",
+      "email": "alex@adsnow.ro",
+      "worksFor": {"@id": "https://adsnow.ro/#business"},
+      "knowsAbout": ["Web design", "SEO local", "Meta Ads", "Branding", "Marketing digital"]
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://adsnow.ro/#portofoliu",
+      "name": "Proiecte recente ADSNOW din Brașov și împrejurimi",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "item": {"@type": "WebSite", "name": "Ozone Residence", "url": "https://ozoneresidence.ro", "description": "Website Development & Design", "creator": {"@id": "https://adsnow.ro/#business"}}},
+        {"@type": "ListItem", "position": 2, "item": {"@type": "WebSite", "name": "Armour Glass Parbrize", "url": "https://armourglass-parbrize.ro", "description": "SEO Local & Google Business Profile"}},
+        {"@type": "ListItem", "position": 3, "item": {"@type": "WebSite", "name": "Soul Synergy", "url": "https://soulsynergy.ro", "description": "Web Development & Meta Ads", "creator": {"@id": "https://adsnow.ro/#business"}}},
+        {"@type": "ListItem", "position": 4, "item": {"@type": "WebSite", "name": "Psiholog Brașov", "url": "https://psihologbrasov.ro", "description": "Web Development & Content Creation", "creator": {"@id": "https://adsnow.ro/#business"}}},
+        {"@type": "ListItem", "position": 5, "item": {"@type": "WebSite", "name": "Dr. Sima", "url": "https://drsima.ro", "description": "Web Development", "creator": {"@id": "https://adsnow.ro/#business"}}},
+        {"@type": "ListItem", "position": 6, "item": {"@type": "WebSite", "name": "Mobarh", "url": "https://mobarh.ro", "description": "Web Development", "creator": {"@id": "https://adsnow.ro/#business"}}}
+      ]
     },
     {
       "@type": "FAQPage",
+      "@id": "https://adsnow.ro/#faq",
+      "isPartOf": {"@id": "https://adsnow.ro/#webpage"},
+      "inLanguage": "ro-RO",
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Cât costă un website la ADSNOW?",
+          "name": "Cu ce diferiți de o agenție obișnuită de marketing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sunt un singur om. Vorbești direct cu cineva care construiește, nu cu un account manager care îi explică unui executant ce ai vrut să spui. Briefingul nu se pierde pe drum, deciziile se iau rapid, iar dacă ai o problemă nu treci prin 3 niveluri de escalare."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Cât costă un website?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Range-ul tipic e 4.000-6.500 RON, în funcție de complexitate (număr de pagini, integrări, sesiune foto inclusă sau nu). După auditul gratuit sau primul call de 30 minute îți pot da un preț fix."
@@ -227,7 +275,7 @@
           "name": "În cât timp îmi e gata site-ul?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "3-6 săptămâni de la avans, în funcție de proiect. Cea mai mare variabilă e cât de repede îmi răspunzi la întrebări și aprobi mockup-urile."
+            "text": "3-6 săptămâni de la avans, în funcție de proiect. Cea mai mare variabilă e cât de repede îmi răspunzi la întrebări și aprobi mockup-urile. Proiectele bune se fac împreună, nu pasându-mi tu briefingul și revenind peste o lună să vezi ce am făcut."
           }
         },
         {
@@ -235,15 +283,15 @@
           "name": "Cu ce tehnologie construiești site-urile?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Folosesc tool-uri moderne low-code și AI pentru build, ceea ce înseamnă site-uri rapide (sub 2 secunde load time), optimizate pentru SEO, și care nu se sparg de la fiecare update Wordpress."
+            "text": "Folosesc tool-uri moderne low-code și AI pentru build, ceea ce înseamnă site-uri rapide (sub 2 secunde load time), optimizate pentru SEO, și care nu se sparg de la fiecare update WordPress. Asta înseamnă pentru tine site mai rapid livrat (3-6 săptămâni, nu 3-6 luni) și la cost mai mic decât la o agenție tradițională, cu aceeași calitate sau mai bună. Nu sunt developer clasic. Sunt om care construiește identități digitale cu cele mai eficiente unelte disponibile azi."
           }
         },
         {
           "@type": "Question",
-          "name": "Cu ce diferiți de o agenție obișnuită de marketing?",
+          "name": "Ce se întâmplă după ce mi-e livrat site-ul?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Sunt un singur om. Vorbești direct cu cineva care construiește, nu cu un account manager care îi explică unui executant ce ai vrut să spui. Briefingul nu se pierde pe drum, deciziile se iau rapid."
+            "text": "Ai 30 zile de suport gratuit pentru orice ajustare mică (text, imagini, mici corecții). După, dacă vrei mentenanță continuă, discutăm despre un serviciu lunar. Dacă vrei să-l administrezi tu, primești training de 1h și site-ul îți rămâne complet. Nu te închid în servicii ale mele."
           }
         },
         {
@@ -252,6 +300,30 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Sunt bazat în Brașov și înțeleg cel mai bine piața locală, dar lucrez și remote cu clienți din toată România. Pentru proiecte care au nevoie de sesiune foto fizică, prefer să fie la maxim 1h de Brașov."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ce se întâmplă dacă mergi în concediu sau ești bolnav?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Toate proiectele au calendar clar de la început. Știi exact ce primești și când. Dacă apare ceva neașteptat, te anunț cu cel puțin 1 săptămână înainte și ajustăm calendarul. Pentru clienții pe Prezență Lunară, lucrez câteva zile în avans, ca să nu apară goluri."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Pot să modific eu site-ul după livrare?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Da. La final primești training de 1h, parolele de acces și instrucțiuni clare pentru lucrurile uzuale (text, imagini, articole noi pe blog, postări). Nu te închid în „trebuie să mă suni de fiecare dată”."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Faci și magazine online?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Magazine simple, da, până în 50-100 de produse, cu integrare Stripe sau plată ramburs. Magazine complexe cu integrări ERP, stocuri în timp real, multi-vendor, nu. Pentru asta îți recomand pe cineva specializat."
           }
         }
       ]

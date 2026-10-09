@@ -1,4 +1,20 @@
+# Motoarele de căutare și asistenții AI sunt bineveniți: vrem să fim citați.
 User-agent: *
+Allow: /
+
+# Crawlere AI numite explicit, ca să nu existe dubii (căutare + antrenare)
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: Bingbot
+User-agent: CCBot
 Allow: /
 
 Sitemap: https://adsnow.ro/sitemap.xml
