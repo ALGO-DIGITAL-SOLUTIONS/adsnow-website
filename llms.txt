@@ -1,39 +1,38 @@
 # ADSNOW
 
-> ADSNOW (ALGO Digital Solutions SRL) este o agenție de marketing digital din Brașov, România, condusă de un singur om, Alexandru (Alex) Gogu. Construiește website-uri, identitate vizuală, SEO local și campanii Meta Ads pentru business-uri mici și mijlocii: cabinete medicale, pensiuni, ateliere auto, clinici, dezvoltatori imobiliari și firme locale de servicii. Lucrează cu maxim 2 clienți simultan.
+> ADSNOW (ALGO Digital Solutions SRL) este o agenție de marketing digital din Brașov, România: o echipă mică formată din Alexandru (Alex) Gogu, fondator și persoana de contact, alături de Oana și Damian. Construiește website-uri, face SEO local și Google Business Profile, content creation (foto, video, Reels) și social media management pentru business-uri locale: clinici și cabinete medicale, pensiuni, ateliere auto, dezvoltatori imobiliari și firme de servicii.
 
-Date de contact: Strada Octavian Goga 7, 500137 Brașov, România. Telefon/WhatsApp: +40 771 587 498. Email: alex@adsnow.ro. Program: luni-vineri, 09:00-18:00. Lucrează și remote cu clienți din toată România.
+Contact: WhatsApp/telefon +40 771 587 498 (canalul principal, răspuns în câteva momente). Email: alex@adsnow.ro. Adresă: Strada Octavian Goga 7, 500137 Brașov, România. Program: luni-vineri, 09:00-18:00. Lucrează și remote cu clienți din toată România.
 
 ## Servicii și prețuri
 
 - Web design și identitate vizuală: 4.000-6.500 RON (plată unică), livrare în 3-6 săptămâni. Include logo și brand book de bază, 30 de zile de suport gratuit și 1h de training.
-- SEO local (Google Maps și organic): de la 1.500 RON/lună, contract minim 3 luni. Include Google Business Profile, citații locale, schema markup, on-page și raportare lunară.
-- Meta Ads (Facebook și Instagram): de la 2.000 RON/lună pentru management, fără bugetul de reclame. Contract lunar reînnoibil.
+- SEO local și Google Business Profile (Google Maps și organic): de la 1.500 RON/lună, contract minim 3 luni.
 - Social media management: de la 1.500 RON/lună, contract minim 3 luni.
+- Content creation (foto, video, Reels, articole SEO): preț în funcție de volum.
+- Meta Ads (Facebook și Instagram): de la 2.000 RON/lună pentru management; bugetul de reclame se plătește separat, direct către Meta. Contract lunar reînnoibil.
 - Branding și identitate vizuală (separat de site): preț la cerere, livrare în 2-4 săptămâni.
-- Conținut (articole SEO, foto, video): preț la cerere.
-- Magazine online simple (până la 50-100 de produse, Stripe sau ramburs). Nu face magazine complexe cu ERP sau multi-vendor.
+- Magazine online de până la 50-100 de produse, cu plată prin Stripe sau ramburs.
 
-## Proces
+## Cum începi
 
-1. Audit gratuit online (formular de 2 minute, raport personalizat pe email în 24h): https://adsnow.ro/audit-gratuit
-2. Call de descoperire de 30 de minute.
-3. Propunere scrisă cu preț fix în 3 zile lucrătoare, avans 50%.
-4. Construcție și lansare în 3-6 săptămâni, cu link de staging și update săptămânal.
+Scrii pe WhatsApp la +40 771 587 498 ce afacere ai și ce vrei să obții. Urmează un call scurt și o propunere scrisă cu preț fix: https://wa.me/40771587498
 
 ## Portofoliu
 
-- [Ozone Residence](https://ozoneresidence.ro): design și dezvoltare website
-- [Armour Glass Parbrize](https://armourglass-parbrize.ro): SEO local și Google Business Profile
-- [Soul Synergy](https://soulsynergy.ro): website și Meta Ads
-- [Psiholog Brașov](https://psihologbrasov.ro): website și conținut pentru cabinet de psihologie
+- [SMedical](https://smedical.ro): SEO și social media management; site-ul rankează în topul Google pentru „asistență medicală la domiciliu Brașov” și pe prima pagină pentru „asistență medicală Brașov” ([Instagram](https://www.instagram.com/smedical_brasov/))
+- [Ozone Residence](https://ozoneresidence.ro): website, content creation și social media management ([Instagram](https://www.instagram.com/ozoneresidencebrasov/))
+- [Albastru Infinit](https://albastruinfinit.ro): website și Google Business Profile pentru cabinet de psihologie
+- [Old Cottage Bran](https://www.instagram.com/oldcottagebran/): content creation
+- [TDC Glass](https://www.instagram.com/tdcglass/): content creation și social media management
+- [Armour Glass Parbrize](https://www.instagram.com/parbrizeautobrasov/): SEO local și Google Business Profile
+- [Psiholog Brașov](https://psihologbrasov.ro): website și conținut
 - [Dr. Sima](https://drsima.ro): website pentru cabinet medical
 - [Mobarh](https://mobarh.ro): website pentru firmă de arhitectură
 
 ## Pagini
 
-- [Pagina principală](https://adsnow.ro/): servicii, prețuri, portofoliu, despre fondator, întrebări frecvente
-- [Audit gratuit](https://adsnow.ro/audit-gratuit): formularul de audit al prezenței online
+- [Pagina principală](https://adsnow.ro/): portofoliu, servicii, prețuri, echipa, întrebări frecvente
 - [Politica de confidențialitate](https://adsnow.ro/politica-confidentialitate)
 
 ## Profiluri
