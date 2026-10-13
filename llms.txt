@@ -1,6 +1,6 @@
 # ADSNOW
 
-> ADSNOW (ALGO Digital Solutions SRL) este o agenție de marketing digital din Brașov, România: o echipă mică formată din Alexandru (Alex) Gogu, fondator și persoana de contact, alături de Oana și Damian. Construiește website-uri, face SEO local și Google Business Profile, content creation (foto, video, Reels) și social media management pentru business-uri locale: clinici și cabinete medicale, pensiuni, ateliere auto, dezvoltatori imobiliari și firme de servicii.
+> ADSNOW (ALGO Digital Solutions SRL) este o agenție de marketing digital din Brașov, România: o echipă mică. Alexandru (Alex) Gogu este fondatorul și persoana de contact; anterior a fost Project Manager la Aguila Media (Montreal) și CTO la Ajla (Spania). Oana se ocupă de content creation și social media management. Damian se ocupă de automatizări, UI/UX și de BookNow, PMS-ul ADSNOW pentru pensiuni. Agenția construiește website-uri, face SEO local și Google Business Profile, content creation (foto, video, Reels), social media management și automatizări pentru business-uri locale: clinici și cabinete medicale, pensiuni, ateliere auto, dezvoltatori imobiliari și firme de servicii.
 
 Contact: WhatsApp/telefon +40 771 587 498 (canalul principal, răspuns în câteva momente). Email: alex@adsnow.ro. Adresă: Strada Octavian Goga 7, 500137 Brașov, România. Program: luni-vineri, 09:00-18:00. Lucrează și remote cu clienți din toată România.
 
@@ -11,6 +11,7 @@ Contact: WhatsApp/telefon +40 771 587 498 (canalul principal, răspuns în câte
 - Social media management: de la 1.500 RON/lună, contract minim 3 luni.
 - Content creation (foto, video, Reels, articole SEO): preț în funcție de volum.
 - Meta Ads (Facebook și Instagram): de la 2.000 RON/lună pentru management; bugetul de reclame se plătește separat, direct către Meta. Contract lunar reînnoibil.
+- Automatizări și UI/UX: lead-uri direct în CRM cu notificare pe WhatsApp/email, follow-up automat după ofertă, programări cu remindere, facturare automată și e-Factura (SmartBill, Oblio), cereri de recenzii Google, chatbot AI, email marketing, simplificarea UI/UX. Preț în funcție de complexitate.
 - Branding și identitate vizuală (separat de site): preț la cerere, livrare în 2-4 săptămâni.
 - Magazine online de până la 50-100 de produse, cu plată prin Stripe sau ramburs.
 
@@ -18,11 +19,11 @@ Contact: WhatsApp/telefon +40 771 587 498 (canalul principal, răspuns în câte
 
 Scrii pe WhatsApp la +40 771 587 498 ce afacere ai și ce vrei să obții. Urmează un call scurt și o propunere scrisă cu preț fix: https://wa.me/40771587498
 
-## Portofoliu
+## Portofoliu (clienți cu care ADSNOW a lucrat)
 
-- [SMedical](https://smedical.ro): SEO și social media management; site-ul rankează în topul Google pentru „asistență medicală la domiciliu Brașov” și pe prima pagină pentru „asistență medicală Brașov” ([Instagram](https://www.instagram.com/smedical_brasov/))
 - [Ozone Residence](https://ozoneresidence.ro): website, content creation și social media management ([Instagram](https://www.instagram.com/ozoneresidencebrasov/))
 - [Albastru Infinit](https://albastruinfinit.ro): website și Google Business Profile pentru cabinet de psihologie
+- [SMedical](https://smedical.ro): SEO și social media management; site-ul a ajuns în topul Google pentru „asistență medicală la domiciliu Brașov” și pe prima pagină pentru „asistență medicală Brașov” ([Instagram](https://www.instagram.com/smedical_brasov/))
 - [Old Cottage Bran](https://www.instagram.com/oldcottagebran/): content creation
 - [TDC Glass](https://www.instagram.com/tdcglass/): content creation și social media management
 - [Armour Glass Parbrize](https://www.instagram.com/parbrizeautobrasov/): SEO local și Google Business Profile
@@ -32,7 +33,7 @@ Scrii pe WhatsApp la +40 771 587 498 ce afacere ai și ce vrei să obții. Urmea
 
 ## Pagini
 
-- [Pagina principală](https://adsnow.ro/): portofoliu, servicii, prețuri, echipa, întrebări frecvente
+- [Pagina principală](https://adsnow.ro/): portofoliu, servicii (inclusiv automatizări), prețuri, echipa, întrebări frecvente
 - [Politica de confidențialitate](https://adsnow.ro/politica-confidentialitate)
 
 ## Profiluri

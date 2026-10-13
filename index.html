@@ -69,6 +69,10 @@
         "longitude": 25.5887
       },
       "founder": {"@id": "https://adsnow.ro/#alex"},
+      "employee": [
+        {"@type": "Person", "name": "Oana", "jobTitle": "Content Creation & Social Media Management"},
+        {"@type": "Person", "name": "Damian", "jobTitle": "Automatizări, UI/UX și BookNow"}
+      ],
       "hasMap": "https://www.google.com/search?kgmid=/g/11yt4l2544",
       "knowsAbout": [
         "Web design",
@@ -194,6 +198,15 @@
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
+              "name": "Automatizări și UI/UX",
+              "description": "Lead-uri direct în CRM, follow-up automat, programări cu remindere, facturare și e-Factura, cereri de recenzii Google, chatbot AI, email marketing și simplificarea UI/UX.",
+              "provider": {"@id": "https://adsnow.ro/#business"}
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
               "name": "Branding și identitate vizuală",
               "description": "Logo, sistem culori, tipografie, brand book complet cu aplicații concrete.",
               "provider": {"@id": "https://adsnow.ro/#business"}
@@ -230,7 +243,7 @@
       "name": "Alexandru Gogu",
       "alternateName": "Alex Gogu",
       "jobTitle": "Fondator & Digital Strategist",
-      "description": "Fondatorul ADSNOW, agenție de marketing digital din Brașov. Anterior Project Manager la o agenție de marketing din Montreal și co-fondator (CTO) al unei firme de marketing din Spania.",
+      "description": "Fondatorul ADSNOW, agenție de marketing digital din Brașov. Anterior Project Manager la Aguila Media (Montreal) și CTO la Ajla (Spania).",
       "image": "https://adsnow.ro/assets/alex-gogu.webp",
       "url": "https://adsnow.ro/#despre",
       "email": "alex@adsnow.ro",
@@ -329,6 +342,14 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Da. La final primești training de 1h, parolele de acces și instrucțiuni clare pentru lucrurile uzuale: text, imagini, articole noi pe blog, postări. Site-ul e al tău și îl gestionezi cum vrei."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ce procese puteți automatiza în afacerea mea?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cele mai cerute sunt: preluarea lead-urilor din site și social media direct în CRM, follow-up automat după ofertă, programări cu remindere pe WhatsApp sau SMS, facturare automată cu e-Factura (SmartBill, Oblio), cereri de recenzii Google și un chatbot AI pentru întrebările frecvente. Îmi scrii ce faci manual în fiecare săptămână și îți spunem ce se poate automatiza."
           }
         },
         {
@@ -708,30 +729,13 @@ nav.scrolled .nav-logo { height: 42px; }
 }
 .pf-links a:hover { color: #fff; }
 
-.pf-featured {
-  display: grid; grid-template-columns: 1.2fr 1fr;
-  margin-top: 48px;
-}
-.pf-featured:hover { transform: none; }
-.pf-featured .pf-visual { height: 100%; min-height: 320px; }
-.pf-featured .portfolio-info { padding: 40px; }
-.pf-featured .portfolio-name { font-size: 26px; }
-.pf-result {
-  margin-top: 24px;
-  border-top: 1px solid rgba(244,241,236,0.1);
-  padding-top: 20px;
-}
-.pf-result-label {
-  font-family: var(--font-mono); font-size: 10px;
-  letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--sky); margin-bottom: 14px;
-}
+.pf-result { margin-top: 14px; }
 .pf-kw {
-  display: flex; justify-content: space-between; align-items: center; gap: 16px;
-  padding: 12px 0;
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  padding: 8px 0;
   border-bottom: 1px solid rgba(244,241,236,0.08);
 }
-.pf-kw-term { font-size: 15px; color: var(--paper); }
+.pf-kw-term { font-size: 13px; color: rgba(244,241,236,0.8); }
 .pf-kw-badge {
   font-family: var(--font-mono); font-size: 10px;
   letter-spacing: 0.1em; text-transform: uppercase;
@@ -827,6 +831,40 @@ nav.scrolled .nav-logo { height: 42px; }
 .service-cta:hover { background: var(--wa); color: #06210f; }
 .service-cta svg { width: 16px; height: 16px; fill: currentColor; }
 
+.service-wide {
+  grid-column: 1 / -1;
+  display: grid; grid-template-columns: 1fr 1.6fr;
+  gap: 48px;
+  border-color: rgba(124,199,237,0.25);
+}
+.service-wide-head { display: flex; flex-direction: column; align-items: flex-start; }
+.service-wide-head .service-cta { margin-top: 28px; }
+.service-new {
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ink); background: var(--sky);
+  padding: 4px 10px; margin-bottom: 16px;
+}
+.auto-list {
+  list-style: none;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 4px 32px; align-content: start;
+}
+.auto-list li {
+  font-size: 14px; line-height: 1.55;
+  color: rgba(244,241,236,0.55);
+  padding: 14px 0 14px 26px; position: relative;
+  border-bottom: 1px solid rgba(244,241,236,0.07);
+}
+.auto-list li::before {
+  content: "\2192"; position: absolute; left: 0; top: 14px;
+  color: var(--sky); font-family: var(--font-mono);
+}
+.auto-list li strong {
+  display: block; color: var(--paper);
+  font-weight: 500; margin-bottom: 2px;
+}
+
 /* ============ FIT ============ */
 .fit-list {
   list-style: none;
@@ -870,6 +908,24 @@ nav.scrolled .nav-logo { height: 42px; }
 }
 .about-text + .about-text { margin-top: 16px; }
 .about-text strong { color: var(--ink); font-weight: 600; }
+.about-text a { color: var(--cobalt); text-decoration: underline; text-underline-offset: 3px; }
+.team {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 16px; margin: 24px 0;
+}
+.team-member {
+  padding: 20px 22px;
+  border-left: 2px solid var(--cobalt);
+  background: var(--paper-2);
+}
+.team-name {
+  font-family: var(--font-display);
+  font-size: 18px; font-weight: 500; margin-bottom: 4px;
+}
+.team-role {
+  font-size: 14px; line-height: 1.5;
+  color: rgba(10,14,20,0.65);
+}
 .principles {
   display: grid; grid-template-columns: repeat(3, 1fr);
   gap: 16px; margin-top: 32px;
@@ -998,9 +1054,8 @@ footer {
 /* ============ RESPONSIVE ============ */
 @media (max-width: 1024px) {
   .services-grid { grid-template-columns: 1fr 1fr; }
+  .service-wide { grid-template-columns: 1fr; gap: 32px; }
   .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
-  .pf-featured { grid-template-columns: 1fr; }
-  .pf-featured .pf-visual { min-height: 0; height: 240px; }
   .fit-list { grid-template-columns: 1fr 1fr; }
   .principles { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1036,13 +1091,13 @@ footer {
   .logos-row img.logo-sq { height: 56px; }
   .section-padding { padding: 80px 24px; }
   .services-grid { grid-template-columns: 1fr; }
+  .auto-list { grid-template-columns: 1fr; }
   .portfolio-grid { grid-template-columns: 1fr; }
-  .pf-featured .portfolio-info { padding: 24px; }
-  .pf-kw { flex-direction: column; align-items: flex-start; gap: 8px; }
   .fit-list { grid-template-columns: 1fr; }
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
   .about-photo { max-width: 280px; margin: 0 auto; }
   .about-caption { text-align: center; }
+  .team { grid-template-columns: 1fr; }
   .about-actions .btn-wa { width: 100%; }
   .cta-final .btn-wa { width: 100%; padding: 20px 24px; }
   .footer-grid { grid-template-columns: 1fr; gap: 32px; }
@@ -1093,7 +1148,7 @@ footer {
   <div class="hero-content">
     <div class="hero-eyebrow">Agenție de marketing digital · Brașov</div>
     <h1 class="hero-title">Identitatea digitală a business-ului tău, construită de o echipă mică, cu atenția pe care o merită.</h1>
-    <p class="hero-sub">Website-uri, SEO local, content și social media pentru clinici, pensiuni, ateliere și firme de servicii din Brașov și împrejurimi. Vorbești direct cu mine, Alex, de la primul mesaj.</p>
+    <p class="hero-sub">Website-uri, SEO local, content, social media și automatizări pentru clinici, pensiuni, ateliere și firme de servicii din Brașov și împrejurimi. Vorbești direct cu mine, Alex, de la primul mesaj.</p>
     <div class="hero-actions">
       <a href="https://wa.me/40771587498" class="btn-wa js-wa" data-wa-src="hero" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Scrie-mi pe WhatsApp</a>
       <span class="wa-note">Răspund în câteva momente</span>
@@ -1108,7 +1163,7 @@ footer {
 
 <!-- ======== LOGO-URI CLIENȚI ======== -->
 <section class="logos" aria-label="Clienți ADSNOW">
-  <p class="logos-label">Branduri din Brașov care lucrează cu noi</p>
+  <p class="logos-label">Branduri din Brașov cu care am lucrat</p>
   <div class="logos-row">
     <img src="assets/clienti/smedical.webp" alt="SMedical" class="logo-inv" width="480" height="171" loading="lazy"/>
     <img src="assets/clienti/ozone.webp" alt="Ozone Residence" width="331" height="152" loading="lazy"/>
@@ -1124,26 +1179,9 @@ footer {
   <div class="container">
     <span class="eyebrow fade-in">Portofoliu</span>
     <h2 class="section-title fade-in">Proiecte recente din Brașov și împrejurimi</h2>
-    <p class="section-desc fade-in">Business-uri locale pentru care construim website-uri, creăm conținut și le ducem sus în Google.</p>
+    <p class="section-desc fade-in">Business-uri locale pentru care am construit website-uri, am creat conținut și le-am dus sus în Google.</p>
 
-    <article class="portfolio-card pf-featured fade-in">
-      <div class="pf-visual"><img src="assets/screenshot-smedical.webp" alt="Website SMedical, asistență medicală la domiciliu în Brașov" width="1200" height="750" loading="lazy"/></div>
-      <div class="portfolio-info">
-        <h3 class="portfolio-name">SMedical</h3>
-        <ul class="pf-tags"><li>SEO</li><li>Social Media Management</li></ul>
-        <div class="pf-result">
-          <div class="pf-result-label">Rezultate în Google</div>
-          <div class="pf-kw"><span class="pf-kw-term">„asistență medicală la domiciliu Brașov”</span><span class="pf-kw-badge">Top Google</span></div>
-          <div class="pf-kw"><span class="pf-kw-term">„asistență medicală Brașov”</span><span class="pf-kw-badge">Prima pagină</span></div>
-        </div>
-        <div class="pf-links">
-          <a href="https://smedical.ro" target="_blank" rel="noopener">smedical.ro →</a>
-          <a href="https://www.instagram.com/smedical_brasov/" target="_blank" rel="noopener">Instagram →</a>
-        </div>
-      </div>
-    </article>
-
-    <div class="portfolio-grid">
+    <div class="portfolio-grid" style="margin-top:48px;">
 
       <article class="portfolio-card fade-in">
         <div class="pf-visual"><img src="assets/screenshot-ozoneresidence.webp" alt="Website Ozone Residence Brașov, realizat de ADSNOW" width="600" height="375" loading="lazy"/></div>
@@ -1164,6 +1202,22 @@ footer {
           <ul class="pf-tags"><li>Website Development</li><li>Google Business Profile</li></ul>
           <div class="pf-links">
             <a href="https://albastruinfinit.ro" target="_blank" rel="noopener">albastruinfinit.ro →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="portfolio-card fade-in">
+        <div class="pf-visual"><img src="assets/screenshot-smedical.webp" alt="Website SMedical, asistență medicală la domiciliu în Brașov" width="1200" height="750" loading="lazy"/></div>
+        <div class="portfolio-info">
+          <h3 class="portfolio-name">SMedical</h3>
+          <ul class="pf-tags"><li>SEO</li><li>Social Media Management</li></ul>
+          <div class="pf-result">
+            <div class="pf-kw"><span class="pf-kw-term">„asistență medicală la domiciliu Brașov”</span><span class="pf-kw-badge">Top Google</span></div>
+            <div class="pf-kw"><span class="pf-kw-term">„asistență medicală Brașov”</span><span class="pf-kw-badge">Prima pagină</span></div>
+          </div>
+          <div class="pf-links">
+            <a href="https://smedical.ro" target="_blank" rel="noopener">smedical.ro →</a>
+            <a href="https://www.instagram.com/smedical_brasov/" target="_blank" rel="noopener">Instagram →</a>
           </div>
         </div>
       </article>
@@ -1201,6 +1255,12 @@ footer {
         </div>
       </article>
 
+    </div>
+    <div style="text-align:center;margin-top:40px;">
+      <button type="button" class="btn-secondary portfolio-expand fade-in" id="portfolioExpand">Vezi mai multe proiecte →</button>
+    </div>
+    <div class="portfolio-grid portfolio-hidden" id="portfolioExtra">
+
       <article class="portfolio-card fade-in">
         <div class="pf-visual"><img src="assets/screenshot-psihologbrasov.webp" alt="Website și content creation pentru cabinet psiholog Brașov" width="600" height="375" loading="lazy"/></div>
         <div class="portfolio-info">
@@ -1211,12 +1271,6 @@ footer {
           </div>
         </div>
       </article>
-
-    </div>
-    <div style="text-align:center;margin-top:40px;">
-      <button type="button" class="btn-secondary portfolio-expand fade-in" id="portfolioExpand">Vezi mai multe proiecte →</button>
-    </div>
-    <div class="portfolio-grid portfolio-hidden" id="portfolioExtra">
 
       <article class="portfolio-card fade-in">
         <div class="pf-visual"><img src="assets/screenshot-drsima.webp" alt="Website prezentare cabinet medical Dr. Sima, realizat de ADSNOW" width="600" height="375" loading="lazy"/></div>
@@ -1378,6 +1432,29 @@ footer {
         <a href="https://wa.me/40771587498" class="service-cta js-wa" data-wa-src="serviciu-branding" data-wa-msg="Salut Alex! Mă interesează branding / identitate vizuală pentru afacerea mea." target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Discutăm pe WhatsApp</a>
       </div>
 
+      <div class="service-card service-wide fade-in">
+        <div class="service-wide-head">
+          <span class="service-new">Nou</span>
+          <h3 class="service-title">Automatizări și UI/UX</h3>
+          <p class="service-desc">Pentru afacerile care vor să câștige timp: lucrurile repetitive se fac singure, iar clienții găsesc ce caută din primul click. Le conectăm la uneltele pe care le folosești deja: site, WhatsApp, email, CRM, SmartBill sau Oblio.</p>
+          <div class="service-meta">
+            <div class="service-meta-line">Investiție: <strong>în funcție de complexitate</strong></div>
+            <div class="service-meta-line">Timp livrare: <strong>de la câteva zile</strong></div>
+          </div>
+          <a href="https://wa.me/40771587498" class="service-cta js-wa" data-wa-src="serviciu-automatizari" data-wa-msg="Salut Alex! Aș vrea să automatizez câteva procese din afacerea mea." target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Discutăm pe WhatsApp</a>
+        </div>
+        <ul class="auto-list">
+          <li><strong>Lead-uri direct în CRM</strong>Cererile din site, Facebook și Instagram ajung instant în CRM, cu notificare pe WhatsApp sau email.</li>
+          <li><strong>Follow-up automat</strong>Mesaje programate după fiecare ofertă trimisă: la 24 de ore, la 3 zile, la o săptămână.</li>
+          <li><strong>Programări și remindere</strong>Rezervări online cu confirmare și reamintire automată pe SMS, WhatsApp sau email.</li>
+          <li><strong>Facturare și e-Factura</strong>Facturi emise automat în SmartBill sau Oblio și trimise în SPV.</li>
+          <li><strong>Recenzii Google</strong>Cerere automată de recenzie după fiecare serviciu finalizat.</li>
+          <li><strong>Chatbot AI</strong>Răspunsuri pe site și WhatsApp la întrebările frecvente: prețuri, program, disponibilitate.</li>
+          <li><strong>UI/UX simplificat</strong>Site-uri și formulare mai clare, cu mai puțini pași până la comandă sau programare.</li>
+          <li><strong>Email marketing</strong>Secvențe automate de bun venit, ofertă și reactivare a clienților.</li>
+        </ul>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1414,9 +1491,19 @@ footer {
         <p class="about-caption">Alex Gogu · Fondator ADSNOW</p>
       </div>
       <div>
-        <p class="about-text fade-in">Sunt Alex Gogu, fondatorul <strong>ADSNOW</strong>. Eu sunt omul cu care vorbești, de la primul mesaj până la rezultat. Alături de mine lucrează <strong>Oana</strong> și <strong>Damian</strong>, iar împreună acoperim tot ce ține de prezența ta online: website, SEO, conținut și social media.</p>
-        <p class="about-text fade-in">Am lucrat cu business-uri reale și foarte diferite: ateliere auto, pensiuni, fabrici, clinici medicale, dezvoltatori imobiliari, artiști. Fiecare se promovează după aceleași principii. Diferența o face atenția cu care înțelegi oamenii din spate.</p>
-        <p class="about-text fade-in">Înainte de ADSNOW am construit de la zero două business-uri de marketing: am pus fundațiile unei agenții la Montreal ca Project Manager și am co-fondat o firmă de marketing în Spania ca CTO. De acolo am rămas cu trei principii:</p>
+        <p class="about-text fade-in">Sunt Alex Gogu, fondatorul <strong>ADSNOW</strong>. Eu sunt omul cu care vorbești, de la primul mesaj până la rezultat, iar în spate lucrează o echipă care acoperă tot ce ține de prezența ta online.</p>
+        <div class="team">
+          <div class="team-member fade-in">
+            <div class="team-name">Oana</div>
+            <div class="team-role">Content Creation & Social Media Management</div>
+          </div>
+          <div class="team-member fade-in">
+            <div class="team-name">Damian</div>
+            <div class="team-role">Automatizări, UI/UX și BookNow, PMS-ul nostru pentru pensiuni</div>
+          </div>
+        </div>
+        <p class="about-text fade-in">Am lucrat cu ateliere auto, pensiuni, fabrici, clinici medicale, dezvoltatori imobiliari și artiști. Toate business-urile se promovează după aceleași principii. Diferența o face atenția cu care înțelegi oamenii din spate.</p>
+        <p class="about-text fade-in">Înainte de ADSNOW am fost Project Manager la <a href="https://www.crunchbase.com/organization/aguila-media" target="_blank" rel="noopener">Aguila Media</a>, agenție de marketing din Montreal, și CTO la <a href="https://ajlaweb3.com/" target="_blank" rel="noopener">Ajla</a>, în Spania. De acolo am rămas cu trei principii:</p>
         <div class="principles">
           <div class="principle fade-in">
             <h3>Atenție pe fiecare proiect</h3>
@@ -1482,6 +1569,10 @@ footer {
       <div class="faq-item fade-in">
         <button type="button" class="faq-question" aria-expanded="false">Pot să modific eu site-ul după livrare? <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
         <div class="faq-answer"><p>Da. La final primești training de 1h, parolele de acces și instrucțiuni clare pentru lucrurile uzuale: text, imagini, articole noi pe blog, postări. Site-ul e al tău și îl gestionezi cum vrei.</p></div>
+      </div>
+      <div class="faq-item fade-in">
+        <button type="button" class="faq-question" aria-expanded="false">Ce procese puteți automatiza în afacerea mea? <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="faq-answer"><p>Cele mai cerute sunt: preluarea lead-urilor din site și social media direct în CRM, follow-up automat după ofertă, programări cu remindere pe WhatsApp sau SMS, facturare automată cu e-Factura (SmartBill, Oblio), cereri de recenzii Google și un chatbot AI pentru întrebările frecvente. Îmi scrii ce faci manual în fiecare săptămână și îți spunem ce se poate automatiza.</p></div>
       </div>
       <div class="faq-item fade-in">
         <button type="button" class="faq-question" aria-expanded="false">Faceți și magazine online? <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
