@@ -624,13 +624,30 @@ nav.scrolled .nav-logo { height: 42px; }
   color: rgba(10,14,20,0.45);
   text-align: center; margin-bottom: 28px;
 }
+.logos-marquee {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
 .logos-row {
-  max-width: 1100px; margin: 0 auto;
-  display: flex; flex-wrap: wrap;
-  align-items: center; justify-content: center;
-  gap: 28px 56px;
+  display: flex; flex-wrap: nowrap;
+  align-items: center;
+  width: max-content;
+  background: var(--paper);
+  animation: logos-scroll 40s linear infinite;
+}
+.logos-marquee:hover .logos-row { animation-play-state: paused; }
+@keyframes logos-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .logos-row { animation: none; flex-wrap: wrap; justify-content: center; width: auto; }
+  .logos-row [aria-hidden="true"] { display: none; }
 }
 .logos-row img {
+  flex-shrink: 0;
+  margin: 0 32px;
   height: 48px; width: auto;
   mix-blend-mode: multiply;
   filter: grayscale(1) contrast(1.1);
@@ -1117,9 +1134,9 @@ footer {
     color: #0d2440; text-align: center;
     margin-top: 4px; white-space: nowrap;
   }
-  .logos { padding: 32px 24px 40px; }
-  .logos-row { gap: 20px 32px; }
-  .logos-row img { height: 34px; }
+  .logos { padding: 32px 0 40px; }
+  .logos-row { animation-duration: 30s; }
+  .logos-row img { height: 34px; margin: 0 20px; }
   .logos-row img.logo-sq { height: 56px; }
   .logos-row img.logo-wide { height: 48px; }
   .logos-row img.logo-slim { height: 22px; }
@@ -1198,16 +1215,28 @@ footer {
 <!-- ======== LOGO-URI CLIENȚI ======== -->
 <section class="logos" aria-label="Clienți ADSNOW">
   <p class="logos-label">Branduri din Brașov cu care am lucrat</p>
-  <div class="logos-row">
-    <img src="assets/clienti/ozone.webp" alt="Ozone Residence" width="331" height="152" loading="lazy"/>
-    <img src="assets/clienti/albastruinfinit.webp" alt="Albastru Infinit" class="logo-sq" width="300" height="300" loading="lazy"/>
-    <img src="assets/clienti/cojanu.webp" alt="Cabinet de psihologie Cojanu Petrus" class="logo-sq" width="170" height="210" loading="lazy"/>
-    <img src="assets/clienti/oldcottage.webp" alt="Old Cottage Bran" class="logo-sq" width="150" height="150" loading="lazy"/>
-    <img src="assets/clienti/tdcglass.webp" alt="TDC Glass" width="390" height="228" loading="lazy"/>
-    <img src="assets/clienti/armourglass.webp" alt="Armour Glass" width="600" height="241" loading="lazy"/>
-    <img src="assets/clienti/anamariamargineanu.webp" alt="Ana Maria Mărgineanu Beauty Master" class="logo-wide" width="480" height="226" loading="lazy"/>
-    <img src="assets/clienti/mobarh.webp" alt="Mobarh" class="logo-inv logo-slim" width="392" height="96" loading="lazy"/>
-    <img src="assets/clienti/smedical.webp" alt="SMedical" class="logo-inv" width="480" height="171" loading="lazy"/>
+  <div class="logos-marquee">
+    <div class="logos-row">
+      <img src="assets/clienti/ozone.webp" alt="Ozone Residence" width="331" height="152"/>
+      <img src="assets/clienti/albastruinfinit.webp" alt="Albastru Infinit" class="logo-sq" width="300" height="300"/>
+      <img src="assets/clienti/cojanu.webp" alt="Cabinet de psihologie Cojanu Petrus" class="logo-sq" width="170" height="210"/>
+      <img src="assets/clienti/oldcottage.webp" alt="Old Cottage Bran" class="logo-sq" width="150" height="150"/>
+      <img src="assets/clienti/tdcglass.webp" alt="TDC Glass" width="390" height="228"/>
+      <img src="assets/clienti/armourglass.webp" alt="Armour Glass" width="600" height="241"/>
+      <img src="assets/clienti/anamariamargineanu.webp" alt="Ana Maria Mărgineanu Beauty Master" class="logo-wide" width="480" height="226"/>
+      <img src="assets/clienti/mobarh.webp" alt="Mobarh" class="logo-inv logo-slim" width="392" height="96"/>
+      <img src="assets/clienti/smedical.webp" alt="SMedical" class="logo-inv" width="480" height="171"/>
+      <!-- copie pentru bucla continuă -->
+      <img src="assets/clienti/ozone.webp" alt="" aria-hidden="true" width="331" height="152"/>
+      <img src="assets/clienti/albastruinfinit.webp" alt="" aria-hidden="true" class="logo-sq" width="300" height="300"/>
+      <img src="assets/clienti/cojanu.webp" alt="" aria-hidden="true" class="logo-sq" width="170" height="210"/>
+      <img src="assets/clienti/oldcottage.webp" alt="" aria-hidden="true" class="logo-sq" width="150" height="150"/>
+      <img src="assets/clienti/tdcglass.webp" alt="" aria-hidden="true" width="390" height="228"/>
+      <img src="assets/clienti/armourglass.webp" alt="" aria-hidden="true" width="600" height="241"/>
+      <img src="assets/clienti/anamariamargineanu.webp" alt="" aria-hidden="true" class="logo-wide" width="480" height="226"/>
+      <img src="assets/clienti/mobarh.webp" alt="" aria-hidden="true" class="logo-inv logo-slim" width="392" height="96"/>
+      <img src="assets/clienti/smedical.webp" alt="" aria-hidden="true" class="logo-inv" width="480" height="171"/>
+    </div>
   </div>
 </section>
 
