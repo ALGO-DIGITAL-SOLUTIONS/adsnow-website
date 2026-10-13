@@ -812,6 +812,9 @@ footer { background: var(--ink); color: rgba(244,241,236,.6); padding: 72px 0 40
   .wa-float { right: 16px; bottom: 16px; width: 56px; height: 56px; }
 }
 </style>
+<link rel="stylesheet" href="assets/joaca.css"/>
+<script src="assets/type-lab.js"></script>
+<link rel="stylesheet" href="assets/type-lab.css"/>
 </head>
 <body>
 <script>document.documentElement.classList.add('js');</script>
@@ -846,7 +849,7 @@ footer { background: var(--ink); color: rgba(244,241,236,.6); padding: 72px 0 40
 <section class="hero" id="hero">
   <div>
     <p class="hero-kicker rv">Agenție de marketing digital din Brașov</p>
-    <h1 class="split" data-split>Identitatea digitală a business-ului tău, construită de o echipă mică, cu atenția pe care o merită.</h1>
+    <h1 class="split" data-split>Identitatea digitală a business-ului tău, construită de o echipă mică, cu <em>atenția</em> pe care o merită.</h1>
     <p class="hero-sub rv" style="--i:6">Website-uri, SEO local, content, social media și automatizări pentru clinici, pensiuni, ateliere și firme de servicii din Brașov și împrejurimi. Vorbești direct cu mine, Alex, de la primul mesaj.</p>
     <div class="hero-cta rv" style="--i:8">
       <a href="https://wa.me/40771587498" class="btn-wa js-wa" data-wa-src="hero" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Scrie-mi pe WhatsApp</a>
@@ -1104,7 +1107,7 @@ footer { background: var(--ink); color: rgba(244,241,236,.6); padding: 72px 0 40
     </figure>
     <div class="team-text">
       <p class="kicker rv">Echipa</p>
-      <h2 class="h2 split" data-split style="margin-bottom:36px">O echipă mică. Vorbești direct cu mine.</h2>
+      <h2 class="h2 split" data-split style="margin-bottom:36px">O echipă mică. Vorbești <em>direct</em> cu mine.</h2>
       <p class="rv">Sunt Alex Gogu, fondatorul <strong>ADSNOW</strong>. Eu sunt omul cu care vorbești, de la primul mesaj până la rezultat, iar în spate lucrează o echipă care acoperă tot ce ține de prezența ta online.</p>
       <div class="people rv">
         <div class="person"><b>Oana</b><span>Content Creation & Social Media Management</span></div>
@@ -1175,7 +1178,7 @@ footer { background: var(--ink); color: rgba(244,241,236,.6); padding: 72px 0 40
 <!-- ===== CTA final ===== -->
 <section class="dark final" id="contact">
   <div class="wrap">
-    <h2 class="h2 split" data-split>Hai să vorbim.</h2>
+    <h2 class="h2 split" data-split>Hai să <em>vorbim.</em></h2>
     <p class="lead rv">Spune-mi în două rânduri ce afacere ai și ce vrei să obții. Restul îl stabilim împreună.</p>
     <div class="final-cta rv">
       <a href="https://wa.me/40771587498" class="btn-wa js-wa" data-wa-src="final" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Scrie-mi pe WhatsApp</a>
@@ -1235,8 +1238,13 @@ footer { background: var(--ink); color: rgba(244,241,236,.6); padding: 72px 0 40
   });
 
   // Split headings into words for the mask reveal
+  // (words inside <em> keep their emphasis: each typeface gives it its own second voice)
   document.querySelectorAll('[data-split]').forEach(function(el){
-    var words = el.textContent.trim().split(/\s+/);
+    var words = [];
+    el.childNodes.forEach(function(n){
+      var em = n.nodeType === 1 && n.tagName === 'EM';
+      n.textContent.trim().split(/\s+/).forEach(function(w){ if(w) words.push(em ? '<em>' + w + '</em>' : w); });
+    });
     el.setAttribute('aria-label', el.textContent.trim());
     el.innerHTML = words.map(function(w, i){
       return '<span class="w" aria-hidden="true"><span style="--i:' + i + '">' + w + '</span></span>';
@@ -1333,6 +1341,7 @@ footer { background: var(--ink); color: rgba(244,241,236,.6); padding: 72px 0 40
         }
       }
       animate();
+      window.adsParticles = { say: say };
     };
     img.src = window.innerWidth <= 768 ? 'assets/hero-mobile.webp' : 'assets/hero-desktop.webp';
 
@@ -1351,6 +1360,41 @@ footer { background: var(--ink); color: rgba(244,241,236,.6); padding: 72px 0 40
       mouse.x = t.clientX - r.left; mouse.y = t.clientY - r.top; mouse.active = true; wake();
     }, { passive: false });
     canvas.addEventListener('touchend', function(){ mouse.active = false; mouse.x = mouse.y = -9999; }, { passive: true });
+
+    // Easter egg: the dots spell a word in the page's display face, then fly home to the logo
+    var sayT = null;
+    function say(text){
+      if(reduce || !particles.length) return;
+      var off = document.createElement('canvas'); off.width = W; off.height = H;
+      var c = off.getContext('2d');
+      var fam = getComputedStyle(document.querySelector('.hero h1')).fontFamily;
+      var fs = Math.round(H * 0.3);
+      do { c.font = '500 ' + fs + 'px ' + fam; fs -= 4; } while(c.measureText(text).width > W * 0.86 && fs > 20);
+      c.textAlign = 'center'; c.textBaseline = 'middle';
+      c.fillText(text, W / 2, H / 2);
+      var d = c.getImageData(0, 0, W, H).data, pts = [];
+      for(var y = 0; y < H; y += GAP) for(var x = 0; x < W; x += GAP) if(d[(y * W + x) * 4 + 3] > 120) pts.push(x, y);
+      if(!pts.length) return;
+      var n = pts.length / 2;
+      particles.forEach(function(p, i){
+        if(p.saveX === undefined){ p.saveX = p.homeX; p.saveY = p.homeY; }
+        var j = (i * 7919) % n;
+        p.homeX = pts[j * 2] + (Math.random() - 0.5) * 2; p.homeY = pts[j * 2 + 1] + (Math.random() - 0.5) * 2;
+        p.vx += (Math.random() - 0.5) * 30; p.vy += (Math.random() - 0.5) * 30;
+      });
+      wake();
+      clearTimeout(sayT);
+      sayT = setTimeout(function(){
+        particles.forEach(function(p){ p.homeX = p.saveX; p.homeY = p.saveY; });
+        wake();
+      }, 2600);
+    }
+    var taps = [];
+    canvas.addEventListener('click', function(){
+      var now = Date.now();
+      taps = taps.filter(function(t){ return now - t < 1200; }).concat(now);
+      if(taps.length >= 3){ taps = []; say('Salut!'); }
+    });
 
     function animate(){
       ctx.clearRect(0, 0, W, H);
@@ -1382,5 +1426,6 @@ footer { background: var(--ink); color: rgba(244,241,236,.6); padding: 72px 0 40
   }
 })();
 </script>
+<script src="assets/joaca.js" defer></script>
 </body>
 </html>
