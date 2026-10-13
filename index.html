@@ -199,8 +199,13 @@
             "itemOffered": {
               "@type": "Service",
               "name": "Automatizări și UI/UX",
-              "description": "Lead-uri direct în CRM, follow-up automat, programări cu remindere, facturare și e-Factura, cereri de recenzii Google, chatbot AI, email marketing și simplificarea UI/UX.",
+              "description": "Lead-uri direct în CRM, follow-up automat, programări cu remindere, facturare și e-Factura, cereri de recenzii Google, chatbot AI, email marketing și simplificarea UI/UX. Flux simplu de la 300 EUR, sistem complet de la 1.500 EUR.",
               "provider": {"@id": "https://adsnow.ro/#business"}
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": "300",
+              "priceCurrency": "EUR"
             }
           },
           {
@@ -255,15 +260,15 @@
       "@id": "https://adsnow.ro/#portofoliu",
       "name": "Proiecte ADSNOW din Brașov și împrejurimi",
       "itemListElement": [
-        {"@type": "ListItem", "position": 1, "item": {"@type": "Organization", "name": "SMedical", "url": "https://smedical.ro", "sameAs": "https://www.instagram.com/smedical_brasov/", "description": "SEO & Social Media Management"}},
-        {"@type": "ListItem", "position": 2, "item": {"@type": "Organization", "name": "Ozone Residence", "url": "https://ozoneresidence.ro", "sameAs": "https://www.instagram.com/ozoneresidencebrasov/", "description": "Website Development, Content Creation, Social Media Management"}},
-        {"@type": "ListItem", "position": 3, "item": {"@type": "WebSite", "name": "Albastru Infinit", "url": "https://albastruinfinit.ro", "description": "Website Development & Google Business Profile", "creator": {"@id": "https://adsnow.ro/#business"}}},
-        {"@type": "ListItem", "position": 4, "item": {"@type": "Organization", "name": "Old Cottage Bran", "url": "https://www.instagram.com/oldcottagebran/", "description": "Content Creation"}},
-        {"@type": "ListItem", "position": 5, "item": {"@type": "Organization", "name": "TDC Glass", "url": "https://www.instagram.com/tdcglass/", "description": "Content Creation & Social Media Management"}},
-        {"@type": "ListItem", "position": 6, "item": {"@type": "Organization", "name": "Armour Glass Parbrize", "url": "https://www.instagram.com/parbrizeautobrasov/", "description": "SEO Local & Google Business Profile"}},
-        {"@type": "ListItem", "position": 7, "item": {"@type": "WebSite", "name": "Psiholog Brașov", "url": "https://psihologbrasov.ro", "description": "Web Development & Content Creation", "creator": {"@id": "https://adsnow.ro/#business"}}},
-        {"@type": "ListItem", "position": 8, "item": {"@type": "WebSite", "name": "Dr. Sima", "url": "https://drsima.ro", "description": "Web Development", "creator": {"@id": "https://adsnow.ro/#business"}}},
-        {"@type": "ListItem", "position": 9, "item": {"@type": "WebSite", "name": "Mobarh", "url": "https://mobarh.ro", "description": "Web Development", "creator": {"@id": "https://adsnow.ro/#business"}}}
+        {"@type": "ListItem", "position": 1, "item": {"@type": "Organization", "name": "Ozone Residence", "url": "https://ozoneresidence.ro", "sameAs": "https://www.instagram.com/ozoneresidencebrasov/", "description": "Website Development, Content Creation, Social Media Management"}},
+        {"@type": "ListItem", "position": 2, "item": {"@type": "WebSite", "name": "Albastru Infinit", "url": "https://albastruinfinit.ro", "description": "Website Development & Google Business Profile", "creator": {"@id": "https://adsnow.ro/#business"}}},
+        {"@type": "ListItem", "position": 3, "item": {"@type": "Organization", "name": "Old Cottage Bran", "url": "https://www.instagram.com/oldcottagebran/", "description": "Content Creation"}},
+        {"@type": "ListItem", "position": 4, "item": {"@type": "Organization", "name": "TDC Glass", "url": "https://www.instagram.com/tdcglass/", "description": "Content Creation & Social Media Management"}},
+        {"@type": "ListItem", "position": 5, "item": {"@type": "Organization", "name": "Armour Glass Parbrize", "url": "https://www.instagram.com/parbrizeautobrasov/", "description": "SEO Local & Google Business Profile"}},
+        {"@type": "ListItem", "position": 6, "item": {"@type": "WebSite", "name": "Psiholog Brașov (Cojanu Petrus)", "url": "https://psihologbrasov.ro", "description": "Web Development & Content Creation", "creator": {"@id": "https://adsnow.ro/#business"}}},
+        {"@type": "ListItem", "position": 7, "item": {"@type": "WebSite", "name": "Dr. Sima", "url": "https://drsima.ro", "description": "Web Development", "creator": {"@id": "https://adsnow.ro/#business"}}},
+        {"@type": "ListItem", "position": 8, "item": {"@type": "WebSite", "name": "Mobarh", "url": "https://mobarh.ro", "description": "Web Development", "creator": {"@id": "https://adsnow.ro/#business"}}},
+        {"@type": "ListItem", "position": 9, "item": {"@type": "Organization", "name": "SMedical", "url": "https://smedical.ro", "sameAs": "https://www.instagram.com/smedical_brasov/", "description": "SEO & Social Media Management"}}
       ]
     },
     {
@@ -634,6 +639,8 @@ nav.scrolled .nav-logo { height: 42px; }
 }
 .logos-row img:hover { opacity: 1; filter: none; }
 .logos-row img.logo-sq { height: 72px; }
+.logos-row img.logo-wide { height: 64px; }
+.logos-row img.logo-slim { height: 28px; }
 .logos-row img.logo-inv { filter: invert(1) grayscale(1); }
 .logos-row img.logo-inv:hover { filter: invert(1); }
 
@@ -729,25 +736,49 @@ nav.scrolled .nav-logo { height: 42px; }
 }
 .pf-links a:hover { color: #fff; }
 
-.pf-result { margin-top: 14px; }
-.pf-kw {
-  display: flex; justify-content: space-between; align-items: center; gap: 12px;
-  padding: 8px 0;
-  border-bottom: 1px solid rgba(244,241,236,0.08);
-}
-.pf-kw-term { font-size: 13px; color: rgba(244,241,236,0.8); }
-.pf-kw-badge {
-  font-family: var(--font-mono); font-size: 10px;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  white-space: nowrap;
-  padding: 5px 10px;
-  background: rgba(37,211,102,0.14); color: var(--wa);
-}
 
 .portfolio-hidden { display: none; }
 .portfolio-hidden.visible { display: grid; }
 .portfolio-expand { color: var(--ink); border-color: rgba(10,14,20,0.2); }
 .portfolio-expand:hover { border-color: var(--cobalt); color: var(--cobalt); }
+
+/* ============ REVIEWS ============ */
+.reviews-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 24px; margin-top: 48px;
+}
+.review {
+  margin: 0; padding: 32px 28px;
+  background: var(--paper-2);
+  border: 1px solid var(--rule-light);
+  display: flex; flex-direction: column;
+}
+.review-stars { color: #f5b301; font-size: 18px; letter-spacing: 3px; }
+.review blockquote {
+  margin: 16px 0 24px;
+  font-size: 16px; line-height: 1.6;
+  color: rgba(10,14,20,0.78);
+  flex: 1;
+}
+.review blockquote::before { content: "„"; }
+.review blockquote::after { content: "”"; }
+.review figcaption {
+  font-size: 13px; color: rgba(10,14,20,0.55);
+  border-top: 1px solid var(--rule-light);
+  padding-top: 16px;
+}
+.review figcaption strong {
+  display: block; color: var(--ink);
+  font-family: var(--font-display); font-size: 16px; font-weight: 500;
+  margin-bottom: 2px;
+}
+.reviews-more { margin-top: 32px; text-align: center; }
+.reviews-more a {
+  font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--cobalt);
+}
+.reviews-more a:hover { color: var(--ink); }
 
 /* ============ SERVICES ============ */
 .services-grid {
@@ -1057,6 +1088,7 @@ footer {
   .service-wide { grid-template-columns: 1fr; gap: 32px; }
   .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
   .fit-list { grid-template-columns: 1fr 1fr; }
+  .reviews-grid { grid-template-columns: 1fr; max-width: 640px; }
   .principles { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: repeat(2, 1fr); }
 }
@@ -1089,6 +1121,8 @@ footer {
   .logos-row { gap: 20px 32px; }
   .logos-row img { height: 34px; }
   .logos-row img.logo-sq { height: 56px; }
+  .logos-row img.logo-wide { height: 48px; }
+  .logos-row img.logo-slim { height: 22px; }
   .section-padding { padding: 80px 24px; }
   .services-grid { grid-template-columns: 1fr; }
   .auto-list { grid-template-columns: 1fr; }
@@ -1165,12 +1199,15 @@ footer {
 <section class="logos" aria-label="Clienți ADSNOW">
   <p class="logos-label">Branduri din Brașov cu care am lucrat</p>
   <div class="logos-row">
-    <img src="assets/clienti/smedical.webp" alt="SMedical" class="logo-inv" width="480" height="171" loading="lazy"/>
     <img src="assets/clienti/ozone.webp" alt="Ozone Residence" width="331" height="152" loading="lazy"/>
     <img src="assets/clienti/albastruinfinit.webp" alt="Albastru Infinit" class="logo-sq" width="300" height="300" loading="lazy"/>
+    <img src="assets/clienti/cojanu.webp" alt="Cabinet de psihologie Cojanu Petrus" class="logo-sq" width="170" height="210" loading="lazy"/>
     <img src="assets/clienti/oldcottage.webp" alt="Old Cottage Bran" class="logo-sq" width="150" height="150" loading="lazy"/>
     <img src="assets/clienti/tdcglass.webp" alt="TDC Glass" width="390" height="228" loading="lazy"/>
     <img src="assets/clienti/armourglass.webp" alt="Armour Glass" width="600" height="241" loading="lazy"/>
+    <img src="assets/clienti/anamariamargineanu.webp" alt="Ana Maria Mărgineanu Beauty Master" class="logo-wide" width="480" height="226" loading="lazy"/>
+    <img src="assets/clienti/mobarh.webp" alt="Mobarh" class="logo-inv logo-slim" width="392" height="96" loading="lazy"/>
+    <img src="assets/clienti/smedical.webp" alt="SMedical" class="logo-inv" width="480" height="171" loading="lazy"/>
   </div>
 </section>
 
@@ -1202,22 +1239,6 @@ footer {
           <ul class="pf-tags"><li>Website Development</li><li>Google Business Profile</li></ul>
           <div class="pf-links">
             <a href="https://albastruinfinit.ro" target="_blank" rel="noopener">albastruinfinit.ro →</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="portfolio-card fade-in">
-        <div class="pf-visual"><img src="assets/screenshot-smedical.webp" alt="Website SMedical, asistență medicală la domiciliu în Brașov" width="1200" height="750" loading="lazy"/></div>
-        <div class="portfolio-info">
-          <h3 class="portfolio-name">SMedical</h3>
-          <ul class="pf-tags"><li>SEO</li><li>Social Media Management</li></ul>
-          <div class="pf-result">
-            <div class="pf-kw"><span class="pf-kw-term">„asistență medicală la domiciliu Brașov”</span><span class="pf-kw-badge">Top Google</span></div>
-            <div class="pf-kw"><span class="pf-kw-term">„asistență medicală Brașov”</span><span class="pf-kw-badge">Prima pagină</span></div>
-          </div>
-          <div class="pf-links">
-            <a href="https://smedical.ro" target="_blank" rel="noopener">smedical.ro →</a>
-            <a href="https://www.instagram.com/smedical_brasov/" target="_blank" rel="noopener">Instagram →</a>
           </div>
         </div>
       </article>
@@ -1255,22 +1276,22 @@ footer {
         </div>
       </article>
 
-    </div>
-    <div style="text-align:center;margin-top:40px;">
-      <button type="button" class="btn-secondary portfolio-expand fade-in" id="portfolioExpand">Vezi mai multe proiecte →</button>
-    </div>
-    <div class="portfolio-grid portfolio-hidden" id="portfolioExtra">
-
       <article class="portfolio-card fade-in">
-        <div class="pf-visual"><img src="assets/screenshot-psihologbrasov.webp" alt="Website și content creation pentru cabinet psiholog Brașov" width="600" height="375" loading="lazy"/></div>
+        <div class="pf-visual"><img src="assets/screenshot-psihologbrasov.webp" alt="Website și content creation pentru cabinetul de psihologie Cojanu Petrus din Brașov" width="600" height="375" loading="lazy"/></div>
         <div class="portfolio-info">
-          <h3 class="portfolio-name">Psiholog Brașov</h3>
+          <h3 class="portfolio-name">Psiholog Brașov · Cojanu Petrus</h3>
           <ul class="pf-tags"><li>Website Development</li><li>Content Creation</li></ul>
           <div class="pf-links">
             <a href="https://psihologbrasov.ro" target="_blank" rel="noopener">psihologbrasov.ro →</a>
           </div>
         </div>
       </article>
+
+    </div>
+    <div style="text-align:center;margin-top:40px;">
+      <button type="button" class="btn-secondary portfolio-expand fade-in" id="portfolioExpand">Vezi mai multe proiecte →</button>
+    </div>
+    <div class="portfolio-grid portfolio-hidden" id="portfolioExtra">
 
       <article class="portfolio-card fade-in">
         <div class="pf-visual"><img src="assets/screenshot-drsima.webp" alt="Website prezentare cabinet medical Dr. Sima, realizat de ADSNOW" width="600" height="375" loading="lazy"/></div>
@@ -1294,6 +1315,46 @@ footer {
         </div>
       </article>
 
+      <article class="portfolio-card fade-in">
+        <div class="pf-visual"><img src="assets/screenshot-smedical.webp" alt="Website SMedical, asistență medicală la domiciliu în Brașov" width="1200" height="750" loading="lazy"/></div>
+        <div class="portfolio-info">
+          <h3 class="portfolio-name">SMedical</h3>
+          <ul class="pf-tags"><li>SEO</li><li>Social Media Management</li></ul>
+          <div class="pf-links">
+            <a href="https://smedical.ro" target="_blank" rel="noopener">smedical.ro →</a>
+            <a href="https://www.instagram.com/smedical_brasov/" target="_blank" rel="noopener">Instagram →</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ======== RECENZII ======== -->
+<section id="recenzii" class="section-light section-padding">
+  <div class="container">
+    <span class="eyebrow fade-in">Recenzii Google</span>
+    <h2 class="section-title fade-in">Ce spun clienții</h2>
+    <div class="reviews-grid">
+      <figure class="review fade-in">
+        <div class="review-stars" aria-label="5 din 5 stele">★★★★★</div>
+        <blockquote>Recomand cu încredere după ce am colaborat în vederea realizării site-ului cabinetului (psihologbrasov.ro) și în mod organic sunt pe prima pagină.</blockquote>
+        <figcaption><strong>Petrus Cojanu</strong>Cabinet de psihologie, Brașov</figcaption>
+      </figure>
+      <figure class="review fade-in">
+        <div class="review-stars" aria-label="5 din 5 stele">★★★★★</div>
+        <blockquote>O echipă foarte serioasă și profesională. Ne-au ajutat să creștem brandul cu 10x mai mult din punct de vedere al managementului și al promovării.</blockquote>
+        <figcaption><strong>RAW Productions</strong>Recenzie Google</figcaption>
+      </figure>
+      <figure class="review fade-in">
+        <div class="review-stars" aria-label="5 din 5 stele">★★★★★</div>
+        <blockquote>Mă bucur că am avut ocazia să apelez la acești băieți care au reușit să facă din firma mea ceva ce alții doar m-au păcălit golindu-mi buzunarele. Le mulțumesc și recomand tuturor să încerce o colaborare fructuoasă cu ei.</blockquote>
+        <figcaption><strong>Nicolae Buca</strong>Armour Glass Parbrize</figcaption>
+      </figure>
+    </div>
+    <div class="reviews-more fade-in">
+      <a href="https://www.google.com/search?kgmid=/g/11yt4l2544" target="_blank" rel="noopener">Vezi toate recenziile pe Google →</a>
     </div>
   </div>
 </section>
@@ -1438,7 +1499,8 @@ footer {
           <h3 class="service-title">Automatizări și UI/UX</h3>
           <p class="service-desc">Pentru afacerile care vor să câștige timp: lucrurile repetitive se fac singure, iar clienții găsesc ce caută din primul click. Le conectăm la uneltele pe care le folosești deja: site, WhatsApp, email, CRM, SmartBill sau Oblio.</p>
           <div class="service-meta">
-            <div class="service-meta-line">Investiție: <strong>în funcție de complexitate</strong></div>
+            <div class="service-meta-line">Flux simplu: <strong>de la 300 EUR</strong></div>
+            <div class="service-meta-line">Sistem complet: <strong>de la 1.500 EUR</strong></div>
             <div class="service-meta-line">Timp livrare: <strong>de la câteva zile</strong></div>
           </div>
           <a href="https://wa.me/40771587498" class="service-cta js-wa" data-wa-src="serviciu-automatizari" data-wa-msg="Salut Alex! Aș vrea să automatizez câteva procese din afacerea mea." target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Discutăm pe WhatsApp</a>
