@@ -481,7 +481,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .nav.solid { background: rgba(244,241,236,.86); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 1px 0 var(--rule); }
 .nav.hide { transform: translateY(-100%); }
 .nav-in { display: flex; align-items: center; justify-content: space-between; height: 76px; }
-.nav-logo { height: 44px; width: auto; }
+.nav-logo { height: 38px; width: auto; transition: height .4s var(--ease); }
+.nav.solid .nav-logo { height: 32px; }
 .nav-links { display: flex; align-items: center; gap: 30px; font-size: 15px; }
 .nav-links a:not(.nav-wa) { color: rgba(10,14,20,.65); transition: color .25s; }
 .nav-links a:not(.nav-wa):hover { color: var(--ink); }
@@ -822,7 +823,7 @@ footer { background: var(--ink); color: rgba(244,241,236,.6); padding: 72px 0 40
 
 <header class="nav" id="nav">
   <div class="wrap nav-in">
-    <a href="#hero" aria-label="ADSNOW, acasă"><img src="assets/logo-icon.svg" alt="ADSNOW" class="nav-logo" width="44" height="44"/></a>
+    <a href="#hero" aria-label="ADSNOW, acasă"><img src="assets/logo-mark.svg" alt="ADSNOW" class="nav-logo" width="85" height="44"/></a>
     <nav class="nav-links" aria-label="Navigare principală">
       <a href="#portofoliu">Portofoliu</a>
       <a href="#servicii">Servicii</a>

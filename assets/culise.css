@@ -29,7 +29,7 @@ img, svg { display: block; max-width: 100%; }
 /* Nav */
 .nav { position: sticky; top: 0; z-index: 20; background: rgba(244,241,236,.88); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--rule); }
 .nav-in { display: flex; align-items: center; justify-content: space-between; height: 68px; }
-.nav-logo { height: 40px; width: auto; }
+.nav-logo { height: 34px; width: auto; }
 .nav-links { display: flex; align-items: center; gap: 28px; font-size: 15px; }
 .nav-links a:not(.nav-wa) { color: rgba(10,14,20,.65); transition: color .25s; }
 .nav-links a:not(.nav-wa):hover, .nav-links a[aria-current] { color: var(--ink); }
