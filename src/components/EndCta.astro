@@ -1,0 +1,20 @@
+---
+import { CONTACT, wa } from '../data/site';
+interface Props { title?: string; text?: string; message?: string }
+const {
+  title = 'Spune-mi ce faci. Îți spun ce ți-ar aduce clienți.',
+  text = 'Scrie-mi pe WhatsApp două rânduri despre afacerea ta. Îți răspund eu, de obicei în aceeași zi, cu ce aș face în locul tău.',
+  message = 'Bună, Alex! Am văzut site-ul ADSNOW. Afacerea mea: ',
+} = Astro.props;
+---
+<section class="sec endcta">
+  <div class="wrap">
+    <h2>{title}</h2>
+    <p class="lead">{text}</p>
+    <div class="btn-row">
+      <a href={wa(message)} class="btn btn-indigo" target="_blank" rel="noopener" data-track="whatsapp">Scrie-mi pe WhatsApp</a>
+      <a href={`tel:${CONTACT.phoneIntl}`} class="btn btn-ghost-dark" data-track="telefon">Sună la {CONTACT.phone}</a>
+    </div>
+    <p class="small">Preferi un formular? <a href="/audit-gratuit" class="linklike">Completează trei întrebări</a> și îți scriu eu.</p>
+  </div>
+</section>

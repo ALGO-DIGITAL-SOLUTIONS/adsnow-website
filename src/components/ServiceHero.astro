@@ -1,0 +1,18 @@
+---
+import Film from './Film.astro';
+import { WA_DEFAULT } from '../data/site';
+interface Props { crumb: string; title: string; lead: string; film: string }
+const { crumb, title, lead, film } = Astro.props;
+---
+<section class="phero">
+  <Film name={film} eager />
+  <div class="wrap phero-in">
+    <nav class="crumbs" aria-label="Unde ești"><a href="/">Acasă</a><span aria-hidden="true">/</span><span>{crumb}</span></nav>
+    <h1>{title}</h1>
+    <p class="lead">{lead}</p>
+    <div class="btn-row">
+      <a href={WA_DEFAULT} class="btn btn-coral" target="_blank" rel="noopener" data-track="whatsapp">Scrie-mi pe WhatsApp</a>
+      <a href="#ce-se-schimba" class="btn btn-ghost-light">Ce se schimbă pentru tine</a>
+    </div>
+  </div>
+</section>

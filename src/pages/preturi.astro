@@ -1,123 +1,78 @@
 ---
+// Singura pagină cu prețuri. Celelalte pagini trimit aici.
 import Base from '../layouts/Base.astro';
-import PageHero from '../components/PageHero.astro';
 import Faq from '../components/Faq.astro';
-import CtaFinal from '../components/CtaFinal.astro';
-import PriceTable from '../components/PriceTable.astro';
-import { SITE, BUSINESS_ID, breadcrumb, faqSchema } from '../data/site';
-import { PACKAGES, SITES, CONTENT_PIECES, CONTENT_PLANS, SEO, AUTOMATIONS } from '../data/pricing';
+import EndCta from '../components/EndCta.astro';
+import { PACKAGES, SITES, SEO, CONTENT_PLANS, CONTENT_PIECES, AUTOMATIONS } from '../data/pricing';
+import { breadcrumb, faqSchema, WA_DEFAULT } from '../data/site';
 
 const path = '/preturi';
-
-const faq = [
-  {
-    q: 'Prețurile includ TVA?',
-    a: 'Prețurile de pe site sunt finale. ALGO Digital Solutions SRL nu e plătitoare de TVA, deci nu se adaugă nimic la factură.',
-  },
-  {
-    q: 'De ce plătește o cafenea la fel ca o clinică?',
-    a: 'Pentru că primește același lucru. Lista de prețuri e una singură. Diferă doar volumul: o cafenea alege de obicei pachetul mic, o clinică pe cel mare. Nimeni nu plătește mai mult pentru că e „firmă mare”.',
-  },
-  {
-    q: 'Cum se face plata?',
-    a: 'La proiectele cu plată o dată (site-uri, filmări, automatizări): 50% la început și 50% la livrare. Abonamentele lunare se plătesc la începutul fiecărei luni.',
-  },
-  {
-    q: 'Cât durează minim un abonament?',
-    a: 'Trei luni, pentru că SEO-ul și conținutul au nevoie de timp ca să dea rezultate. După aceea te poți opri oricând, anunțând cu o lună înainte. Tot ce am făcut îți rămâne.',
-  },
-  {
-    q: 'Pot combina servicii din liste diferite?',
-    a: 'Da. Pachetele sunt combinațiile cerute cel mai des, la un preț mai mic decât separat. Dacă ai nevoie de altă combinație, o calculăm din lista de mai jos.',
-  },
+const kicker = (k: string) => k.replace(' · ', ', ');
+const GROUPS = [
+  { id: 'site-uri', title: 'Site-uri', note: 'Plata: jumătate la început, jumătate la lansare. Termenul curge de la primirea materialelor.', rows: SITES, more: { href: '/creare-site-brasov', label: 'Ce primești la un site' } },
+  { id: 'google-maps', title: 'Google Maps și reclame', note: 'Abonamentele lunare au un minim de trei luni. Bugetul de reclame e separat și îl plătești direct către Meta.', rows: SEO, more: { href: '/seo-local-brasov', label: 'Cum lucrez la Google Maps' } },
+  { id: 'video', title: 'Video și social media', note: 'Filmările se fac în Brașov și până la o oră de mers. Abonamentele includ postarea.', rows: [...CONTENT_PLANS, ...CONTENT_PIECES], more: { href: '/social-media-foto-video', label: 'Cum lucrez la video' } },
+  { id: 'automatizari', title: 'Automatizări', note: 'Plata: jumătate la început, jumătate la livrare. În primele 30 de zile, ajustările sunt incluse.', rows: AUTOMATIONS, more: { href: '/automatizari', label: 'Ce se poate automatiza' } },
 ];
-
-const schema = [
-  {
-    '@type': 'WebPage',
-    '@id': `${SITE}${path}#webpage`,
-    name: 'Pachete și prețuri ADSNOW',
-    url: `${SITE}${path}`,
-    about: { '@id': BUSINESS_ID },
-    inLanguage: 'ro-RO',
-  },
-  breadcrumb([{ name: 'Prețuri', path }]),
-  faqSchema(faq),
+const FAQ = [
+  { q: 'Prețurile includ TVA?', a: 'Prețurile sunt finale. ALGO Digital Solutions SRL nu e plătitoare de TVA, deci nu se adaugă nimic la factură.' },
+  { q: 'De ce plătește o cafenea la fel ca o clinică?', a: 'Pentru că primește același lucru. Lista e una singură; diferă doar volumul ales. Nimeni nu plătește mai mult pentru că e firmă mare.' },
+  { q: 'Cum se face plata?', a: 'La proiectele cu plată o dată: jumătate la început și jumătate la livrare. Abonamentele lunare se plătesc la începutul fiecărei luni.' },
+  { q: 'Cât durează minim un abonament?', a: 'Trei luni, pentru că Google și conținutul au nevoie de timp ca să dea rezultate. După aceea te oprești oricând, cu o lună înainte. Tot ce am făcut îți rămâne.' },
+  { q: 'Pot combina servicii din liste diferite?', a: 'Da. Pachetele de mai sus sunt combinațiile cerute cel mai des, la un preț mai mic decât separat. Pentru altă combinație, o calculăm din listă.' },
 ];
 ---
-<Base
-  ogImage="/assets/og/preturi.jpg"
-  title="Prețuri marketing Brașov: site, SEO local, reels · ADSNOW"
-  ogTitle="Pachete și prețuri ADSNOW"
-  description="Toate prețurile ADSNOW, finale, fără TVA adăugat: site de la 1.200 lei, SEO local de la 390 lei/lună, reel de la 200 lei, automatizări de la 450 lei. Pachete cu preț fix."
-  path={path}
-  schema={schema}
->
-  <PageHero
-    art="/assets/art/pret.webp"
-    crumb="Prețuri"
-    title="Pachete și prețuri"
-    lead="Toate prețurile, la vedere, aceleași pentru toată lumea. Sunt finale, nu se adaugă TVA, și nu apar costuri pe parcurs."
-    primary={{ href: '/audit-gratuit', label: 'Nu știi ce să alegi? Te ajut gratuit →' }}
-    secondary={{ href: '#site-uri', label: 'Sari la listă' }}
-  />
-
-  <section class="section-muted section-padding" style="padding-top:64px;">
-    <div class="container">
-      <span class="eyebrow fade-in">Pachete</span>
-      <h2 class="section-title fade-in">Combinațiile cerute cel mai des</h2>
-      <div class="cards-grid">
+<Base title="Prețuri: site, Google Maps, video, automatizări | ADSNOW" description="Toate prețurile ADSNOW pe o singură pagină: fixe, finale, fără TVA și aceleași pentru toată lumea. Trei pachete și lista completă." path={path} schema={[breadcrumb([{ name: 'Prețuri', path }]), faqSchema(FAQ)]} ogImage="/assets/og/preturi.jpg" dark={false}>
+  <section class="sec" style="padding-top:clamp(140px,16vw,200px)">
+    <div class="wrap">
+      <div class="sec-head">
+        <h1 style="font-size:clamp(48px,6.4vw,96px)">Prețul îl știi de acum</h1>
+        <p class="lead muted">Aceleași prețuri pentru toată lumea. Sunt finale, nu se adaugă TVA și nu apar costuri pe parcurs. Dacă nu știi ce ți se potrivește, <a href={WA_DEFAULT} class="textlink" target="_blank" rel="noopener" data-track="whatsapp">scrie-mi</a> și îți spun sincer.</p>
+      </div>
+      <h2 class="sr-only">Pachete</h2>
+      <div class="packs">
         {PACKAGES.map((p) => (
-          <div class:list={['card', 'package-card', 'fade-in', { featured: p.featured }]}>
-            <span class="card-kicker">{p.kicker}</span>
+          <article class:list={['packcard', { featured: p.featured }]}>
+            <span class="when">{kicker(p.kicker)}</span>
             <h3>{p.name}</h3>
             <p>{p.what}</p>
             <ul>{p.includes.map((i) => <li>{i}</li>)}</ul>
-            <div class="card-price">{p.price}{p.note && <small>{p.note}</small>}</div>
-            <div class="package-separate">{p.separate}</div>
-          </div>
+            <span class="price">{p.price}</span>
+            {p.note && <span class="sep">{p.note}</span>}
+            <span class="sep">{p.separate}</span>
+          </article>
         ))}
       </div>
     </div>
   </section>
 
-  <section id="site-uri" class="section-light section-padding">
-    <div class="container">
-      <span class="eyebrow fade-in">Site-uri</span>
-      <h2 class="section-title fade-in">Site în 10 zile</h2>
-      <p class="section-desc fade-in">Termenul curge de la primirea materialelor complete. Plata: 50% la început, 50% la lansare. <a href="/creare-site-brasov" style="color:var(--cobalt);text-decoration:underline;">Detalii despre site-uri →</a></p>
-      <PriceTable rows={SITES} />
+  <section class="sec sec-mist" style="padding-top:clamp(56px,7vw,96px)">
+    <div class="wrap">
+      <div class="sec-head" style="margin-bottom:24px"><h2>Lista completă</h2><p class="lead muted">Deschide categoria care te interesează.</p></div>
+      <div class="plist">
+        {GROUPS.map((g) => (
+          <details id={g.id}>
+            <summary><h3>{g.title}</h3><span>{g.rows.length} servicii</span></summary>
+            <p class="muted" style="margin-bottom:12px">{g.note}</p>
+            <table>
+              <tbody>
+                {g.rows.map((r) => (
+                  <tr><th scope="row">{r.name}</th><td class="what">{r.what}</td><td class="t">{r.time ?? ''}</td><td class="p">{r.price}{r.note && <><br/><small>{r.note}</small></>}</td></tr>
+                ))}
+              </tbody>
+            </table>
+            <p class="more"><a href={g.more.href} class="textlink">{g.more.label}</a></p>
+          </details>
+        ))}
+      </div>
     </div>
   </section>
 
-  <section class="section-muted section-padding">
-    <div class="container">
-      <span class="eyebrow fade-in">Google Maps și reclame</span>
-      <h2 class="section-title fade-in">Să te găsească cei din zonă</h2>
-      <p class="section-desc fade-in">Abonamentele lunare au un minim de 3 luni. <a href="/seo-local-brasov" style="color:var(--cobalt);text-decoration:underline;">Detalii despre Google Maps →</a></p>
-      <PriceTable rows={SEO} />
-    </div>
-  </section>
-
-  <section class="section-light section-padding">
-    <div class="container">
-      <span class="eyebrow fade-in">Conținut</span>
-      <h2 class="section-title fade-in">Reels, video și grafică</h2>
-      <p class="section-desc fade-in">Filmările se fac în Brașov și în zona de până la o oră. <a href="/social-media-foto-video" style="color:var(--cobalt);text-decoration:underline;">Detalii despre conținut →</a></p>
-      <PriceTable rows={CONTENT_PLANS} caption="Abonamente lunare, cu postare inclusă" />
-      <PriceTable rows={CONTENT_PIECES} caption="Pe bucată" showTime={false} />
-    </div>
-  </section>
-
-  <section class="section-muted section-padding">
-    <div class="container">
-      <span class="eyebrow fade-in">Automatizări</span>
-      <h2 class="section-title fade-in">Ca să nu mai pierzi niciun client</h2>
-      <p class="section-desc fade-in"><a href="/automatizari" style="color:var(--cobalt);text-decoration:underline;">Detalii despre automatizări →</a></p>
-      <PriceTable rows={AUTOMATIONS} />
-    </div>
-  </section>
-
-  <Faq items={faq} title="Întrebări despre prețuri" tone="light" />
-  <CtaFinal />
+  <Faq items={FAQ} title="Întrebări despre prețuri" />
+  <EndCta title="Nu știi ce să alegi?" text="Spune-mi pe WhatsApp ce faci și ce vrei să se schimbe. Îți recomand o singură variantă, cu prețul ei." message="Bună, Alex! Nu știu ce pachet mi se potrivește. Afacerea mea: " />
 </Base>
+
+<script is:inline slot="scripts">
+  // Un link spre /preturi#video deschide direct categoria.
+  (function () { var d = location.hash && document.querySelector(location.hash); if (d && d.tagName === 'DETAILS') d.open = true; })();
+</script>

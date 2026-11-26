@@ -1,65 +1,58 @@
 ---
 import Base from '../layouts/Base.astro';
-import PageHero from '../components/PageHero.astro';
-import CtaFinal from '../components/CtaFinal.astro';
-import ProjectGrid from '../components/ProjectGrid.astro';
-import CaseStudies from '../components/CaseStudies.astro';
-import Related from '../components/Related.astro';
-import { SITE, BUSINESS_ID, breadcrumb } from '../data/site';
+import EndCta from '../components/EndCta.astro';
+import { PROOF, PROJECTS, breadcrumb } from '../data/site';
 
 const path = '/proiecte';
-
-const schema = [
-  {
-    '@type': 'CollectionPage',
-    '@id': `${SITE}${path}#webpage`,
-    name: 'Proiecte și studii de caz ADSNOW',
-    url: `${SITE}${path}`,
-    about: { '@id': BUSINESS_ID },
-    inLanguage: 'ro-RO',
-  },
-  breadcrumb([{ name: 'Proiecte', path }]),
-];
+const a = PROOF.armour, b = PROOF.albastru, o = PROOF.ozone;
 ---
-<Base
-  ogImage="/assets/og/proiecte.jpg"
-  title="Proiecte și studii de caz: site-uri, SEO local, video · ADSNOW"
-  ogTitle="Proiecte și studii de caz ADSNOW"
-  description="Studii de caz cu cifre: top 3 pe Google Maps pentru Armour Glass, de 2 ori mai des în Google pentru Albastru Infinit, 451 de urmăritori pentru Ozone Residence. Plus site-urile livrate."
-  path={path}
-  schema={schema}
->
-  <PageHero
-    art="/assets/art/proiecte.webp"
-    crumb="Proiecte"
-    title="Proiecte și studii de caz"
-    lead="Cifrele vin direct din Google și Instagram, verificate în noiembrie 2026. Toate proiectele sunt live, intră pe ele."
-  />
-
-  <section class="section-muted section-padding" style="padding-top:64px;">
-    <div class="container">
-      <span class="eyebrow fade-in">Studii de caz</span>
-      <h2 class="section-title fade-in">Ce s-a schimbat după ce am lucrat împreună</h2>
-      <CaseStudies detailed />
+<Base title="Proiecte: site-uri, Google Maps și video din Brașov | ADSNOW" description="Proiecte reale, live, cu cifre verificate în Google: Armour Glass în top 3 pe hartă, Albastru Infinit pe prima pagină, Ozone Residence de la zero." path={path} schema={[breadcrumb([{ name: 'Proiecte', path }])]} ogImage="/assets/og/proiecte.jpg" dark={false}>
+  <section class="sec" style="padding-top:clamp(140px,16vw,200px)">
+    <div class="wrap">
+      <div class="sec-head">
+        <h1 style="font-size:clamp(48px,6.4vw,96px)">Proiecte pe care le poți verifica</h1>
+        <p class="lead muted">Cifre verificate în noiembrie 2026, direct din Google și din conturile clienților. Toate proiectele sunt live.</p>
+      </div>
+      <div class="cases">
+        <article class="case">
+          <div><span class="proof-big">{a.big}</span><p class="proof-line" style="color:var(--indigo)">{a.line}</p></div>
+          <div>
+            <p class="who">{a.client}, înlocuire de parbrize</p>
+            <p style="margin-top:12px">{a.detail}</p>
+            <ol class="pack" style="box-shadow:inset 0 0 0 1px var(--line);margin-top:20px" aria-label="Primele trei rezultate pe hartă">{a.pack.map((m) => <li class:list={{ us: m.us }}><span>{m.name}</span><span class="r">{m.rating} <b aria-hidden="true">★</b> ({m.reviews})</span></li>)}</ol>
+            <p style="margin-top:20px"><a href={a.url} class="textlink" target="_blank" rel="noopener">armourglass-parbrize.ro</a></p>
+          </div>
+        </article>
+        <article class="case">
+          <div><span class="proof-big">{b.big}</span><p class="proof-line" style="color:var(--indigo)">{b.line}</p></div>
+          <div>
+            <p class="who">{b.client}, cabinet de psihoterapie</p>
+            <p style="margin-top:12px">{b.detail}</p>
+            <p style="margin-top:20px"><a href={b.url} class="textlink" target="_blank" rel="noopener">albastruinfinit.ro</a></p>
+          </div>
+        </article>
+        <article class="case">
+          <div><span class="proof-big" style="font-size:clamp(44px,4.4vw,72px)">{o.big}</span><p class="proof-line" style="color:var(--indigo)">{o.line}</p></div>
+          <div>
+            <p class="who">{o.client}</p>
+            <p style="margin-top:12px">{o.detail}</p>
+            <p style="margin-top:20px"><a href={o.url} class="textlink" target="_blank" rel="noopener">ozoneresidence.ro</a></p>
+          </div>
+        </article>
+      </div>
     </div>
   </section>
 
-  <section class="section-light section-padding">
-    <div class="container">
-      <span class="eyebrow fade-in">Site-uri</span>
-      <h2 class="section-title fade-in">Site-uri pe care le poți încerca acum</h2>
-      <ProjectGrid filter="site" />
+  <section class="sec sec-mist">
+    <div class="wrap">
+      <div class="sec-head"><h2>Site-uri pe care le poți deschide acum</h2><p class="lead muted">Deschide-le de pe telefon, cum le deschid și clienții lor.</p></div>
+      <div class="shots">
+        {PROJECTS.map((p) => (
+          <div class="shot"><a href={p.url} target="_blank" rel="noopener"><img src={p.img} alt={`Site-ul ${p.name}`} width="1200" height="750" loading="lazy"/><strong>{p.name}</strong><span>{p.type}</span></a></div>
+        ))}
+      </div>
     </div>
   </section>
 
-  <section class="section-muted section-padding">
-    <div class="container">
-      <span class="eyebrow fade-in">Google Maps, Instagram și video</span>
-      <h2 class="section-title fade-in">Clienți pe care îi găsești pe Google și Instagram</h2>
-      <ProjectGrid filter={['seo', 'social', 'content']} />
-      <Related current={path} />
-    </div>
-  </section>
-
-  <CtaFinal />
+  <EndCta />
 </Base>

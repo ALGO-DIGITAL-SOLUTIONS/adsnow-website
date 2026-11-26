@@ -1,0 +1,13 @@
+---
+// Pe paginile de serviciu nu apar prețuri: doar trimiterea spre pagina unică de prețuri.
+interface Props { anchor: string; text?: string }
+const { anchor, text = 'Prețurile sunt fixe, la vedere și aceleași pentru toată lumea. Le găsești pe o singură pagină.' } = Astro.props;
+---
+<section class="sec-tight">
+  <div class="wrap">
+    <div class="priceline">
+      <p>{text}</p>
+      <a href={`/preturi#${anchor}`} class="btn btn-indigo">Vezi prețurile</a>
+    </div>
+  </div>
+</section>

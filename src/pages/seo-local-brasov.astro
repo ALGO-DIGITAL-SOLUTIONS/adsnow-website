@@ -1,174 +1,66 @@
 ---
 import Base from '../layouts/Base.astro';
-import PageHero from '../components/PageHero.astro';
+import ServiceHero from '../components/ServiceHero.astro';
+import Effects from '../components/Effects.astro';
+import Steps from '../components/Steps.astro';
 import Faq from '../components/Faq.astro';
-import CtaFinal from '../components/CtaFinal.astro';
-import ProjectGrid from '../components/ProjectGrid.astro';
-import Related from '../components/Related.astro';
-import PriceTable from '../components/PriceTable.astro';
-import CaseStudies from '../components/CaseStudies.astro';
-import { SEO } from '../data/pricing';
-import { SITE, BUSINESS_ID, breadcrumb, faqSchema } from '../data/site';
+import PriceLine from '../components/PriceLine.astro';
+import EndCta from '../components/EndCta.astro';
+import { PROOF, breadcrumb, faqSchema, SITE, BUSINESS_ID } from '../data/site';
 
 const path = '/seo-local-brasov';
-
-const faq = [
-  {
-    q: 'Cât costă SEO local?',
-    a: 'Setup-ul fișei Google costă 600 lei, o singură dată. Apoi ai două variante lunare: Maps Esențial la 390 lei/lună (postări pe fișă, răspunsuri la recenzii, poze noi, raport) sau SEO local complet la 890 lei/lună (în plus, o pagină sau un articol local pe lună, linkuri locale și urmărirea pozițiilor). Prețuri finale, nu se adaugă TVA.',
-  },
-  {
-    q: 'Cât durează până se vede o schimbare?',
-    a: 'Depinde de cât de aglomerat e domeniul tău în Brașov. Schimbările pe hartă apar de obicei mai repede decât cele din rezultatele organice, pentru că fișa Google se optimizează direct. Pe organic vorbim de luni, nu de săptămâni. De aceea contractul minim e de 3 luni.',
-  },
-  {
-    q: 'De ce contract minim de 3 luni?',
-    a: 'Pentru că prima lună e în mare parte pregătire: fișa Google pusă la punct, datele tale corectate peste tot pe internet, site-ul reparat unde e cazul. Efectul se vede în lunile următoare. Într-o singură lună ai plăti exact partea care încă nu se vede.',
-  },
-  {
-    q: 'Am nevoie de site pentru SEO local?',
-    a: 'Pentru hartă, fișa Google contează cel mai mult. Un site legat de fișă, cu pagini pentru fiecare serviciu, ajută însă mult, și e singura cale spre rezultatele organice de sub hartă. Dacă nu ai site, îți spun sincer dacă merită să începi cu el sau doar cu fișa.',
-  },
-  {
-    q: 'Cumpărați recenzii sau linkuri?',
-    a: 'Nu. Recenziile false încalcă regulile Google și pot duce la suspendarea fișei. Facem un sistem simplu prin care îi rogi pe clienții mulțumiți să lase o recenzie, și construim linkuri din surse locale reale.',
-  },
-  {
-    q: 'Îmi garantați locul 1?',
-    a: 'Nimeni nu poate promite asta corect, pentru că Google ține cont și de cât de aproape ești de cel care caută. Ce îți promit: muncă vizibilă în fiecare lună și un raport din care înțelegi ce s-a schimbat.',
-  },
+const FAQ = [
+  { q: 'Cât durează până se vede o schimbare?', a: 'Pe hartă, schimbările apar de obicei în câteva săptămâni, pentru că fișa Google se îmbunătățește direct. În rezultatele de sub hartă vorbim de luni. De aceea lucrăm minim trei luni.' },
+  { q: 'Am nevoie de site?', a: 'Pentru hartă, fișa Google contează cel mai mult. Un site cu o pagină pentru fiecare serviciu ajută însă mult și e singura cale spre rezultatele de sub hartă. Îți spun sincer dacă merită să începi cu el.' },
+  { q: 'Cumperi recenzii sau linkuri?', a: 'Nu. Recenziile false încalcă regulile Google și pot duce la suspendarea fișei. Fac un sistem simplu prin care clienții mulțumiți lasă recenzie, iar linkurile vin din surse locale reale.' },
+  { q: 'Îmi garantezi locul 1?', a: 'Nimeni nu poate promite asta corect, pentru că Google ține cont și de cât de aproape e omul care caută. Îți promit muncă vizibilă în fiecare lună și un raport din care înțelegi ce s-a schimbat.' },
+  { q: 'Ce primesc în raportul lunar?', a: 'Câți te-au sunat din Google, câți au cerut traseul spre tine, pe ce căutări apari și ce fac luna următoare. Pe scurt, în cuvinte pe care le înțelegi.' },
 ];
-
 const schema = [
-  {
-    '@type': 'Service',
-    '@id': `${SITE}${path}#service`,
-    name: 'SEO local și Google Business Profile',
-    serviceType: 'SEO local',
-    description:
-      'Optimizare pentru căutări locale în Brașov: Google Business Profile, citări locale, optimizare on-page, recenzii, articole SEO și raport lunar.',
-    provider: { '@id': BUSINESS_ID },
-    areaServed: { '@type': 'City', name: 'Brașov' },
-    offers: {
-      '@type': 'Offer',
-      priceSpecification: { '@type': 'UnitPriceSpecification', minPrice: '390', priceCurrency: 'RON', unitText: 'lună' },
-    },
-    url: `${SITE}${path}`,
-  },
-  breadcrumb([{ name: 'SEO local Brașov', path }]),
-  faqSchema(faq),
+  { '@type': 'Service', name: 'SEO local și Google Maps', serviceType: 'Local SEO', provider: { '@id': BUSINESS_ID }, areaServed: 'Brașov', url: `${SITE}${path}` },
+  breadcrumb([{ name: 'Google Maps', path }]),
+  faqSchema(FAQ),
 ];
+const a = PROOF.armour, b = PROOF.albastru;
 ---
-<Base
-  ogImage="/assets/og/seo-local-brasov.jpg"
-  title="SEO local Brașov | Google Maps și fișa Google · ADSNOW"
-  ogTitle="SEO local în Brașov | ADSNOW"
-  description="SEO local în Brașov: fișa ta de pe Google pusă la punct, pagini pe servicii, mai multe recenzii și raport lunar. De la 390 lei/lună, setup 600 lei. Top 3 pe hartă pentru un client pornit de la zero."
-  path={path}
-  schema={schema}
->
-  <PageHero
-    art="/assets/art/harta.webp"
-    crumb="SEO local Brașov"
-    title="SEO local în Brașov: apari când te caută cineva din zonă"
-    lead="Când cineva scrie pe telefon „dentist Brașov” sau „service auto aproape de mine”, Google arată întâi o hartă cu trei firme. Lucrăm ca tu să fii una dintre ele, și ca site-ul tău să apară imediat sub hartă."
-    primary={{ href: '/audit-gratuit', label: 'Vezi unde apari acum →' }}
-    secondary={{ href: '#preturi', label: 'Cât costă' }}
-    meta={[
-      { label: 'Setup Google Maps', value: '600 lei' },
-      { label: 'Lunar', value: 'de la 390 lei' },
-      { label: 'Contract minim', value: '3 luni' },
-      { label: 'Raportare', value: 'lunară' },
-    ]}
-  />
+<Base title="SEO local Brașov: apari pe Google Maps | ADSNOW" description="Când cineva din Brașov caută ce vinzi, apari tu pe hartă. Fișa Google pusă la punct, recenzii reale și un raport lunar cu cine te-a sunat." path={path} schema={schema} ogImage="/assets/og/seo-local-brasov.jpg" preload="/video/harta.webp">
+  <ServiceHero crumb="Google Maps" film="harta" title="Când cineva din zonă caută ce vinzi, apari tu pe hartă" lead="Google arată întâi o hartă cu trei firme. Lucrez ca tu să fii una dintre ele, iar site-ul tău să apară imediat sub hartă." />
 
-  <section class="section-dark section-padding">
-    <div class="container">
-      <span class="eyebrow fade-in" style="color:var(--sky);">Rezultate</span>
-      <h2 class="section-title fade-in" style="color:var(--paper);">Ce s-a schimbat pentru doi clienți</h2>
-      <CaseStudies only={['armour-glass', 'albastru-infinit']} />
-    </div>
-  </section>
+  <Effects title="Ce se schimbă pentru tine" items={[
+    { h: 'Te sună cei din apropiere', p: 'Pe hartă se dau telefoanele: omul caută „service auto” sau „dentist”, vede trei firme și sună. Acolo vrei să fii.' },
+    { h: 'Ai recenzii, nu doar o notă', p: 'Un link și un cod QR prin care clienții mulțumiți lasă recenzie în 30 de secunde. Răspund la fiecare recenzie, în numele tău.' },
+    { h: 'Știi ce primești', p: 'Lunar vezi câți te-au sunat, câți au cerut traseul spre tine și pe ce căutări apari. Fără grafice pe care nu le înțelege nimeni.' },
+  ]} />
 
-  <section id="preturi" class="section-light section-padding">
-    <div class="container">
-      <span class="eyebrow fade-in">Prețuri</span>
-      <h2 class="section-title fade-in">Setup o dată, apoi lunar</h2>
-      <p class="section-desc fade-in">Prețuri finale, nu se adaugă TVA. Abonamentele lunare au un minim de 3 luni, pentru că efectul se vede în timp.</p>
-      <PriceTable rows={SEO.filter((r) => r.name !== 'Meta Ads')} />
-    </div>
-  </section>
-
-  <section class="section-muted section-padding">
-    <div class="container split">
-      <h2 class="section-title fade-in">Cum decide Google pe cine arată pe hartă</h2>
-      <div class="prose fade-in">
-        <p>Google spune public că ține cont de trei lucruri când alege firmele de pe hartă:</p>
-        <ul>
-          <li><strong>Relevanța:</strong> cât de bine se potrivește fișa ta cu ce a căutat omul.</li>
-          <li><strong>Distanța:</strong> cât de aproape ești de el sau de zona pe care a scris-o.</li>
-          <li><strong>Notorietatea:</strong> recenziile, linkurile, cât de cunoscută e afacerea în general.</li>
-        </ul>
-        <p>Distanța rămâne cum e. Pe celelalte două se poate lucra, și aici e vestea bună: multe firme din Brașov au fișe completate pe jumătate, categorii greșite și recenzii fără răspuns. Locul de pe hartă e la îndemână.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section-light section-padding">
-    <div class="container">
-      <span class="eyebrow fade-in">Ce facem</span>
-      <h2 class="section-title fade-in">Ce fac în fiecare lună</h2>
-      <div class="cards-grid">
-        <div class="card fade-in">
-          <h3>Fișa ta de pe Google, completă</h3>
-          <p>Categoriile corecte, serviciile, pozele, programul, postări noi și răspunsuri la recenzii. Asta contează cel mai mult pentru hartă.</p>
+  <section class="sec sec-dark on-dark">
+    <div class="wrap">
+      <div class="sec-head"><h2>Doi clienți, pe Google, azi</h2></div>
+      <div class="proof">
+        <div class="proof-item proof-half">
+          <span class="proof-big">{a.big}</span>
+          <p class="proof-line">{a.line}</p>
+          <ol class="pack" aria-label="Primele trei rezultate pe hartă">{a.pack.map((m) => <li class:list={{ us: m.us }}><span>{m.name}</span><span class="r">{m.rating} <b aria-hidden="true">★</b> ({m.reviews})</span></li>)}</ol>
+          <p class="proof-detail">{a.detail}</p>
+          <p class="proof-client"><a href={a.url} target="_blank" rel="noopener">{a.client}</a></p>
         </div>
-        <div class="card fade-in">
-          <h3>Site-ul spune ce cauți</h3>
-          <p>O pagină pentru fiecare serviciu, scrisă cu cuvintele pe care oamenii le tastează pe Google.</p>
-        </div>
-        <div class="card fade-in">
-          <h3>Aceleași date peste tot</h3>
-          <p>Numele, adresa și telefonul tău, la fel în toate locurile unde apari online. Google are încredere în ce se potrivește.</p>
-        </div>
-        <div class="card fade-in">
-          <h3>Mai multe recenzii</h3>
-          <p>Un link și un cod QR prin care clienții mulțumiți lasă recenzie în 30 de secunde, plus răspuns la fiecare recenzie.</p>
-        </div>
-        <div class="card fade-in">
-          <h3>Articole care răspund clienților</h3>
-          <p>Texte despre întrebările pe care ți le pun clienții, ca să te găsească și cei care încă se informează.</p>
-        </div>
-        <div class="card fade-in">
-          <h3>Raport lunar, pe scurt</h3>
-          <p>Câți te-au sunat, câți au cerut traseul, unde apari în Google și ce facem luna următoare.</p>
+        <div class="proof-item proof-half">
+          <span class="proof-big">{b.big}</span>
+          <p class="proof-line">{b.line}</p>
+          <p class="proof-detail">{b.detail}</p>
+          <p class="proof-client"><a href={b.url} target="_blank" rel="noopener">{b.client}</a></p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section-dark section-padding">
-    <div class="container">
-      <h2 class="section-title fade-in" style="color:var(--paper);">Cum lucrăm</h2>
-      <ol class="steps">
-        <li class="fade-in"><div><span class="step-when">luna 1</span><h3>Unde ești acum</h3><p>Pe ce căutări apari, cine e înaintea ta și de ce. Alegem căutările care aduc clienți.</p></div></li>
-        <li class="fade-in"><div><span class="step-when">luna 1</span><h3>Punem lucrurile în ordine</h3><p>Fișa Google completă și datele tale corectate peste tot pe internet.</p></div></li>
-        <li class="fade-in"><div><span class="step-when">luna 2</span><h3>Site-ul</h3><p>Pagini pe servicii, viteză și cum arată pe telefon.</p></div></li>
-        <li class="fade-in"><div><span class="step-when">lunar</span><h3>Încredere</h3><p>Recenzii noi și mențiuni pe site-uri locale din Brașov.</p></div></li>
-        <li class="fade-in"><div><span class="step-when">lunar</span><h3>Raport</h3><p>Ce s-a schimbat, în cifre pe care le înțelegi, și ce urmează.</p></div></li>
-      </ol>
-    </div>
-  </section>
+  <Steps title="Cum lucrez" lead="Google ține cont de trei lucruri: cât de bine se potrivește fișa cu ce caută omul, cât de aproape e și cât de cunoscută e afacerea. Pe primul și pe ultimul se poate lucra." items={[
+    { when: 'Luna 1', h: 'Unde ești acum', p: 'Pe ce căutări apari, cine e înaintea ta și de ce. Alegem căutările care aduc clienți.' },
+    { when: 'Luna 1', h: 'Punem ordine', p: 'Fișa Google completă: categorii, servicii, poze, program. Numele, adresa și telefonul la fel peste tot pe internet.' },
+    { when: 'Luna 2', h: 'Site-ul spune ce faci', p: 'O pagină pentru fiecare serviciu, scrisă cu cuvintele pe care oamenii le tastează pe Google.' },
+    { when: 'În fiecare lună', h: 'Încredere și raport', p: 'Recenzii noi, postări pe fișă, mențiuni pe site-uri locale și un raport scurt cu ce s-a schimbat.' },
+  ]} />
 
-  <section class="section-light section-padding">
-    <div class="container">
-      <span class="eyebrow fade-in">Portofoliu</span>
-      <h2 class="section-title fade-in">Clienți pe care îi găsești pe Google</h2>
-      <ProjectGrid filter="seo" />
-      <Related current={path} />
-    </div>
-  </section>
-
-  <Faq items={faq} title="Întrebări despre SEO local" />
-  <CtaFinal />
+  <PriceLine anchor="google-maps" />
+  <Faq items={FAQ} title="Întrebări despre Google Maps" />
+  <EndCta message="Bună, Alex! Aș vrea să apar mai sus pe Google Maps. Afacerea mea: " />
 </Base>

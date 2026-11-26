@@ -1,0 +1,22 @@
+---
+// Trei efecte concrete pentru client, cu explicația lor. Fără prețuri.
+interface Props { title: string; lead?: string; items: { h: string; p: string }[] }
+const { title, lead, items } = Astro.props;
+---
+<section class="sec" id="ce-se-schimba">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>{title}</h2>
+      {lead && <p class="lead muted">{lead}</p>}
+    </div>
+    <div class="effects-grid">
+      {items.map((it) => (
+        <div>
+          <img src="/assets/semn-adsnow.svg" alt="" class="pin" width="26" height="32" loading="lazy"/>
+          <h3>{it.h}</h3>
+          <p>{it.p}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

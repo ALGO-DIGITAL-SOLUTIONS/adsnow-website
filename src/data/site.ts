@@ -2,6 +2,7 @@
 
 export const SITE = 'https://adsnow.ro';
 export const PREVIEW = process.env.PREVIZUALIZARE === '1';
+export const GA_ID = 'G-9NW9NYSJFF';
 
 export const CONTACT = {
   email: 'alex@adsnow.ro',
@@ -12,168 +13,130 @@ export const CONTACT = {
   city: 'Brașov',
   postalCode: '500137',
   gbp: 'https://share.google/VeFOuazxszxVcgFcH',
-  calendar:
-    'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ38JrGsAlyvinUx2IY6KHYyI7IQ-QaifvAz9diIDscT3oKh-S-_tG2_Kgkv_CYFaGW_RxtNrH73',
 };
 
-export const NAV = [
-  { href: '/#servicii', label: 'Servicii' },
-  { href: '/preturi', label: 'Prețuri' },
-  { href: '/proiecte', label: 'Proiecte' },
-  { href: '/#despre', label: 'Despre' },
-];
+// Datele firmei, obligatorii pe site (verificate pe listafirme / termene, 26 noiembrie 2026).
+export const COMPANY = {
+  name: 'ALGO Digital Solutions SRL',
+  cui: '49010279',
+  reg: 'J08/3057/2023',
+};
 
-// Cele patru servicii principale. `want` = ce vrea clientul, folosit pe homepage.
+export const wa = (text: string) => `${CONTACT.whatsapp}?text=${encodeURIComponent(text)}`;
+export const WA_DEFAULT = wa('Bună, Alex! Am văzut site-ul ADSNOW și aș vrea să vorbim.');
+
+// Video-urile de fundal (public/video/<id>.mp4 și <id>-v.mp4 pentru telefon, plus <id>.webp ca poster).
+// Generate cu Higgsfield (Seedance 2.5), cadru de start = cadru de final, ca bucla să nu se vadă.
+
+// Cele patru servicii, descrise prin ce se schimbă pentru client. Fără prețuri: prețurile stau doar pe /preturi.
 export const SERVICES = [
   {
     href: '/creare-site-brasov',
-    art: '/assets/art/site.webp',
-    short: 'Site în 10 zile',
-    want: 'Să arăți bine când te caută cineva',
-    title: 'Site de prezentare în 10 zile',
-    desc: 'Un site care arată pe telefon ce faci, cât costă și cum te sună clientul. Gata în 10 zile, cu textele scrise de mine.',
-    price: 'de la 1.200 lei',
-    priceNote: 'o dată',
-    time: '5–14 zile',
+    nav: 'Site-uri',
+    film: 'site',
+    title: 'Te caută cineva și află în cinci secunde ce faci',
+    lead: 'Un site făcut întâi pentru telefon, cu textele scrise de mine, gata în 10 zile.',
+    effects: [
+      'Omul vede imediat ce faci, unde ești și cum te sună.',
+      'Te sună sau îți scrie pe WhatsApp dintr-o atingere.',
+      'Arăți la fel de serios ca firmele mari din oraș.',
+    ],
   },
   {
     href: '/seo-local-brasov',
-    art: '/assets/art/harta.webp',
-    short: 'SEO local și Google Maps',
-    want: 'Să te găsească cei din zonă pe Google',
-    title: 'SEO local și Google Maps',
-    desc: 'Când cineva din Brașov caută pe telefon ce vinzi tu, apari printre primii pe hartă. Lunar vezi câți te-au sunat de acolo.',
-    price: 'de la 390 lei/lună',
-    priceNote: 'setup 600 lei',
-    time: 'lunar',
+    nav: 'Google Maps',
+    film: 'harta',
+    title: 'Când cineva din zonă caută ce vinzi, apari tu pe hartă',
+    lead: 'Fișa Google pusă la punct, recenzii noi în fiecare lună și un site care spune Google ce faci.',
+    effects: [
+      'Apari în primele trei firme de pe hartă, acolo unde se dau telefoanele.',
+      'Ai mai multe recenzii, de la clienții tăi reali.',
+      'Vezi lunar câți te-au sunat și câți au cerut traseul spre tine.',
+    ],
   },
   {
     href: '/social-media-foto-video',
-    art: '/assets/art/video.webp',
-    short: 'Conținut video și grafic',
-    want: 'Să te vadă lumea pe Instagram și TikTok',
-    title: 'Reels, video și grafică',
-    desc: 'Vin la tine, filmez și montez reels și video-uri de prezentare. Plus postări, carusele și bannere, gata de publicat.',
-    price: 'de la 90 lei',
-    priceNote: 'abonament de la 890 lei/lună',
-    time: 'pe bucată sau lunar',
+    nav: 'Video',
+    film: 'video',
+    title: 'Oamenii te văd lucrând înainte să intre pe ușă',
+    lead: 'Vin la tine, filmez și montez reels și video de prezentare, gata de postat.',
+    effects: [
+      'Clientul nou te cunoaște înainte să te sune.',
+      'Ai material pentru Instagram, TikTok, site și reclame din aceeași zi de filmare.',
+      'Postezi constant, fără să stai tu cu telefonul în mână.',
+    ],
   },
   {
     href: '/automatizari',
-    art: '/assets/art/automatizari.webp',
-    short: 'Automatizări',
-    want: 'Să nu-ți mai scape nicio cerere',
-    title: 'Automatizări pentru afaceri mici',
-    desc: 'Cererile de pe site îți intră direct pe WhatsApp, clienții se programează singuri, iar cei mulțumiți primesc linkul de recenzie.',
-    price: 'de la 450 lei',
-    priceNote: 'o dată',
-    time: '2–14 zile',
-    tag: 'Nou',
+    nav: 'Automatizări',
+    film: 'automatizari',
+    title: 'Niciun client care ți-a scris nu mai rămâne fără răspuns',
+    lead: 'Cererile ajung pe WhatsApp, programările se fac singure, recenziile se cer singure.',
+    effects: [
+      'Cererea de pe site îți intră pe telefon în aceeași secundă.',
+      'Clientul își alege singur ora și primește reminder.',
+      'Cine a plecat mulțumit primește linkul de recenzie.',
+    ],
   },
 ];
+
+export const NAV = [
+  ...SERVICES.map((s) => ({ href: s.href, label: s.nav })),
+  { href: '/proiecte', label: 'Proiecte' },
+  { href: '/preturi', label: 'Prețuri' },
+];
+
+// Dovezi verificate pe 26 noiembrie 2026. Fără cifre care depind de sezon.
+export const PROOF = {
+  armour: {
+    client: 'Armour Glass Parbrize',
+    url: 'https://armourglass-parbrize.ro',
+    big: 'Top 3',
+    line: 'pe Google Maps la „parbrize brasov”',
+    detail: 'Fișă pornită de la zero. Azi e în primele trei pe hartă, singura cu nota 5,0, lângă firme cu 311 și 227 de recenzii.',
+    pack: [
+      { name: 'Firmă din Brașov', rating: '4,8', reviews: 311 },
+      { name: 'Firmă din Brașov', rating: '4,6', reviews: 227 },
+      { name: 'Armour Glass', rating: '5,0', reviews: 88, us: true },
+    ],
+  },
+  albastru: {
+    client: 'Albastru Infinit',
+    url: 'https://albastruinfinit.ro',
+    big: '407',
+    line: 'căutări diferite pentru care apare în Google, față de 262 înainte',
+    detail: 'Cabinet de psihoterapie. Am preluat SEO-ul în septembrie 2026. La „psiholog brasov” e pe prima pagină. Cifre din Google Search Console, fără căutările după numele cabinetului.',
+  },
+  ozone: {
+    client: 'Ozone Residence',
+    url: 'https://ozoneresidence.ro',
+    big: 'Site + Instagram',
+    line: 'de la zero, pentru un dezvoltator imobiliar',
+    detail: 'Site de prezentare și cont de Instagram urmărit de firme din piața lui: design interior, constructori, producători de mobilă.',
+  },
+};
 
 export const PROJECTS = [
-  {
-    name: 'Ozone Residence',
-    type: 'Website și Instagram',
-    url: 'https://ozoneresidence.ro',
-    img: '/assets/screenshot-ozoneresidence.webp',
-    alt: 'Website prezentare Ozone Residence Brașov, realizat de ADSNOW',
-    services: ['site', 'social'],
-  },
-  {
-    name: 'Albastru Infinit',
-    type: 'Website și SEO local',
-    url: 'https://albastruinfinit.ro',
-    img: '/assets/screenshot-albastruinfinit.webp',
-    alt: 'Website și SEO local pentru cabinetul de psihoterapie Albastru Infinit din Brașov',
-    services: ['site', 'seo'],
-  },
-  {
-    name: 'Armour Glass Parbrize',
-    type: 'SEO local și content video',
-    url: 'https://armourglass-parbrize.ro',
-    img: '/assets/screenshot-armourglass.webp',
-    alt: 'SEO local, Google Maps și reels pentru Armour Glass Parbrize Brașov',
-    services: ['seo', 'content'],
-  },
-  {
-    name: 'Psiholog Brașov',
-    type: 'Website',
-    url: 'https://psihologbrasov.ro',
-    img: '/assets/screenshot-psihologbrasov.webp',
-    alt: 'Website pentru cabinet psiholog Brașov, realizat de ADSNOW',
-    services: ['site'],
-  },
-  {
-    name: 'Soul Synergy',
-    type: 'Website',
-    url: 'https://soulsynergy.ro',
-    img: '/assets/screenshot-soulsynergy.webp',
-    alt: 'Website pentru Soul Synergy, realizat de ADSNOW',
-    services: ['site'],
-  },
-  {
-    name: 'Dr. Sima',
-    type: 'Website',
-    url: 'https://drsima.ro',
-    img: '/assets/screenshot-drsima.webp',
-    alt: 'Website prezentare cabinet medical Dr. Sima, realizat de ADSNOW',
-    services: ['site'],
-  },
+  { name: 'Ozone Residence', type: 'Site și Instagram', url: 'https://ozoneresidence.ro', img: '/assets/screenshot-ozoneresidence.webp' },
+  { name: 'Albastru Infinit', type: 'Site și Google', url: 'https://albastruinfinit.ro', img: '/assets/screenshot-albastruinfinit.webp' },
+  { name: 'Armour Glass Parbrize', type: 'Google Maps și video', url: 'https://armourglass-parbrize.ro', img: '/assets/screenshot-armourglass.webp' },
+  { name: 'Psiholog Brașov', type: 'Site', url: 'https://psihologbrasov.ro', img: '/assets/screenshot-psihologbrasov.webp' },
+  { name: 'Soul Synergy', type: 'Site', url: 'https://soulsynergy.ro', img: '/assets/screenshot-soulsynergy.webp' },
+  { name: 'Dr. Sima', type: 'Site', url: 'https://drsima.ro', img: '/assets/screenshot-drsima.webp' },
 ];
 
-// Studii de caz cu cifre verificate pe 26 noiembrie 2026 (Search Console, Google, Instagram).
-export const CASE_STUDIES = [
-  {
-    slug: 'armour-glass',
-    client: 'Armour Glass Parbrize',
-    service: 'SEO local · content video',
-    stat: 'Top 3',
-    statLabel: 'pe Google Maps la „parbrize brasov”, singurul cu nota 5,0',
-    story:
-      'Un business pornit de la zero: site, fișa Google și Instagram, toate lansate de noi. Azi fișa e în primele 3 pe hartă, cu nota 5,0 din 88 de recenzii, lângă firme cu 311 și 227 de recenzii, pornite cu ani înainte.',
-    facts: [
-      'Nota 5,0 din 88 de recenzii pe Google',
-      'Ultimele 3 reels făcute de noi: 1.214 vizualizări, de 4,5 ori mai mult decât urmăritorii contului',
-      'Următorul pas: și site-ul pe prima pagină',
-    ],
-    url: 'https://armourglass-parbrize.ro',
-  },
-  {
-    slug: 'albastru-infinit',
-    client: 'Albastru Infinit',
-    service: 'SEO local · website',
-    stat: '+45%',
-    statLabel: 'vizite din Google în primele 3 luni de SEO',
-    story:
-      'Am preluat SEO-ul în septembrie 2026. Comparăm septembrie–noiembrie cu iunie–august: mai multe vizite pe zi, mai multe căutări pentru care apare site-ul, aceeași poziție de top pe căutarea principală.',
-    facts: [
-      'În noiembrie apare în Google de 2 ori mai des decât vara',
-      'Apare pentru 407 căutări diferite, față de 262 înainte',
-      '„psiholog brasov”: prima pagină, cu 75% mai multe clicuri pe zi',
-      'Cifre direct din Google, fără căutările după numele cabinetului',
-    ],
-    url: 'https://albastruinfinit.ro',
-  },
-  {
-    slug: 'ozone-residence',
-    client: 'Ozone Residence',
-    service: 'Instagram · website',
-    stat: '451',
-    statLabel: 'urmăritori reali, pe un cont pornit de la zero',
-    story:
-      'Contul de Instagram al dezvoltatorului a pornit de la zero. Urmăritorii sunt oameni și firme din piața lui: studiouri de design interior, constructori, instalatori, producători de mobilă, peisagiști. Niciun urmăritor cumpărat.',
-    facts: [
-      '26 de postări care construiesc încredere înainte de vânzare',
-      'Urmăritori care lucrează în aceeași piață cu el',
-      'Site-ul ozoneresidence.ro, tot de la noi',
-    ],
-    url: 'https://www.instagram.com/ozoneresidencebrasov/',
-  },
+// Reels făcute de ADSNOW (public/video/<id>.mp4 + <id>.jpg).
+export const REELS = [
+  { id: 'DezffYPNsru', client: 'Armour Glass', topic: 'Înlocuire de parbriz în 3 pași' },
+  { id: 'DdtaZAjtq0-', client: 'Armour Glass', topic: 'Polimerizare faruri' },
+  { id: 'DW01iJ9kw2y', client: 'Ozone Residence', topic: 'Prezentare ansamblu' },
+  { id: 'DNoGnQCNWj7', client: 'Ozone Residence', topic: 'Blocuri finalizate și predate' },
+  { id: 'DVIlpeUjURb', client: 'Psiholog Brașov', topic: 'Workshop despre anxietate' },
 ];
 
-// Nodul LocalBusiness, referit din toate paginile prin @id.
+// Videoul de prezentare cu Alex (public/video/alex.mp4). Gol = se arată poza.
+export const ALEX_VIDEO = '';
+
 export const BUSINESS_ID = `${SITE}/#business`;
 
 export function breadcrumb(items: { name: string; path: string }[]) {
@@ -191,45 +154,6 @@ export function breadcrumb(items: { name: string; path: string }[]) {
 export function faqSchema(faq: { q: string; a: string }[]) {
   return {
     '@type': 'FAQPage',
-    mainEntity: faq.map((f) => ({
-      '@type': 'Question',
-      name: f.q,
-      acceptedAnswer: { '@type': 'Answer', text: f.a },
-    })),
+    mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
   };
 }
-
-// Reels făcute de ADSNOW. Fișierele stau în public/video/<id>.mp4 + <id>.jpg (540x960, comprimate pentru web).
-// id = codul din linkul de Instagram al reel-ului.
-export const REELS = [
-  { id: 'DezffYPNsru', client: 'Armour Glass', topic: 'Înlocuire de parbriz în 3 pași' },
-  { id: 'DdtaZAjtq0-', client: 'Armour Glass', topic: 'Polimerizare faruri' },
-  { id: 'DW01iJ9kw2y', client: 'Ozone Residence', topic: 'Prezentare ansamblu' },
-  { id: 'DNoGnQCNWj7', client: 'Ozone Residence', topic: 'Blocuri finalizate și predate' },
-  { id: 'DVIlpeUjURb', client: 'Psiholog Brașov', topic: 'Workshop despre anxietate' },
-];
-
-// Videoul de prezentare cu Alex (public/video/alex.mp4). Gol = se arată poza.
-export const ALEX_VIDEO = '';
-
-// Site-uri care se derulează în telefonul din hero (public/assets/phone/<id>.webp, 520 px lățime).
-export const PHONE_SITES = [
-  { id: 'albastruinfinit', name: 'albastruinfinit.ro' },
-  { id: 'ozoneresidence', name: 'ozoneresidence.ro' },
-  { id: 'psihologbrasov', name: 'psihologbrasov.ro' },
-];
-
-// Albastru Infinit: de câte ori a apărut site-ul în Google pe săptămână, fără căutările după nume.
-// Sursa: Google Search Console, 1 iunie – 22 noiembrie 2026. SEO preluat la 1 septembrie.
-export const SEO_CHART = {
-  start: '1 iun',
-  takeover: 13,
-  weeks: [318, 354, 310, 288, 305, 294, 304, 325, 309, 416, 345, 334, 368, 317, 394, 395, 303, 290, 324, 391, 357, 435, 521, 684, 837],
-};
-
-// Armour Glass: primele 3 rezultate pe hartă la „parbrize brasov” (Google, 26 noiembrie 2026).
-export const MAPS_PACK = [
-  { name: 'Concurent', rating: '4,8', reviews: 311 },
-  { name: 'Concurent', rating: '4,6', reviews: 227 },
-  { name: 'Armour Glass', rating: '5,0', reviews: 88, us: true },
-];

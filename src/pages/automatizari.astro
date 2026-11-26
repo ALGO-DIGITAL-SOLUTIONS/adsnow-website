@@ -1,113 +1,42 @@
 ---
 import Base from '../layouts/Base.astro';
-import PageHero from '../components/PageHero.astro';
+import ServiceHero from '../components/ServiceHero.astro';
+import Effects from '../components/Effects.astro';
+import Steps from '../components/Steps.astro';
 import Faq from '../components/Faq.astro';
-import CtaFinal from '../components/CtaFinal.astro';
-import PriceTable from '../components/PriceTable.astro';
-import Related from '../components/Related.astro';
-import { SITE, BUSINESS_ID, breadcrumb, faqSchema } from '../data/site';
-import { AUTOMATIONS } from '../data/pricing';
+import PriceLine from '../components/PriceLine.astro';
+import EndCta from '../components/EndCta.astro';
+import { breadcrumb, faqSchema, SITE, BUSINESS_ID } from '../data/site';
 
 const path = '/automatizari';
-
-const faq = [
-  {
-    q: 'Am nevoie de cunoștințe tehnice?',
-    a: 'Nu. Eu construiesc totul și îți arăt într-un apel scurt unde vezi cererile și programările. Tu doar primești mesajele pe telefon.',
-  },
-  {
-    q: 'Ce costuri lunare apar în plus?',
-    a: 'La majoritatea, niciunul. Folosim ce ai deja, Google Calendar și WhatsApp Business, sau variante gratuite. La asistentul AI e un abonament de 150 lei pe lună, care acoperă costul lui și întreținerea.',
-  },
-  {
-    q: 'Asistentul AI poate spune ceva greșit clienților?',
-    a: 'Răspunde doar din informațiile pe care i le dăm noi: servicii, prețuri, program, adresă. La orice întrebare la care nu știe răspunsul, preia datele clientului și îți trimite cererea ție.',
-  },
-  {
-    q: 'Funcționează cu site-ul pe care îl am deja?',
-    a: 'De cele mai multe ori, da. Formularele, programările și asistentul AI se pot adăuga pe aproape orice site. Dacă al tău nu permite, îți spun din primul mesaj.',
-  },
+const FAQ = [
+  { q: 'Am nevoie de cunoștințe tehnice?', a: 'Nu. Construiesc totul și îți arăt într-un apel scurt unde vezi cererile și programările. Tu doar primești mesajele pe telefon.' },
+  { q: 'Apar costuri lunare în plus?', a: 'La majoritatea, niciunul: folosim ce ai deja, Google Calendar și WhatsApp Business. Doar asistentul pentru întrebări are un abonament mic, care acoperă costul lui.' },
+  { q: 'Funcționează cu site-ul pe care îl am?', a: 'De cele mai multe ori, da. Formularele și programările se pot adăuga pe aproape orice site. Dacă al tău nu permite, îți spun din primul mesaj.' },
+  { q: 'Asistentul poate spune ceva greșit clienților?', a: 'Răspunde doar din informațiile pe care i le dăm: servicii, program, adresă. La orice întrebare la care nu știe răspunsul, preia datele omului și îți trimite cererea ție.' },
 ];
-
 const schema = [
-  {
-    '@type': 'Service',
-    '@id': `${SITE}${path}#service`,
-    name: 'Automatizări pentru afaceri mici',
-    serviceType: 'Automatizare marketing',
-    description:
-      'Kit de recenzii Google, formulare care trimit cererile pe WhatsApp, programări online cu reminder, răspuns automat la lead-uri și asistent AI pentru site și WhatsApp.',
-    provider: { '@id': BUSINESS_ID },
-    areaServed: { '@type': 'Country', name: 'România' },
-    offers: {
-      '@type': 'Offer',
-      priceSpecification: { '@type': 'PriceSpecification', minPrice: '450', maxPrice: '1690', priceCurrency: 'RON' },
-    },
-    url: `${SITE}${path}`,
-  },
+  { '@type': 'Service', name: 'Automatizări pentru afaceri mici', serviceType: 'Business automation', provider: { '@id': BUSINESS_ID }, areaServed: 'Brașov', url: `${SITE}${path}` },
   breadcrumb([{ name: 'Automatizări', path }]),
-  faqSchema(faq),
+  faqSchema(FAQ),
 ];
 ---
-<Base
-  ogImage="/assets/og/automatizari.jpg"
-  title="Automatizări pentru afaceri mici: WhatsApp, programări, recenzii · ADSNOW"
-  ogTitle="Automatizări pentru afaceri mici | ADSNOW"
-  description="Cereri care ajung direct pe WhatsApp, programări online cu reminder, recenzii Google cerute automat, asistent AI pe site. De la 450 lei, gata în 2-14 zile."
-  path={path}
-  schema={schema}
->
-  <PageHero
-    art="/assets/art/automatizari.webp"
-    crumb="Automatizări"
-    title="Nu mai pierde niciun client care ți-a scris"
-    lead="Cererile de pe site ajung direct pe WhatsApp, clienții își fac singuri programarea, iar cei mulțumiți primesc automat linkul de recenzie. Lucruri simple, care îți economisesc ore în fiecare săptămână."
-    primary={{ href: '#preturi', label: 'Vezi prețurile →' }}
-    secondary={{ href: '/audit-gratuit', label: 'Audit gratuit' }}
-    meta={[
-      { label: 'Preț', value: 'de la 450 lei' },
-      { label: 'Gata în', value: '2–14 zile' },
-      { label: 'Pachet Pilot automat', value: '1.690 lei' },
-    ]}
-  />
+<Base title="Automatizări: cereri pe WhatsApp și programări | ADSNOW" description="Cererile de pe site ajung pe WhatsApp, clienții se programează singuri, iar cei mulțumiți primesc linkul de recenzie. Niciun client pierdut." path={path} schema={schema} ogImage="/assets/og/automatizari.jpg" preload="/video/automatizari.webp">
+  <ServiceHero crumb="Automatizări" film="automatizari" title="Niciun client care ți-a scris nu mai rămâne fără răspuns" lead="Afacerile mici pierd cei mai mulți clienți după ce aceștia au scris deja: emailul citit a doua zi, telefonul nepreluat în timpul unei programări." />
 
-  <section class="section-muted section-padding">
-    <div class="container split">
-      <h2 class="section-title fade-in">Unde scapă clienții</h2>
-      <div class="prose fade-in">
-        <p>Majoritatea afacerilor mici nu pierd clienți din lipsă de vizibilitate, ci după ce clientul a scris deja: emailul citit a doua zi, telefonul nepreluat în timpul unei programări, mesajul de pe Instagram uitat.</p>
-        <ul>
-          <li>Cererea din formular ajunge într-un email pe care nu-l verifici des</li>
-          <li>Programările se fac doar la telefon, iar telefonul sună când lucrezi</li>
-          <li>Clienții mulțumiți nu lasă recenzie, pentru că nimeni nu le-a cerut</li>
-          <li>Răspunzi la aceleași întrebări despre prețuri și program de zece ori pe zi</li>
-        </ul>
-        <p><strong>Fiecare dintre ele se rezolvă cu o automatizare simplă</strong>, construită o dată, care merge singură.</p>
-      </div>
-    </div>
-  </section>
+  <Effects title="Ce se schimbă pentru tine" items={[
+    { h: 'Cererea vine pe telefon', p: 'Ce completează omul pe site îți intră pe WhatsApp în aceeași secundă, iar el primește imediat un răspuns că te ocupi.' },
+    { h: 'Programările se fac singure', p: 'Clientul își alege ora liberă din calendarul tău și primește reminder, ca să nu uite. Tu nu mai răspunzi la telefon în timp ce lucrezi.' },
+    { h: 'Recenziile se adună', p: 'Cine a plecat mulțumit primește linkul de recenzie la momentul potrivit. Nota ta de pe Google crește fără să ceri tu.' },
+  ]} />
 
-  <section id="preturi" class="section-light section-padding">
-    <div class="container">
-      <span class="eyebrow fade-in">Prețuri</span>
-      <h2 class="section-title fade-in">Ce poți automatiza</h2>
-      <p class="section-desc fade-in">Prețuri finale, nu se adaugă TVA. Plata: 50% la început, 50% la livrare. Primele trei, împreună, formează pachetul <strong>Pilot automat</strong>, la 1.690 lei în loc de 2.050.</p>
-      <PriceTable rows={AUTOMATIONS} />
-    </div>
-  </section>
+  <Steps title="Cum lucrez" items={[
+    { when: 'Ziua 1', h: 'Discuție de 20 de minute', p: 'Îmi spui cum vin acum cererile și unde se pierd. Alegem una sau două automatizări, nu zece.' },
+    { when: 'Zilele 2–7', h: 'Construcție și test', p: 'Construiesc fluxul și îl testez cu cereri de probă, pe telefonul tău.' },
+    { when: 'La predare', h: 'Îți arăt tot', p: 'Unde vezi cererile, cum schimbi un mesaj. În primele 30 de zile, orice ajustare e inclusă.' },
+  ]} />
 
-  <section class="section-dark section-padding">
-    <div class="container">
-      <h2 class="section-title fade-in" style="color:var(--paper);">Cum lucrăm</h2>
-      <ol class="steps">
-        <li class="fade-in"><div><span class="step-when">ziua 1</span><h3>Discuție de 20 de minute</h3><p>Îmi spui cum vin acum cererile și programările și unde se pierd. Alegem una sau două automatizări, nu zece.</p></div></li>
-        <li class="fade-in"><div><span class="step-when">zilele 2-7</span><h3>Construcție și testare</h3><p>Construiesc fluxul și îl testez cu cereri de probă, pe telefonul tău.</p></div></li>
-        <li class="fade-in"><div><span class="step-when">livrare</span><h3>Predare</h3><p>Îți arăt unde vezi totul și ce faci dacă vrei să schimbi un mesaj. Primele 30 de zile, orice ajustare e inclusă.</p></div></li>
-      </ol>
-      <Related current={path} />
-    </div>
-  </section>
-
-  <Faq items={faq} title="Întrebări despre automatizări" />
-  <CtaFinal />
+  <PriceLine anchor="automatizari" />
+  <Faq items={FAQ} title="Întrebări despre automatizări" />
+  <EndCta message="Bună, Alex! Pierd cereri de la clienți. Afacerea mea: " />
 </Base>

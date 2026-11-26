@@ -6,7 +6,7 @@ export type PriceRow = { name: string; what: string; time?: string; price: strin
 
 export const PACKAGES: (PriceRow & { kicker: string; includes: string[]; separate: string; featured?: boolean })[] = [
   {
-    kicker: 'O dată · 10 zile lucrătoare',
+    kicker: 'O dată, 10 zile lucrătoare',
     name: 'Lansare în 10 zile',
     what: 'Pentru afacerile care pornesc online de la zero sau își refac prezența dintr-o mișcare.',
     includes: ['Site Start, până la 5 pagini', 'Fișa Google pusă la punct', '4 reels de lansare', 'Texte scrise de mine'],
@@ -15,7 +15,7 @@ export const PACKAGES: (PriceRow & { kicker: string; includes: string[]; separat
     featured: true,
   },
   {
-    kicker: 'Lunar · minim 3 luni',
+    kicker: 'Lunar, minim 3 luni',
     name: 'Creștere locală',
     what: 'Ca să te găsească oamenii din zonă pe Google Maps și să te vadă în fiecare săptămână pe Instagram.',
     includes: ['Mic: Maps Esențial + Conținut Mic', 'Mare: SEO local complet + Conținut Mediu', 'Raport lunar cu apeluri și cereri'],
@@ -24,7 +24,7 @@ export const PACKAGES: (PriceRow & { kicker: string; includes: string[]; separat
     separate: '1.280 / 2.380 lei separat',
   },
   {
-    kicker: 'O dată · 7 zile lucrătoare',
+    kicker: 'O dată, 7 zile lucrătoare',
     name: 'Pilot automat',
     what: 'Ca să nu mai pierzi niciun client care ți-a scris sau te-a sunat.',
     includes: ['Kit pentru recenzii Google', 'Formular → WhatsApp + listă de clienți', 'Programări online cu reminder'],

@@ -1,141 +1,51 @@
 ---
 import Base from '../layouts/Base.astro';
-import PageHero from '../components/PageHero.astro';
-import Faq from '../components/Faq.astro';
-import CtaFinal from '../components/CtaFinal.astro';
-import ProjectGrid from '../components/ProjectGrid.astro';
-import PriceTable from '../components/PriceTable.astro';
-import CaseStudies from '../components/CaseStudies.astro';
-import Related from '../components/Related.astro';
+import ServiceHero from '../components/ServiceHero.astro';
+import Effects from '../components/Effects.astro';
+import Steps from '../components/Steps.astro';
 import Reels from '../components/Reels.astro';
-import { SITE, BUSINESS_ID, breadcrumb, faqSchema } from '../data/site';
-import { CONTENT_PIECES, CONTENT_PLANS, SEO } from '../data/pricing';
+import Faq from '../components/Faq.astro';
+import PriceLine from '../components/PriceLine.astro';
+import EndCta from '../components/EndCta.astro';
+import { breadcrumb, faqSchema, SITE, BUSINESS_ID } from '../data/site';
 
 const path = '/social-media-foto-video';
-
-const faq = [
-  {
-    q: 'Ce fel de video faceți?',
-    a: 'Reels de până la 60 de secunde și video de prezentare de 1-2 minute: scenariu, filmare la tine, montaj, color, subtitrări și muzică. Video-ul de prezentare îl primești în format orizontal, pentru site și YouTube, și vertical, pentru Instagram și TikTok.',
-  },
-  {
-    q: 'Pot cumpăra doar câteva reels, fără abonament?',
-    a: 'Da. Un reel din materialul tău costă 200 lei, o zi de filmare cu 4 reels montate și 20 de poze costă 1.500 lei. Abonamentul are sens când vrei să postezi constant, în fiecare săptămână.',
-  },
-  {
-    q: 'Cine filmează?',
-    a: 'Eu, la tine, în Brașov și în zona de până la o oră de mers. Tot ce apare în postările tale e filmat la tine.',
-  },
-  {
-    q: 'Aprob eu postările înainte să apară?',
-    a: 'Da. Primești planul lunar înainte, cu textele și materialele, și nimic nu se publică fără acordul tău.',
-  },
-  {
-    q: 'Bugetul de reclame intră în preț?',
-    a: 'Nu. Cei 790 lei pe lună sunt pentru munca mea: fac reclamele, le pornesc, le ajustez și îți trimit raportul. Banii plătiți direct către Facebook și Instagram sunt separați, îi stabilim împreună și îi vezi în contul tău.',
-  },
-  {
-    q: 'De ce minim 3 luni la abonament?',
-    a: 'Pentru că în prima lună stabilim tonul, formatele și ritmul, iar abia în a doua și a treia se vede ce funcționează. După aceea te poți opri oricând, cu o lună înainte.',
-  },
+const FAQ = [
+  { q: 'Cine filmează?', a: 'Eu, la tine, în Brașov și până la o oră de mers. Tot ce apare în postările tale e filmat la tine, cu oamenii și lucrurile tale.' },
+  { q: 'Pot lua doar câteva video-uri, fără abonament?', a: 'Da. Poți lua o zi de filmare sau câteva reels pe bucată. Abonamentul are sens când vrei să postezi în fiecare săptămână.' },
+  { q: 'Aprob eu postările înainte să apară?', a: 'Da. Primești planul lunar înainte, cu textele și materialele, și nimic nu se publică fără acordul tău.' },
+  { q: 'Faci și reclame?', a: 'Da, pe Facebook și Instagram. Întâi ne asigurăm că oferta și site-ul sunt pregătite, ca fiecare leu dat pe reclame să aducă ceva. Bugetul de reclame îl plătești direct către Meta și îl vezi în contul tău.' },
 ];
-
 const schema = [
-  {
-    '@type': 'Service',
-    '@id': `${SITE}${path}#service`,
-    name: 'Reels, video de prezentare, grafică și social media',
-    serviceType: 'Content marketing',
-    description:
-      'Reels și video de prezentare de până la 2 minute filmate la tine, postări, carusele, bannere și postere, administrare Instagram, Facebook și TikTok, campanii Meta Ads.',
-    provider: { '@id': BUSINESS_ID },
-    areaServed: { '@type': 'City', name: 'Brașov' },
-    offers: [
-      {
-        '@type': 'Offer',
-        name: 'Abonament de conținut',
-        priceSpecification: { '@type': 'UnitPriceSpecification', minPrice: '890', priceCurrency: 'RON', unitText: 'lună' },
-      },
-      {
-        '@type': 'Offer',
-        name: 'Zi de filmare',
-        priceSpecification: { '@type': 'PriceSpecification', price: '1500', priceCurrency: 'RON' },
-      },
-    ],
-    url: `${SITE}${path}`,
-  },
-  breadcrumb([{ name: 'Reels, video și grafică', path }]),
-  faqSchema(faq),
+  { '@type': 'Service', name: 'Video și social media', serviceType: 'Video production', provider: { '@id': BUSINESS_ID }, areaServed: 'Brașov', url: `${SITE}${path}` },
+  breadcrumb([{ name: 'Video', path }]),
+  faqSchema(FAQ),
 ];
 ---
-<Base
-  ogImage="/assets/og/social-media-foto-video.jpg"
-  title="Reels, video de prezentare și social media Brașov · ADSNOW"
-  ogTitle="Reels, video și grafică pentru afaceri din Brașov | ADSNOW"
-  description="Reels și video de prezentare filmate la tine în Brașov, postări, carusele, bannere și postere. Reel de la 200 lei, zi de filmare 1.500 lei, abonament de la 890 lei/lună."
-  path={path}
-  schema={schema}
->
-  <PageHero
-    art="/assets/art/video.webp"
-    crumb="Reels, video și grafică"
-    title="Reels, video de prezentare și grafică"
-    lead="Vin la tine, filmez și montez. Reels, video de prezentare de 1-2 minute, postări, carusele, bannere și postere, pe bucată sau lunar, cu postarea inclusă."
-    primary={{ href: '#preturi', label: 'Vezi prețurile →' }}
-    secondary={{ href: '/audit-gratuit', label: 'Audit gratuit' }}
-    meta={[
-      { label: 'Reel', value: 'de la 200 lei' },
-      { label: 'Zi de filmare', value: '1.500 lei' },
-      { label: 'Abonament', value: 'de la 890 lei/lună' },
-    ]}
-  />
+<Base title="Reels și video de prezentare în Brașov | ADSNOW" description="Vin la tine, filmez și montez reels și video de prezentare. Clienții te cunosc înainte să te sune, iar tu ai material pentru toate rețelele." path={path} schema={schema} ogImage="/assets/og/social-media-foto-video.jpg" preload="/video/video.webp">
+  <ServiceHero crumb="Video" film="video" title="Oamenii te văd lucrând înainte să intre pe ușă" lead="Vin la tine, filmez și montez reels și video de prezentare, gata de postat. Tu lucrezi ca de obicei, eu am grijă de restul." />
 
-  <section class="section-dark section-padding">
-    <div class="container">
-      <span class="eyebrow fade-in" style="color:var(--sky);">Rezultate</span>
-      <h2 class="section-title fade-in" style="color:var(--paper);">Video-uri care se văd</h2>
-      <CaseStudies only={['ozone-residence', 'armour-glass']} />
-    </div>
-  </section>
+  <Effects title="Ce se schimbă pentru tine" items={[
+    { h: 'Te cunosc înainte să te sune', p: 'Un client nou care te-a văzut lucrând are deja încredere. Vine mai ușor și negociază mai puțin.' },
+    { h: 'O zi de filmare, o lună de postări', p: 'Din aceeași zi ies reels, poze și un video de prezentare, pentru Instagram, TikTok, site și reclame.' },
+    { h: 'Postezi constant, fără stres', p: 'Primești planul, aprobi, iar postările apar la ore bune. Nu mai stai tu cu telefonul în mână.' },
+  ]} />
 
-  <section id="reels" class="section-dark section-padding" style="padding-top:0;">
-    <div class="container">
-      <span class="eyebrow fade-in" style="color:var(--sky);">Exemple</span>
-      <h2 class="section-title fade-in" style="color:var(--paper);">Apasă și ascultă</h2>
+  <section class="sec-tight sec-night on-dark" aria-labelledby="reels-h">
+    <div class="wrap">
+      <div class="sec-head" style="margin-bottom:40px"><h2 id="reels-h">Filmate la clienți, montate de mine</h2><p class="lead muted">Atinge un video ca să pornești sunetul.</p></div>
       <Reels />
     </div>
   </section>
 
-  <section id="preturi" class="section-light section-padding">
-    <div class="container">
-      <span class="eyebrow fade-in">Prețuri</span>
-      <h2 class="section-title fade-in">Pe bucată sau lunar</h2>
-      <p class="section-desc fade-in">Prețuri finale, nu se adaugă TVA. Abonamentele au un minim de 3 luni.</p>
-      <PriceTable rows={CONTENT_PLANS} caption="Abonamente lunare, cu postare inclusă" />
-      <PriceTable rows={CONTENT_PIECES} caption="Pe bucată" showTime={false} />
-      <PriceTable rows={SEO.filter((r) => r.name === 'Meta Ads')} caption="Reclame" />
-    </div>
-  </section>
+  <Steps title="Cum lucrez" items={[
+    { when: 'Înainte', h: 'Plănuim ce filmăm', p: 'Ce vrei să afle oamenii despre tine și ce întrebări primești des. Din asta ies ideile de video.' },
+    { when: 'Ziua de filmare', h: 'Vin la tine', p: 'Până la șase ore, cu lumină și sunet. Tu lucrezi ca de obicei, eu prind momentele bune.' },
+    { when: 'În aceeași săptămână', h: 'Montaj și subtitrări', p: 'Montaj, culoare, subtitrări și muzică, în format vertical și orizontal.' },
+    { when: 'Lunar', h: 'Postare și raport', p: 'Postez pe conturile tale după planul aprobat și îți spun ce a mers.' },
+  ]} />
 
-  <section class="section-muted section-padding">
-    <div class="container split">
-      <h2 class="section-title fade-in">Abonament sau pe bucată?</h2>
-      <div class="prose fade-in">
-        <p>Abonamentul merită când vrei să apari în fiecare săptămână și să crești contul constant. Dacă ai deja programul plin din recomandări, de multe ori ajunge o zi de filmare, câteva reels bune și o <a href="/seo-local-brasov">fișă Google în regulă</a>.</p>
-        <p><strong>Îți spun din primul mesaj ce ți se potrivește.</strong> La fel la reclame: întâi ne asigurăm că oferta și site-ul sunt pregătite, ca fiecare leu dat pe reclame să aducă ceva.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section-light section-padding">
-    <div class="container">
-      <span class="eyebrow fade-in">Portofoliu</span>
-      <h2 class="section-title fade-in">Proiecte de video și social media</h2>
-      <ProjectGrid filter={['social', 'content']} />
-      <Related current={path} />
-    </div>
-  </section>
-
-  <Faq items={faq} title="Întrebări despre video și social media" tone="muted" />
-  <CtaFinal />
+  <PriceLine anchor="video" />
+  <Faq items={FAQ} title="Întrebări despre video" />
+  <EndCta message="Bună, Alex! Aș vrea video pentru afacerea mea: " />
 </Base>

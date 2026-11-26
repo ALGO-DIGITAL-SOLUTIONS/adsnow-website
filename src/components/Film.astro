@@ -1,0 +1,14 @@
+---
+// Film de fundal generat cu Higgsfield (Seedance 2.5, cadrul de start = cadrul de final, ca bucla să nu se vadă).
+// Fișiere: /video/<name>.mp4 + <name>.webp (poster). Cu `vertical`: și <name>-v.mp4 + <name>-v.webp pentru telefon.
+// Video-ul se încarcă doar când ajunge aproape de ecran (scriptul din Base); posterul e ce vede Google ca imagine principală.
+interface Props { name: string; class?: string; eager?: boolean; vertical?: boolean }
+const { name, class: cls, eager = false, vertical = false } = Astro.props;
+---
+<div class:list={['film', cls]} aria-hidden="true">
+  <picture>
+    {vertical && <source media="(max-width: 760px)" srcset={`/video/${name}-v.webp`} />}
+    <img class="poster" src={`/video/${name}.webp`} alt="" width="1600" height="893" loading={eager ? 'eager' : 'lazy'} fetchpriority={eager ? 'high' : undefined} decoding="async"/>
+  </picture>
+  <video data-film={`/video/${name}.mp4`} data-v={vertical ? `/video/${name}-v.mp4` : undefined} muted loop playsinline preload="none"></video>
+</div>

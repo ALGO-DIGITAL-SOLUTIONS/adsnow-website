@@ -1,22 +1,13 @@
 ---
-// Reels găzduite pe site (public/video), fără interfața Instagram și fără cookie-uri de la terți.
-// Se descarcă doar când ajung pe ecran; pornesc fără sunet, iar un click pornește sau oprește sunetul.
+// Reels găzduite pe site, fără Instagram și fără cookie-uri de la terți.
+// Pornesc fără sunet când ajung pe ecran; o atingere pornește sunetul.
 import { REELS } from '../data/site';
-interface Props { strip?: boolean }
-const { strip = false } = Astro.props;
 ---
-<div class:list={['reels-grid', { strip }]}>
+<div class="reels" role="list">
   {REELS.map((r) => (
-    <figure class="reel fade-in">
+    <figure class="reel" role="listitem">
       <button type="button" class="reel-frame" aria-label={`Pornește sunetul: ${r.client}, ${r.topic}`}>
-        <video
-          src={`/video/${r.id}.mp4`}
-          poster={`/video/${r.id}.jpg`}
-          muted
-          loop
-          playsinline
-          preload="none"
-        ></video>
+        <video data-reel={`/video/${r.id}.mp4`} poster={`/video/${r.id}.jpg`} muted loop playsinline preload="none"></video>
         <span class="reel-sound" aria-hidden="true">
           <svg class="off" viewBox="0 0 24 24"><path d="M11 5 6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
           <svg class="on" viewBox="0 0 24 24"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a10 10 0 0 1 0 14"/></svg>
@@ -26,25 +17,23 @@ const { strip = false } = Astro.props;
     </figure>
   ))}
 </div>
-
 <script is:inline>
-(function(){
-  var vids = document.querySelectorAll('.reel video');
+(function () {
+  var vids = document.querySelectorAll('video[data-reel]');
   if (!vids.length) return;
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
       var v = e.target;
-      if (e.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function(){}); }
-      else v.pause();
+      if (e.isIntersecting) { if (!v.src) v.src = v.dataset.reel; var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+      else if (v.src) v.pause();
     });
   }, { threshold: 0.4 });
-  vids.forEach(function(v){ io.observe(v); });
-  document.querySelectorAll('.reel-frame').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      var v = btn.querySelector('video');
-      var turnOn = v.muted;
-      vids.forEach(function(o){ o.muted = true; o.closest('.reel-frame').classList.remove('sound'); });
-      if (turnOn) { v.muted = false; btn.classList.add('sound'); v.play(); }
+  vids.forEach(function (v) { io.observe(v); });
+  document.querySelectorAll('.reel-frame').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var v = b.querySelector('video'); var on = v.muted;
+      vids.forEach(function (o) { o.muted = true; o.closest('.reel-frame').classList.remove('sound'); });
+      if (on) { if (!v.src) v.src = v.dataset.reel; v.muted = false; b.classList.add('sound'); v.play(); }
     });
   });
 })();

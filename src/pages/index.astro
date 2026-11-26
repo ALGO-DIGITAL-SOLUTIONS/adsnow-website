@@ -1,297 +1,154 @@
 ---
 import Base from '../layouts/Base.astro';
-import Faq from '../components/Faq.astro';
-import CtaFinal from '../components/CtaFinal.astro';
-import ProjectGrid from '../components/ProjectGrid.astro';
-import HeroPhone from '../components/HeroPhone.astro';
-import ProofBento from '../components/ProofBento.astro';
-import AlexIntro from '../components/AlexIntro.astro';
+import Film from '../components/Film.astro';
 import Reels from '../components/Reels.astro';
-import { SITE, BUSINESS_ID, CONTACT, SERVICES, faqSchema } from '../data/site';
-import { PACKAGES } from '../data/pricing';
+import Faq from '../components/Faq.astro';
+import EndCta from '../components/EndCta.astro';
+import { SERVICES, PROOF, ALEX_VIDEO, CONTACT, WA_DEFAULT, faqSchema, SITE } from '../data/site';
 import { REVIEWS, REVIEWS_SUMMARY } from '../data/reviews';
 
-const faq = [
-  {
-    q: 'Chiar e gata site-ul în 10 zile?',
-    a: 'Da. Cele 10 zile lucrătoare încep când am logo-ul, câteva poze și informațiile de bază. În prima zi îți trimit lista exactă. Din ziua 3 vezi site-ul pe un link de test, iar la fiecare modificare cerută îți răspund în cel mult două zile. Cu cât răspunzi mai repede, cu atât lansăm mai repede.',
-  },
-  {
-    q: 'Trebuie să mă pricep la ceva tehnic?',
-    a: 'Deloc. Tu îmi spui ce faci și pentru cine, eu mă ocup de rest: texte, design, Google, filmare. La final îți arăt într-o oră tot ce trebuie să știi și primești toate parolele.',
-  },
-  {
-    q: 'De ce sunt prețurile pe site?',
-    a: 'Ca să știi de la început cât costă, fără să ceri ofertă și să aștepți. Lista e aceeași pentru toată lumea: o cafenea și o clinică plătesc la fel pentru același lucru. Prețurile sunt finale, nu se adaugă TVA.',
-  },
-  {
-    q: 'Cu cine vorbesc?',
-    a: 'Cu mine, Alex. De la primul mesaj până după lansare, tot eu răspund la telefon și tot eu fac treaba. Ce stabilim azi pe WhatsApp vezi pe site a doua zi.',
-  },
-  {
-    q: 'Vii să filmezi la mine?',
-    a: 'Da, în Brașov și în zona de până la o oră de mers: reels, video de prezentare de 1-2 minute, poze. Materialul îl folosești apoi pe site, pe Instagram, pe TikTok și în reclame.',
-  },
-  {
-    q: 'Lucrezi doar cu firme din Brașov?',
-    a: 'Site-urile, Google Maps și automatizările le fac pentru afaceri din toată țara. Filmările le fac în Brașov și în zona de până la o oră.',
-  },
-  {
-    q: 'Ce se întâmplă dacă vreau să mă opresc din abonament?',
-    a: 'Abonamentele au un minim de 3 luni, pentru că Google și Instagram au nevoie de timp ca să dea rezultate. După aceea te oprești oricând, cu o lună înainte. Tot ce am făcut pentru tine rămâne al tău: site, poze, video, conturi.',
-  },
-];
-
-const schema = [
-  {
-    '@type': ['LocalBusiness', 'MarketingAgency'],
-    '@id': BUSINESS_ID,
-    name: 'ADSNOW',
-    legalName: 'ALGO Digital Solutions SRL',
-    description:
-      'Marketing rapid pentru afaceri locale din Brașov: site-uri în 10 zile, SEO local și Google Maps, reels și video de prezentare, automatizări.',
-    url: SITE,
-    telephone: CONTACT.phoneIntl,
-    email: CONTACT.email,
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: CONTACT.street,
-      addressLocality: CONTACT.city,
-      addressRegion: 'BV',
-      postalCode: CONTACT.postalCode,
-      addressCountry: 'RO',
-    },
-    geo: { '@type': 'GeoCoordinates', latitude: 45.6427, longitude: 25.5887 },
-    founder: { '@type': 'Person', name: 'Alexandru Gogu', jobTitle: 'Fondator' },
-    foundingDate: '2023',
-    areaServed: [
-      { '@type': 'City', name: 'Brașov' },
-      { '@type': 'Country', name: 'România' },
-    ],
-    priceRange: '90-4400 RON',
-    image: `${SITE}/assets/logo-512.png`,
-    logo: `${SITE}/assets/logo-512.png`,
-    sameAs: [
-      'https://www.facebook.com/adsnow.ro',
-      'https://www.instagram.com/adsnow.ro/',
-      'https://www.tiktok.com/@adsnow.ro',
-      CONTACT.gbp,
-    ],
-    openingHoursSpecification: {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-      opens: '09:00',
-      closes: '18:00',
-    },
-    hasOfferCatalog: {
-      '@type': 'OfferCatalog',
-      name: 'Servicii de marketing pentru afaceri locale',
-      itemListElement: SERVICES.map((s) => ({
-        '@type': 'Offer',
-        itemOffered: { '@type': 'Service', '@id': `${SITE}${s.href}#service`, name: s.title, url: `${SITE}${s.href}` },
-      })),
-    },
-  },
-  {
-    '@type': 'WebSite',
-    '@id': `${SITE}/#website`,
-    url: SITE,
-    name: 'ADSNOW',
-    publisher: { '@id': BUSINESS_ID },
-    inLanguage: 'ro-RO',
-  },
-  {
-    '@type': 'WebPage',
-    '@id': `${SITE}/#webpage`,
-    url: `${SITE}/`,
-    name: 'Agenție de marketing Brașov: site în 10 zile, SEO local, reels | ADSNOW',
-    isPartOf: { '@id': `${SITE}/#website` },
-    about: { '@id': BUSINESS_ID },
-    inLanguage: 'ro-RO',
-  },
-  faqSchema(faq),
+const FAQ = [
+  { q: 'Chiar e gata site-ul în 10 zile?', a: 'Da, în 10 zile lucrătoare de când am logo-ul, câteva poze și informațiile de bază. Din ziua a treia îl vezi pe telefon, pe un link de test, iar la fiecare modificare îți răspund în cel mult două zile.' },
+  { q: 'Trebuie să mă pricep la ceva tehnic?', a: 'Deloc. Tu îmi spui ce faci și pentru cine, eu mă ocup de texte, design, Google și filmare. La final îți arăt într-o oră ce trebuie să știi și primești toate parolele.' },
+  { q: 'Cu cine vorbesc?', a: 'Cu mine, Alex. De la primul mesaj până după lansare, tot eu răspund și tot eu fac treaba. Nu există intermediari.' },
+  { q: 'Vii să filmezi la mine?', a: 'Da, în Brașov și până la o oră de mers. Filmez reels, video de prezentare și poze, pe care le folosești apoi pe site, pe Instagram, pe TikTok și în reclame.' },
+  { q: 'Lucrezi doar cu firme din Brașov?', a: 'Site-urile, Google Maps și automatizările le fac pentru afaceri din toată țara. Filmările le fac în Brașov și în zona de până la o oră.' },
 ];
 ---
 <Base
-  title="Agenție de marketing Brașov | Site în 10 zile, SEO local, reels · ADSNOW"
-  ogTitle="Mai mulți clienți pentru afacerea ta din Brașov | ADSNOW"
-  description="Mai mulți clienți pentru afacerea ta din Brașov: site gata în 10 zile, loc pe Google Maps, reels filmate la tine și automatizări. Toate prețurile sunt pe site."
+  title="ADSNOW Brașov: site, Google Maps și video pentru afaceri locale"
+  description="Mai mulți clienți din zonă: site gata în 10 zile, loc pe Google Maps și video filmate la tine. Lucrezi direct cu Alex, la prețuri fixe și publice."
   path="/"
-  schema={schema}
-  preloadHero
+  preload="/video/acasa.webp"
+  preloadMobile="/video/acasa-v.webp"
+  schema={[faqSchema(FAQ), { '@type': 'WebSite', '@id': `${SITE}/#website`, url: `${SITE}/`, name: 'ADSNOW', inLanguage: 'ro-RO' }]}
 >
-  <section id="hero">
-    <div class="hero-content">
-      <div class="hero-eyebrow">Marketing pentru afaceri locale · Brașov</div>
-      <h1 class="hero-title">Mai mulți clienți pentru afacerea ta, <span class="grad">fără să te ocupi tu de marketing.</span></h1>
-      <p class="hero-sub">Site gata în 10 zile, loc pe Google Maps când te caută cei din zonă și video-uri care chiar se văd. Le fac eu, de la cap la coadă, la prețuri pe care le vezi de acum.</p>
-      <div class="hero-actions">
-        <a href="/preturi" class="btn-primary">Vezi cât costă →</a>
-        <a href="/audit-gratuit" class="btn-secondary">Află ce ți-ar aduce clienți</a>
+  <section class="hero">
+    <Film name="acasa" eager vertical />
+    <div class="wrap hero-in">
+      <h1><span class="ln"><span>Mai mulți clienți</span></span><span class="ln"><span>pentru afacerea ta,</span></span><span class="ln"><span>fără să te ocupi de marketing.</span></span></h1>
+      <p class="lead">Site gata în 10 zile, loc pe Google Maps când te caută cei din zonă și video filmate la tine. Le fac eu, de la cap la coadă, la prețuri pe care le știi de acum.</p>
+      <div class="btn-row">
+        <a href={WA_DEFAULT} class="btn btn-coral" target="_blank" rel="noopener" data-track="whatsapp">Scrie-mi pe WhatsApp</a>
+        <a href="#ce-se-schimba" class="btn btn-ghost-light">Vezi ce se schimbă pentru tine</a>
       </div>
-      <p class="hero-proof"><span class="stars" aria-hidden="true">★★★★★</span>{REVIEWS_SUMMARY.rating} din {REVIEWS_SUMMARY.count} recenzii pe Google</p>
-    </div>
-    <div class="hero-visual">
-      <HeroPhone />
+      <p class="hero-proof"><span class="stars" aria-hidden="true">★★★★★</span><a href={CONTACT.gbp} target="_blank" rel="noopener">{REVIEWS_SUMMARY.rating} din {REVIEWS_SUMMARY.count} recenzii pe Google</a></p>
     </div>
   </section>
 
-  <AlexIntro />
-
-  <section id="rezultate" class="section-dark section-padding">
-    <div class="container">
-      <span class="eyebrow fade-in">Rezultate</span>
-      <h2 class="section-title fade-in" style="color:var(--paper);">Ce s-a schimbat pentru clienții mei</h2>
-      <ProofBento />
-    </div>
-  </section>
-
-  <section id="reels" class="section-dark section-padding reels-band">
-    <div class="container">
-      <div class="band-head">
-        <div>
-          <span class="eyebrow fade-in">Video</span>
-          <h2 class="section-title fade-in" style="color:var(--paper);">Filmate la clienți, montate de mine</h2>
-        </div>
-        <a href="/social-media-foto-video" class="btn-secondary fade-in">Prețuri video →</a>
+  <section class="sec" id="ce-se-schimba">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Ce se schimbă pentru afacerea ta</h2>
+        <p class="lead muted">Patru lucruri care aduc clienți. Le iei pe rând, sau pe toate odată.</p>
       </div>
-      <Reels strip />
-    </div>
-  </section>
-
-  <section id="servicii" class="section-light section-padding">
-    <div class="container">
-      <span class="eyebrow fade-in">Cu ce te ajut</span>
-      <h2 class="section-title fade-in">Ce vrei să se întâmple?</h2>
-      <p class="section-desc fade-in">Alege ce te interesează. Le poți lua separat sau împreună, într-un pachet mai ieftin.</p>
-      <div class="want-grid">
-        {SERVICES.map((s) => (
-          <a href={s.href} class="want-card fade-in">
-            <img src={s.art.replace('.webp', '-mic.webp')} alt="" class="want-art" width="112" height="112" loading="lazy" decoding="async"/>
-            <span class="want-q">{s.want}</span>
-            <p>{s.desc}</p>
-            <span class="want-foot"><strong>{s.short}</strong><span>{s.price}</span></span>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section id="pachete" class="section-muted section-padding">
-    <div class="container">
-      <span class="eyebrow fade-in">Pachete</span>
-      <h2 class="section-title fade-in">Prețul îl știi de acum</h2>
-      <p class="section-desc fade-in">Aceleași prețuri pentru toată lumea. Sunt finale, nu se adaugă TVA, și nu apar costuri pe parcurs.</p>
-      <div class="cards-grid">
-        {PACKAGES.map((p) => (
-          <div class:list={['card', 'package-card', 'fade-in', { featured: p.featured }]}>
-            <span class="card-kicker">{p.kicker}</span>
-            <h3>{p.name}</h3>
-            <p>{p.what}</p>
-            <ul>{p.includes.map((i) => <li>{i}</li>)}</ul>
-            <div class="card-price">{p.price}{p.note && <small>{p.note}</small>}</div>
-            <div class="package-separate">{p.separate}</div>
+      {SERVICES.map((s) => (
+        <article class="chapter">
+          <Film name={s.film} class="chapter-film" />
+          <div>
+            <h3 class="chapter-title">{s.title}</h3>
+            <p class="lead">{s.lead}</p>
+            <ul class="effects">{s.effects.map((e) => <li>{e}</li>)}</ul>
+            <a href={s.href} class="textlink">Cum lucrez la {s.nav.toLowerCase()}</a>
           </div>
-        ))}
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="sec sec-dark on-dark" id="rezultate">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Ce s-a schimbat pentru clienții mei</h2>
+        <p class="lead muted">Cifre verificate în noiembrie 2026, direct din Google și din conturile lor. Proiectele sunt live, le poți deschide.</p>
       </div>
-      <div class="fade-in" style="margin-top:40px;">
-        <a href="/preturi" class="btn-primary">Toate prețurile →</a>
+      <div class="proof">
+        <div class="proof-item">
+          <span class="proof-big">{PROOF.armour.big}</span>
+          <p class="proof-line">{PROOF.armour.line}</p>
+          <ol class="pack" aria-label="Primele trei rezultate pe hartă">
+            {PROOF.armour.pack.map((m) => <li class:list={{ us: m.us }}><span>{m.name}</span><span class="r">{m.rating} <b aria-hidden="true">★</b> ({m.reviews})</span></li>)}
+          </ol>
+          <p class="proof-detail">{PROOF.armour.detail}</p>
+          <p class="proof-client"><a href={PROOF.armour.url} target="_blank" rel="noopener">{PROOF.armour.client}</a></p>
+        </div>
+        <div class="proof-item">
+          <span class="proof-big">{PROOF.albastru.big}</span>
+          <p class="proof-line">{PROOF.albastru.line}</p>
+          <p class="proof-detail">{PROOF.albastru.detail}</p>
+          <p class="proof-client"><a href={PROOF.albastru.url} target="_blank" rel="noopener">{PROOF.albastru.client}</a></p>
+        </div>
+        <div class="proof-item">
+          <span class="proof-big" style="font-size:clamp(44px,4.4vw,72px)">{PROOF.ozone.big}</span>
+          <p class="proof-line">{PROOF.ozone.line}</p>
+          <p class="proof-detail">{PROOF.ozone.detail}</p>
+          <p class="proof-client"><a href={PROOF.ozone.url} target="_blank" rel="noopener">{PROOF.ozone.client}</a></p>
+        </div>
+      </div>
+      <p style="margin-top:56px"><a href="/proiecte" class="textlink">Toate proiectele</a></p>
+    </div>
+  </section>
+
+  <section class="sec-tight sec-night on-dark" aria-labelledby="reels-h">
+    <div class="wrap">
+      <div class="sec-head" style="margin-bottom:40px">
+        <h2 id="reels-h">Filmate la clienți, montate de mine</h2>
+        <p class="lead muted">Atinge un video ca să pornești sunetul.</p>
+      </div>
+      <Reels />
+    </div>
+  </section>
+
+  <section class="sec" id="despre">
+    <div class="wrap alex">
+      <div class="alex-media">
+        {ALEX_VIDEO
+          ? <video src={ALEX_VIDEO} poster="/assets/alex-gogu.webp" controls playsinline preload="none"></video>
+          : <img src="/assets/alex-gogu.webp" alt="Alex Gogu, fondatorul ADSNOW" width="400" height="600" loading="lazy"/>}
+      </div>
+      <div>
+        <blockquote>„Salut, sunt Alex. Îți scriu textele, îți fac site-ul, vin la tine să filmez și mă uit lunar câți clienți ți-au venit din Google.”</blockquote>
+        <p class="lead">Am lucrat ani la rând în proiecte mari de marketing. Acum lucrez cu afaceri locale, una câte una, și vorbești direct cu mine de la primul mesaj până după lansare.</p>
+        <div class="btn-row">
+          <a href={WA_DEFAULT} class="btn btn-indigo" target="_blank" rel="noopener" data-track="whatsapp">Scrie-mi pe WhatsApp</a>
+          <a href={`tel:${CONTACT.phoneIntl}`} class="btn btn-ghost-dark" data-track="telefon">Sună la {CONTACT.phone}</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="zece-zile" class="section-dark section-padding">
-    <div class="container">
-      <img src="/assets/art/zece-zile-mic.webp" alt="" class="ten-art" width="224" height="224" loading="lazy" decoding="async"/>
-      <span class="eyebrow fade-in">Site nou în 10 zile</span>
-      <h2 class="section-title fade-in" style="color:var(--paper);">Tu îmi trimiți logo-ul și câteva poze. Restul e treaba mea.</h2>
-      <div class="ten-days fade-in">
-        <div><span class="day">Ziua 1</span><h3>Vorbim 20 de minute</h3><p>Îmi spui ce faci și pentru cine. Primești lista scurtă cu ce îmi trebuie. Textele le scriu eu.</p></div>
-        <div><span class="day">Ziua 3</span><h3>Îl vezi pe telefon</h3><p>Primești un link și vezi site-ul cum prinde formă. Fără să aștepți o lună ca să vezi ceva.</p></div>
-        <div><span class="day">Zilele 4–8</span><h3>Îl ajustăm împreună</h3><p>Îmi scrii ce schimbăm, pe WhatsApp. Modific în cel mult două zile.</p></div>
-        <div><span class="day">Ziua 10</span><h3>E live</h3><p>Site-ul tău pe domeniul tău, legat de Google Maps. Primești toate parolele și îți arăt cum se folosește.</p></div>
+  <section class="sec sec-dark on-dark" id="zece-zile">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Tu îmi trimiți logo-ul și câteva poze. Restul e treaba mea.</h2>
       </div>
-      <p class="ten-days-note fade-in"><strong>Ritmul îl dai tu.</strong> Cele 10 zile încep când am materialele, iar cu cât răspunzi mai repede, cu atât lansăm mai repede.</p>
-    </div>
-  </section>
-
-  <section id="cum-lucrez" class="section-light section-padding">
-    <div class="container">
-      <span class="eyebrow fade-in">Cum lucrăm</span>
-      <ol class="statements">
-        <li class="fade-in"><div><strong>Un singur om, de la început până la final.</strong> Vorbești cu mine la telefon sau pe WhatsApp, și tot eu fac treaba. Ce stabilim azi vezi a doua zi.</div></li>
-        <li class="fade-in"><div><strong>Îți spun ce merită.</strong> Dacă ceva nu-ți aduce clienți, îți spun să păstrezi banii. Prefer un client mulțumit, care revine și mă recomandă.</div></li>
-        <li class="fade-in"><div><strong>Vezi lunar ce ai primit.</strong> Un raport scurt, pe înțelesul tău: câți te-au sunat, câți au cerut traseul spre tine, unde apari în Google.</div></li>
+      <ol class="days">
+        <li><span class="when">Ziua 1</span><h3>Vorbim 20 de minute</h3><p>Îmi spui ce faci și pentru cine. Primești lista scurtă cu ce îmi trebuie.</p></li>
+        <li><span class="when">Ziua 3</span><h3>Îl vezi pe telefon</h3><p>Primești un link și vezi site-ul cum prinde formă.</p></li>
+        <li><span class="when">Zilele 4–8</span><h3>Îl ajustăm împreună</h3><p>Îmi scrii pe WhatsApp ce schimbăm. Modific în cel mult două zile.</p></li>
+        <li><span class="when">Ziua 10</span><h3>E live</h3><p>Pe domeniul tău, legat de Google Maps. Primești parolele și îți arăt cum se folosește.</p></li>
       </ol>
+      <p class="days-note"><strong>Ritmul îl dai tu.</strong> Cele 10 zile încep când am materialele. Cu cât răspunzi mai repede, cu atât lansăm mai repede.</p>
     </div>
   </section>
 
-  <section id="pentru-cine" class="section-muted section-padding">
-    <div class="container">
-      <span class="eyebrow fade-in">Pentru cine</span>
-      <h2 class="section-title fade-in">Afaceri locale care vor clienți din zonă</h2>
-      <div class="sector-grid">
-        {[
-          { k: 'Sănătate', t: 'Clinici, cabinete medicale, stomatologie, psihologie' },
-          { k: 'Auto și construcții', t: 'Service-uri, ateliere, constructori, instalatori' },
-          { k: 'Ospitalitate și beauty', t: 'Cafenele, restaurante, saloane, săli de sport' },
-          { k: 'Profesii liberale', t: 'Avocatură, notariat, contabilitate' },
-          { k: 'Imobiliare și B2B', t: 'Dezvoltatori, agenții de recrutare, firme B2B mici' },
-          { k: 'Afaceri noi', t: 'Pornești acum și vrei site, Google Maps și conținut din prima lună' },
-        ].map((s) => (
-          <div class="sector fade-in"><span class="sector-k">{s.k}</span><p>{s.t}</p></div>
-        ))}
+  <section class="sec sec-mist" id="recenzii">
+    <div class="wrap">
+      <div class="rating">
+        <span class="display">{REVIEWS_SUMMARY.rating}</span>
+        <div><span class="stars" aria-hidden="true">★★★★★</span><p class="muted">din {REVIEWS_SUMMARY.count} recenzii pe <a href={CONTACT.gbp} target="_blank" rel="noopener" class="textlink">Google</a></p></div>
       </div>
-      <div class="fit-strip fade-in">
-        <h3>Merge cel mai bine când</h3>
-        <ol>
-          <li><strong>Răspunzi repede.</strong> Cu materialele și părerea ta la timp, site-ul e gata în 10 zile.</li>
-          <li><strong>Ai răbdare cu Google.</strong> Primele schimbări apar în câteva săptămâni, rezultatele clare în 3–6 luni.</li>
-          <li><strong>Vrei să crești constant.</strong> Recenzii de la clienții tăi, urmăritori din zona ta, clienți care revin.</li>
-        </ol>
-      </div>
-    </div>
-  </section>
-
-  <section id="recenzii" class="section-light section-padding">
-    <div class="container">
-      <div class="reviews-head">
-        <div>
-          <span class="eyebrow fade-in">Recenzii Google</span>
-          <h2 class="section-title fade-in">Ce spun clienții</h2>
-        </div>
-        <div class="fade-in">
-          <div class="reviews-score">{REVIEWS_SUMMARY.rating}<small>din {REVIEWS_SUMMARY.count} recenzii pe Google</small></div>
-          <div class="reviews-stars" aria-hidden="true">★★★★★</div>
-        </div>
-      </div>
-      <div class="cards-grid">
+      <div class="quotes">
         {REVIEWS.map((r) => (
-          <figure class="card review-card fade-in">
+          <figure>
             <blockquote>„{r.text}”</blockquote>
-            <cite>{r.name} · {r.business}</cite>
+            <figcaption><strong>{r.name}</strong>, {r.business}</figcaption>
           </figure>
         ))}
       </div>
-      <div class="fade-in" style="margin-top:32px;">
-        <a href={CONTACT.gbp} target="_blank" rel="noopener" class="btn-secondary">Vezi toate recenziile pe Google →</a>
-      </div>
     </div>
   </section>
 
-  <section id="portofoliu" class="section-muted section-padding">
-    <div class="container">
-      <span class="eyebrow fade-in">Portofoliu</span>
-      <h2 class="section-title fade-in">Site-uri pe care le poți încerca acum</h2>
-      <p class="section-desc fade-in">Toate sunt live. Deschide-le de pe telefon, cum le deschid și clienții lor.</p>
-      <ProjectGrid limit={3} />
-      <div style="text-align:center;margin-top:40px;">
-        <a href="/proiecte" class="btn-secondary portfolio-expand fade-in">Toate proiectele →</a>
-      </div>
-    </div>
-  </section>
-
-  <Faq items={faq} desc="Ce mă întreabă oamenii cel mai des. Dacă nu găsești răspunsul, scrie-mi direct." tone="muted" />
-  <CtaFinal />
-
+  <Faq items={FAQ} />
+  <EndCta />
 </Base>
