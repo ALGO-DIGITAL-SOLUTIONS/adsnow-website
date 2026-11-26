@@ -27,6 +27,7 @@ export const NAV = [
 export const SERVICES = [
   {
     href: '/creare-site-brasov',
+    art: '/assets/art/site.webp',
     short: 'Site în 10 zile',
     want: 'Să arăți bine când te caută cineva',
     title: 'Site de prezentare în 10 zile',
@@ -37,6 +38,7 @@ export const SERVICES = [
   },
   {
     href: '/seo-local-brasov',
+    art: '/assets/art/harta.webp',
     short: 'SEO local și Google Maps',
     want: 'Să te găsească cei din zonă pe Google',
     title: 'SEO local și Google Maps',
@@ -47,6 +49,7 @@ export const SERVICES = [
   },
   {
     href: '/social-media-foto-video',
+    art: '/assets/art/video.webp',
     short: 'Conținut video și grafic',
     want: 'Să te vadă lumea pe Instagram și TikTok',
     title: 'Reels, video și grafică',
@@ -57,6 +60,7 @@ export const SERVICES = [
   },
   {
     href: '/automatizari',
+    art: '/assets/art/automatizari.webp',
     short: 'Automatizări',
     want: 'Să nu-ți mai scape nicio cerere',
     title: 'Automatizări pentru afaceri mici',

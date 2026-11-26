@@ -750,3 +750,36 @@ a.service-card:hover { background: rgba(255,255,255,.05); border-color: rgba(255
 h1, h2, h3, .section-title, .hero-title { letter-spacing: -0.01em; }
 .footer-logo { height: 32px; width: auto; opacity: 1; }
 ::selection { background: #FFC85C; color: #16115E; }
+
+/* ==================== ILUSTRAȚII 3D (Higgsfield) ==================== */
+.page-hero.has-art, .audit-hero.has-art { position: relative; overflow: hidden; }
+.page-art {
+  position: absolute; right: max(24px, calc((100vw - 1200px) / 2 - 40px)); top: 50%;
+  width: clamp(280px, 30vw, 460px); height: auto; transform: translateY(-46%);
+  pointer-events: none; animation: artFloat 7s ease-in-out infinite;
+}
+.has-art .page-title, .has-art .page-lead, .audit-hero.has-art h1, .audit-hero.has-art p { max-width: min(680px, 58vw); }
+.has-art .page-meta { max-width: min(760px, 62vw); }
+@keyframes artFloat { 0%,100% { transform: translateY(-46%); } 50% { transform: translateY(calc(-46% - 10px)); } }
+.want-art { width: 96px; height: 96px; margin: -8px 0 4px -6px; }
+#zece-zile .container { position: relative; }
+.ten-art { position: absolute; right: 0; top: -40px; width: 220px; height: auto; pointer-events: none; }
+#zece-zile .section-title { max-width: 760px; }
+.notfound { min-height: 70vh; display: flex; flex-direction: column; justify-content: center; }
+.notfound .container { width: 100%; }
+.audit-hero .page-art { width: clamp(220px, 20vw, 290px); top: 62%; }
+@media (max-width: 1100px) {
+  .page-art { position: static; display: block; width: 220px; margin: 0 0 8px; transform: none; animation: none; }
+  .has-art .page-title, .has-art .page-lead, .audit-hero.has-art h1, .audit-hero.has-art p, .has-art .page-meta { max-width: none; }
+  .page-hero.has-art, .audit-hero.has-art { padding-top: 110px; }
+  .page-hero.has-art .page-art, .audit-hero.has-art .page-art { margin-left: max(24px, calc((100vw - 1200px) / 2)); }
+  .ten-art { width: 180px; top: -20px; }
+}
+@media (max-width: 768px) {
+  .page-art, .audit-hero .page-art { width: 180px; margin: 0 auto 0 0; }
+  .page-hero.has-art .page-art, .audit-hero.has-art .page-art { margin-left: 0; }
+  .page-hero.has-art, .audit-hero.has-art { padding-top: 96px; }
+  .ten-art { position: static; display: block; width: 140px; margin: 0 0 12px; }
+  .want-art { width: 80px; height: 80px; }
+}
+@media (prefers-reduced-motion: reduce) { .page-art { animation: none; } }

@@ -167,6 +167,7 @@ const schema = [
       <div class="want-grid">
         {SERVICES.map((s) => (
           <a href={s.href} class="want-card fade-in">
+            <img src={s.art.replace('.webp', '-mic.webp')} alt="" class="want-art" width="112" height="112" loading="lazy" decoding="async"/>
             <span class="want-q">{s.want}</span>
             <p>{s.desc}</p>
             <span class="want-foot"><strong>{s.short}</strong><span>{s.price}</span></span>
@@ -201,6 +202,7 @@ const schema = [
 
   <section id="zece-zile" class="section-dark section-padding">
     <div class="container">
+      <img src="/assets/art/zece-zile-mic.webp" alt="" class="ten-art" width="224" height="224" loading="lazy" decoding="async"/>
       <span class="eyebrow fade-in">Site nou în 10 zile</span>
       <h2 class="section-title fade-in" style="color:var(--paper);">Tu îmi trimiți logo-ul și câteva poze. Restul e treaba mea.</h2>
       <div class="ten-days fade-in">

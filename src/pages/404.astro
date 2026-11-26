@@ -1,0 +1,22 @@
+---
+import Base from '../layouts/Base.astro';
+import { CONTACT } from '../data/site';
+---
+<Base
+  title="Pagina nu există | ADSNOW"
+  description="Pagina pe care o cauți nu mai există sau a fost mutată."
+  path="/404"
+>
+  <section class="page-hero has-art notfound">
+    <img src="/assets/art/pierdut.webp" alt="" class="page-art" width="520" height="520" decoding="async"/>
+    <div class="container">
+      <h1 class="page-title">Pagina asta s-a rătăcit.</h1>
+      <p class="page-lead">Linkul e greșit sau pagina a fost mutată. Te duc înapoi la ce cauți.</p>
+      <div class="hero-actions">
+        <a href="/" class="btn-primary">Prima pagină →</a>
+        <a href="/preturi" class="btn-secondary">Vezi prețurile</a>
+        <a href={`${CONTACT.whatsapp}?text=${encodeURIComponent('Bună, Alex! Am ajuns pe o pagină care nu mai există pe site.')}`} target="_blank" rel="noopener" class="btn-secondary">Scrie-mi pe WhatsApp</a>
+      </div>
+    </div>
+  </section>
+</Base>

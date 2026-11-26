@@ -6,11 +6,13 @@ interface Props {
   meta?: { label: string; value: string }[];
   primary?: { href: string; label: string; external?: boolean };
   secondary?: { href: string; label: string; external?: boolean };
+  art?: string;
 }
-const { crumb, title, lead, meta = [], primary, secondary } = Astro.props;
+const { crumb, title, lead, meta = [], primary, secondary, art } = Astro.props;
 const ext = (l?: { external?: boolean }) => (l?.external ? { target: '_blank', rel: 'noopener' } : {});
 ---
-<section class="page-hero">
+<section class:list={['page-hero', { 'has-art': art }]}>
+  {art && <img src={art} alt="" class="page-art" width="520" height="520" fetchpriority="high" decoding="async"/>}
   <div class="container">
     <div class="breadcrumb"><a href="/">Acasă</a><span>/</span>{crumb}</div>
     <h1 class="page-title">{title}</h1>
