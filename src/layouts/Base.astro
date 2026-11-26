@@ -210,6 +210,13 @@ const isActive = (href: string) => href === path;
       });
     }, { rootMargin: '200px 0px' });
     films.forEach(function (v) { io.observe(v); });
+    // Filmul din capul paginii pornește imediat după încărcare, fără să aștepte observatorul.
+    window.addEventListener('load', function () {
+      document.querySelectorAll('video[data-now]').forEach(function (v) {
+        if (!v.src) v.src = (narrow && v.dataset.v) ? v.dataset.v : v.dataset.film;
+        var p = v.play(); if (p && p.catch) p.catch(function () {});
+      });
+    });
   }
 })();
 </script>
