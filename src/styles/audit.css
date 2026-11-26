@@ -11,7 +11,7 @@
 }
 .audit-hero p {
   font-size: 17px; font-weight: 300; line-height: 1.6;
-  color: rgba(10,14,20,0.6);
+  color: rgba(22,17,94,0.6);
   max-width: 640px;
 }
 
@@ -69,7 +69,7 @@
 }
 .radio-option input[type="radio"]:checked ~ span { color: var(--ink); }
 .radio-option span {
-  font-size: 15px; color: rgba(10,14,20,0.7);
+  font-size: 15px; color: rgba(22,17,94,0.7);
   line-height: 1.4;
 }
 
@@ -103,9 +103,9 @@
   resize: vertical; min-height: 80px;
   border-radius: 0;
 }
-.form-textarea::placeholder { color: rgba(10,14,20,0.3); }
+.form-textarea::placeholder { color: rgba(22,17,94,0.3); }
 .form-textarea-label {
-  font-size: 14px; color: rgba(10,14,20,0.55);
+  font-size: 14px; color: rgba(22,17,94,0.55);
   margin-bottom: 8px;
 }
 
@@ -118,7 +118,7 @@
 .contact-field label {
   font-family: var(--font-mono); font-size: 9px;
   letter-spacing: 0.18em; text-transform: uppercase;
-  color: rgba(10,14,20,0.5);
+  color: rgba(22,17,94,0.5);
   margin-bottom: 8px;
 }
 .contact-field input {
@@ -128,9 +128,9 @@
   font-size: 15px; color: var(--ink);
   border-radius: 0;
 }
-.contact-field input::placeholder { color: rgba(10,14,20,0.3); }
+.contact-field input::placeholder { color: rgba(22,17,94,0.3); }
 .contact-field .optional-hint {
-  font-size: 11px; color: rgba(10,14,20,0.35);
+  font-size: 11px; color: rgba(22,17,94,0.35);
   margin-top: 4px;
 }
 
@@ -151,7 +151,7 @@
   fill: none; stroke-width: 1.5;
 }
 .submit-micro {
-  font-size: 13px; color: rgba(10,14,20,0.4);
+  font-size: 13px; color: rgba(22,17,94,0.4);
   margin-top: 12px; line-height: 1.5;
 }
 
@@ -172,7 +172,7 @@
 }
 .confirmation p {
   font-size: 17px; line-height: 1.6;
-  color: rgba(10,14,20,0.6);
+  color: rgba(22,17,94,0.6);
   max-width: 520px; margin: 0 auto;
 }
 
@@ -203,7 +203,7 @@ textarea:invalid:not(:placeholder-shown) {
 }
 .benefit-card p {
   font-size: 14px; line-height: 1.6;
-  color: rgba(10,14,20,0.6);
+  color: rgba(22,17,94,0.6);
 }
 
 /* ============ MICRO CTA ============ */
@@ -213,7 +213,7 @@ textarea:invalid:not(:placeholder-shown) {
   background: var(--paper);
 }
 .micro-cta p {
-  font-size: 16px; color: rgba(10,14,20,0.6);
+  font-size: 16px; color: rgba(22,17,94,0.6);
   margin-bottom: 16px;
 }
 .micro-cta a {

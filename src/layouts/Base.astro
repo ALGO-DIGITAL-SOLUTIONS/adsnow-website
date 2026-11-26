@@ -39,7 +39,7 @@ const isActive = (href: string) => href === path;
   </>
 )}
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="theme-color" content="#0a0e14"/>
+<meta name="theme-color" content="#16115E"/>
 <title>{title}</title>
 <meta name="description" content={description}/>
 <meta name="author" content="ADSNOW"/>
@@ -56,10 +56,9 @@ const isActive = (href: string) => href === path;
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="geo.region" content="RO-BV"/>
 <meta name="geo.placename" content="Brașov"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
-<link rel="icon" type="image/svg+xml" href="/assets/logo-icon.svg"/>
+<link rel="preload" href="/fonts/coolvetica.woff2" as="font" type="font/woff2" crossorigin/>
+<link rel="preload" href="/fonts/garet-book.woff2" as="font" type="font/woff2" crossorigin/>
+<link rel="icon" type="image/svg+xml" href="/assets/semn-adsnow.svg"/>
 <link rel="icon" href="/favicon.ico" sizes="32x32"/>
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"/>
 {preloadHero && (
@@ -75,7 +74,7 @@ const isActive = (href: string) => href === path;
 
 <nav id="navbar">
   <div class="nav-brand">
-    <a href="/"><img src="/assets/logo-mark.svg" alt="ADSNOW" class="nav-logo" width="69" height="36"/></a>
+    <a href="/"><img src="/assets/logo-adsnow.svg" alt="ADSNOW" class="nav-logo" width="139" height="36"/></a>
     <span class="nav-tagline">Marketing rapid pentru afaceri locale</span>
   </div>
   <div class="nav-links">
@@ -118,7 +117,7 @@ const isActive = (href: string) => href === path;
 <footer>
   <div class="footer-grid">
     <div class="footer-col">
-      <img src="/assets/logo.webp" alt="ADSNOW" class="footer-logo" width="28" height="28"/>
+      <img src="/assets/logo-adsnow-alb.svg" alt="ADSNOW" class="footer-logo" width="124" height="32" loading="lazy"/>
       <div class="footer-tagline">Agenție de marketing pentru afaceri locale, Brașov</div>
       <p class="footer-brand-text">Site-uri în 10 zile, SEO local și Google Maps, reels și automatizări. {CONTACT.street}, {CONTACT.city}. Tel: {CONTACT.phone}.</p>
     </div>
