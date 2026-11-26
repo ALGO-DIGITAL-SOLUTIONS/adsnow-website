@@ -2,12 +2,12 @@
 import { CONTACT } from '../data/site';
 interface Props { title?: string; desc?: string; whatsappFirst?: boolean }
 const {
-  title = 'Hai să vedem unde stai',
-  desc = 'Primul pas e mereu auditul gratuit. Dacă ne potrivim, mergem mai departe. Dacă nu, măcar pleci cu un raport util.',
+  title = 'Hai să vedem ce ți-ar aduce clienți',
+  desc = 'Îmi spui în 2 minute ce ai acum și ce vrei. A doua zi primești pe email ce aș face eu în locul tău, cu prețuri.',
   whatsappFirst = false,
 } = Astro.props;
-const audit = { h: 'Începe cu auditul gratuit (2 min)', p: 'Formular online, raport personalizat pe email în 24h, fără obligații.', href: '/audit-gratuit', btn: 'Începe auditul →', ext: false };
-const wa = { h: 'Scrie-mi pe WhatsApp', p: 'Dacă ai întrebări sau vrei să vorbim înainte de orice formular.', href: CONTACT.whatsapp, btn: 'Scrie pe WhatsApp →', ext: true };
+const audit = { h: 'Audit gratuit în 2 minute', p: 'Cinci întrebări, iar în 24 de ore primești pe email ce ai de făcut. Gratuit, fără obligații.', href: '/audit-gratuit', btn: 'Începe auditul →', ext: false };
+const wa = { h: 'Scrie-mi pe WhatsApp', p: 'Ai o întrebare sau vrei să vorbim direct? Îți răspund eu.', href: CONTACT.whatsapp, btn: 'Scrie pe WhatsApp →', ext: true };
 const cards = whatsappFirst ? [wa, audit] : [audit, wa];
 ---
 <section id="cta-final" class="section-dark section-padding">

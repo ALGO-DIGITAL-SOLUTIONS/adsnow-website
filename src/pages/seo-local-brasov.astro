@@ -23,7 +23,7 @@ const faq = [
   },
   {
     q: 'De ce contract minim de 3 luni?',
-    a: 'Pentru că prima lună e în mare parte fundație: audit, fișa Google, citări, corecturi tehnice. Efectul lor se vede în lunile următoare. Un contract de o lună te-ar face să plătești exact partea care încă nu se vede.',
+    a: 'Pentru că prima lună e în mare parte pregătire: fișa Google pusă la punct, datele tale corectate peste tot pe internet, site-ul reparat unde e cazul. Efectul se vede în lunile următoare. Într-o singură lună ai plăti exact partea care încă nu se vede.',
   },
   {
     q: 'Am nevoie de site pentru SEO local?',
@@ -35,7 +35,7 @@ const faq = [
   },
   {
     q: 'Îmi garantați locul 1?',
-    a: 'Nu, și nimeni nu poate garanta asta cinstit. Distanța față de cel care caută nu o controlează nimeni. Îți garantăm muncă vizibilă în fiecare lună și un raport din care înțelegi ce s-a schimbat.',
+    a: 'Nimeni nu poate promite asta corect, pentru că Google ține cont și de cât de aproape ești de cel care caută. Ce îți promit: muncă vizibilă în fiecare lună și un raport din care înțelegi ce s-a schimbat.',
   },
 ];
 
@@ -62,7 +62,7 @@ const schema = [
 <Base
   title="SEO local Brașov | Google Maps și fișa Google · ADSNOW"
   ogTitle="SEO local în Brașov | ADSNOW"
-  description="SEO local în Brașov: fișa Google Business Profile pusă în ordine, citări, pagini pe servicii, recenzii reale și raport lunar. De la 390 lei/lună, setup 600 lei. Rezultate reale: locul 1 pe hartă pentru un client nou."
+  description="SEO local în Brașov: fișa ta de pe Google pusă la punct, pagini pe servicii, mai multe recenzii și raport lunar. De la 390 lei/lună, setup 600 lei. Rezultate reale: locul 1 pe hartă pentru un client nou."
   path={path}
   schema={schema}
 >
@@ -70,7 +70,8 @@ const schema = [
     crumb="SEO local Brașov"
     title="SEO local în Brașov: apari când te caută cineva din zonă"
     lead="Când cineva scrie pe telefon „dentist Brașov” sau „service auto aproape de mine”, Google arată întâi o hartă cu trei firme. Lucrăm ca tu să fii una dintre ele, și ca site-ul tău să apară imediat sub hartă."
-    primary={{ href: '/audit-gratuit', label: 'Vezi unde stai acum. Audit gratuit →' }}
+    primary={{ href: '/audit-gratuit', label: 'Vezi unde apari acum →' }}
+    secondary={{ href: '#preturi', label: 'Cât costă' }}
     meta={[
       { label: 'Setup Google Maps', value: '600 lei' },
       { label: 'Lunar', value: 'de la 390 lei' },
@@ -82,7 +83,7 @@ const schema = [
   <section class="section-dark section-padding">
     <div class="container">
       <span class="eyebrow fade-in" style="color:var(--sky);">Rezultate</span>
-      <h2 class="section-title fade-in" style="color:var(--paper);">Ce a însemnat SEO local pentru doi clienți</h2>
+      <h2 class="section-title fade-in" style="color:var(--paper);">Ce s-a schimbat pentru doi clienți</h2>
       <CaseStudies only={['armour-glass', 'albastru-infinit']} />
     </div>
   </section>
@@ -106,7 +107,7 @@ const schema = [
           <li><strong>Distanța:</strong> cât de aproape ești de el sau de zona pe care a scris-o.</li>
           <li><strong>Notorietatea:</strong> recenziile, linkurile, cât de cunoscută e afacerea în general.</li>
         </ul>
-        <p>Distanța n-o poate schimba nimeni. Pe celelalte două se poate lucra, și acolo majoritatea firmelor din Brașov lasă loc liber: fișe completate pe jumătate, categorii greșite, recenzii fără răspuns, site-uri care nu spun nicăieri în ce oraș lucrează.</p>
+        <p>Distanța rămâne cum e. Pe celelalte două se poate lucra, și aici e vestea bună: multe firme din Brașov au fișe completate pe jumătate, categorii greșite și recenzii fără răspuns. Locul de pe hartă e la îndemână.</p>
       </div>
     </div>
   </section>
@@ -114,31 +115,31 @@ const schema = [
   <section class="section-light section-padding">
     <div class="container">
       <span class="eyebrow fade-in">Ce facem</span>
-      <h2 class="section-title fade-in">Munca lunară, pe bucăți</h2>
+      <h2 class="section-title fade-in">Ce fac în fiecare lună</h2>
       <div class="cards-grid">
         <div class="card fade-in">
-          <h3>Fișa Google completată 100%</h3>
-          <p>Categoriile corecte, serviciile, pozele, programul, postările și răspunsurile la recenzii. E cea mai mare pârghie pentru hartă.</p>
+          <h3>Fișa ta de pe Google, completă</h3>
+          <p>Categoriile corecte, serviciile, pozele, programul, postări noi și răspunsuri la recenzii. Asta contează cel mai mult pentru hartă.</p>
         </div>
         <div class="card fade-in">
-          <h3>Site pregătit pentru căutări locale</h3>
-          <p>Pagini pentru fiecare serviciu, termenii pe care îi folosesc oamenii când caută, date structurate și viteză.</p>
+          <h3>Site-ul spune ce cauți</h3>
+          <p>O pagină pentru fiecare serviciu, scrisă cu cuvintele pe care oamenii le tastează pe Google.</p>
         </div>
         <div class="card fade-in">
-          <h3>Citări locale</h3>
-          <p>Același nume, aceeași adresă și același telefon în directoarele care contează. Neconcordanțele îl încurcă pe Google.</p>
+          <h3>Aceleași date peste tot</h3>
+          <p>Numele, adresa și telefonul tău, la fel în toate locurile unde apari online. Google are încredere în ce se potrivește.</p>
         </div>
         <div class="card fade-in">
-          <h3>Recenzii reale</h3>
-          <p>Un mod simplu prin care clienții mulțumiți lasă o recenzie, plus răspunsuri la fiecare. Fără recenzii cumpărate.</p>
+          <h3>Mai multe recenzii</h3>
+          <p>Un link și un cod QR prin care clienții mulțumiți lasă recenzie în 30 de secunde, plus răspuns la fiecare recenzie.</p>
         </div>
         <div class="card fade-in">
-          <h3>Articole SEO</h3>
-          <p>Texte care răspund la întrebările clienților tăi și aduc pe site oameni care încă se informează.</p>
+          <h3>Articole care răspund clienților</h3>
+          <p>Texte despre întrebările pe care ți le pun clienții, ca să te găsească și cei care încă se informează.</p>
         </div>
         <div class="card fade-in">
-          <h3>Raport lunar</h3>
-          <p>Poziții, apeluri, vizualizări pe hartă, cereri de indicații. Ce a mers, ce nu, ce facem luna următoare.</p>
+          <h3>Raport lunar, pe scurt</h3>
+          <p>Câți te-au sunat, câți au cerut traseul, unde apari în Google și ce facem luna următoare.</p>
         </div>
       </div>
     </div>
@@ -148,11 +149,11 @@ const schema = [
     <div class="container">
       <h2 class="section-title fade-in" style="color:var(--paper);">Cum lucrăm</h2>
       <ol class="steps">
-        <li class="fade-in"><div><span class="step-when">luna 1</span><h3>Audit și cercetare</h3><p>Unde apari acum, pe ce căutări, cine e înaintea ta și de ce. Alegem termenii care aduc clienți, nu doar vizite.</p></div></li>
-        <li class="fade-in"><div><span class="step-when">luna 1</span><h3>Fundația</h3><p>Fișa Google, citările locale și datele structurate de pe site.</p></div></li>
-        <li class="fade-in"><div><span class="step-when">luna 2</span><h3>Optimizare pe site</h3><p>Conținut pe servicii, structură, viteză și versiunea de telefon.</p></div></li>
-        <li class="fade-in"><div><span class="step-when">lunar</span><h3>Autoritate</h3><p>Recenzii, linkuri locale, parteneriate cu afaceri din zonă.</p></div></li>
-        <li class="fade-in"><div><span class="step-when">lunar</span><h3>Monitorizare și raport</h3><p>Ce s-a schimbat, în cifre pe care le înțelegi, și ce urmează.</p></div></li>
+        <li class="fade-in"><div><span class="step-when">luna 1</span><h3>Unde ești acum</h3><p>Pe ce căutări apari, cine e înaintea ta și de ce. Alegem căutările care aduc clienți.</p></div></li>
+        <li class="fade-in"><div><span class="step-when">luna 1</span><h3>Punem lucrurile în ordine</h3><p>Fișa Google completă și datele tale corectate peste tot pe internet.</p></div></li>
+        <li class="fade-in"><div><span class="step-when">luna 2</span><h3>Site-ul</h3><p>Pagini pe servicii, viteză și cum arată pe telefon.</p></div></li>
+        <li class="fade-in"><div><span class="step-when">lunar</span><h3>Încredere</h3><p>Recenzii noi și mențiuni pe site-uri locale din Brașov.</p></div></li>
+        <li class="fade-in"><div><span class="step-when">lunar</span><h3>Raport</h3><p>Ce s-a schimbat, în cifre pe care le înțelegi, și ce urmează.</p></div></li>
       </ol>
     </div>
   </section>
@@ -160,7 +161,7 @@ const schema = [
   <section class="section-light section-padding">
     <div class="container">
       <span class="eyebrow fade-in">Portofoliu</span>
-      <h2 class="section-title fade-in">Proiecte de SEO local</h2>
+      <h2 class="section-title fade-in">Clienți pe care îi găsești pe Google</h2>
       <ProjectGrid filter="seo" />
       <Related current={path} />
     </div>

@@ -23,13 +23,14 @@ export const NAV = [
   { href: '/#despre', label: 'Despre' },
 ];
 
-// Cele patru servicii principale. Pensiunile au brand separat și nu mai apar aici.
+// Cele patru servicii principale. `want` = ce vrea clientul, folosit pe homepage.
 export const SERVICES = [
   {
     href: '/creare-site-brasov',
     short: 'Site în 10 zile',
+    want: 'Să arăți bine când te caută cineva',
     title: 'Site de prezentare în 10 zile',
-    desc: 'Site rapid, făcut întâi pentru telefon și pregătit pentru Google din prima zi. Gata în 10 zile lucrătoare de la ce primesc materialele.',
+    desc: 'Un site care arată pe telefon ce faci, cât costă și cum te sună clientul. Gata în 10 zile, cu textele scrise de mine.',
     price: 'de la 1.200 lei',
     priceNote: 'o dată',
     time: '5–14 zile',
@@ -37,8 +38,9 @@ export const SERVICES = [
   {
     href: '/seo-local-brasov',
     short: 'SEO local și Google Maps',
+    want: 'Să te găsească cei din zonă pe Google',
     title: 'SEO local și Google Maps',
-    desc: 'Ca să apari când cineva din zonă caută exact ce faci. Fișa Google, recenzii, pagini locale și raport lunar.',
+    desc: 'Când cineva din Brașov caută pe telefon ce vinzi tu, apari printre primii pe hartă. Lunar vezi câți te-au sunat de acolo.',
     price: 'de la 390 lei/lună',
     priceNote: 'setup 600 lei',
     time: 'lunar',
@@ -46,8 +48,9 @@ export const SERVICES = [
   {
     href: '/social-media-foto-video',
     short: 'Conținut video și grafic',
+    want: 'Să te vadă lumea pe Instagram și TikTok',
     title: 'Reels, video și grafică',
-    desc: 'Reels și video de prezentare de până la 2 minute, filmate la tine, plus postări, carusele, bannere și postere.',
+    desc: 'Vin la tine, filmez și montez reels și video-uri de prezentare. Plus postări, carusele și bannere, gata de publicat.',
     price: 'de la 90 lei',
     priceNote: 'abonament de la 890 lei/lună',
     time: 'pe bucată sau lunar',
@@ -55,8 +58,9 @@ export const SERVICES = [
   {
     href: '/automatizari',
     short: 'Automatizări',
+    want: 'Să nu-ți mai scape nicio cerere',
     title: 'Automatizări pentru afaceri mici',
-    desc: 'Cereri care ajung direct pe WhatsApp, programări online, recenzii cerute automat. Ca să nu mai pierzi niciun client care ți-a scris.',
+    desc: 'Cererile de pe site îți intră direct pe WhatsApp, clienții se programează singuri, iar cei mulțumiți primesc linkul de recenzie.',
     price: 'de la 450 lei',
     priceNote: 'o dată',
     time: '2–14 zile',
@@ -128,7 +132,7 @@ export const CASE_STUDIES = [
     facts: [
       'Nota 5,0 din 88 de recenzii pe Google',
       'Ultimele 3 reels făcute de noi: 1.214 vizualizări, de 4,5 ori mai mult decât urmăritorii contului',
-      'Urmează: site-ul pe prima pagină, nu doar fișa',
+      'Următorul pas: și site-ul pe prima pagină',
     ],
     url: 'https://armourglass-parbrize.ro',
   },
@@ -143,7 +147,7 @@ export const CASE_STUDIES = [
     facts: [
       'Apare pentru 407 căutări diferite, față de 262 înainte',
       '„psiholog brasov”: prima pagină, cu 75% mai multe clicuri pe zi',
-      'Cifre din Google Search Console, fără căutările după nume',
+      'Cifre direct din Google, fără căutările după numele cabinetului',
     ],
     url: 'https://albastruinfinit.ro',
   },
@@ -157,7 +161,7 @@ export const CASE_STUDIES = [
       'Contul de Instagram al dezvoltatorului a pornit de la zero. Urmăritorii sunt oameni și firme din piața lui: studiouri de design interior, constructori, instalatori, producători de mobilă, peisagiști. Niciun urmăritor cumpărat.',
     facts: [
       '26 de postări care construiesc încredere înainte de vânzare',
-      'Audiență de business relevantă, nu boți',
+      'Urmăritori care lucrează în aceeași piață cu el',
       'Site-ul ozoneresidence.ro, tot de la noi',
     ],
     url: 'https://www.instagram.com/ozoneresidencebrasov/',

@@ -34,11 +34,11 @@ export const PACKAGES: (PriceRow & { kicker: string; includes: string[]; separat
 ];
 
 export const SITES: PriceRow[] = [
-  { name: 'Landing page', what: 'O pagină de vânzare, formular, WhatsApp, analytics', time: '5 zile', price: '1.200 lei' },
-  { name: 'Site Start', what: 'Până la 5 pagini, texte incluse, SEO tehnic, fișa Google conectată', time: '7–10 zile', price: '2.400 lei' },
+  { name: 'Site de o pagină', what: 'O pagină care prezintă un singur serviciu sau o ofertă, cu formular și WhatsApp', time: '5 zile', price: '1.200 lei' },
+  { name: 'Site Start', what: 'Până la 5 pagini, texte scrise de mine, legat de fișa ta de pe Google Maps', time: '7–10 zile', price: '2.400 lei' },
   { name: 'Site Pro', what: 'Până la 10 pagini, blog, programări, identitate de bază, o sesiune foto', time: '10–14 zile', price: '4.400 lei' },
   { name: 'Kit identitate', what: 'Logo, culori, fonturi, 10 șabloane pentru social media', time: '5–7 zile', price: '1.200 lei' },
-  { name: 'Mentenanță', what: 'Hosting, actualizări, backup, o oră de modificări pe lună', time: 'lunar', price: '150 lei/lună' },
+  { name: 'Mentenanță', what: 'Site-ul ținut online, la zi și salvat, plus o oră de modificări pe lună', time: 'lunar', price: '150 lei/lună' },
 ];
 
 export const CONTENT_PIECES: PriceRow[] = [
@@ -56,16 +56,16 @@ export const CONTENT_PLANS: PriceRow[] = [
 ];
 
 export const SEO: PriceRow[] = [
-  { name: 'Setup Google Maps', what: 'Fișa Google completă, 20 de citări locale, date structurate, link și cod QR pentru recenzii', time: 'o dată', price: '600 lei' },
+  { name: 'Setup Google Maps', what: 'Fișa ta de pe Google completată, firma listată în 20 de locuri locale, link și cod QR pentru recenzii', time: 'o dată', price: '600 lei' },
   { name: 'Maps Esențial', what: '4 postări pe fișă, răspuns la recenzii, poze noi, raport', time: 'lunar', price: '390 lei/lună' },
-  { name: 'SEO local complet', what: 'Maps Esențial + o pagină sau un articol local pe lună, linkuri locale, urmărirea pozițiilor', time: 'lunar', price: '890 lei/lună' },
-  { name: 'Meta Ads', what: 'Strategie, materiale, lansare, optimizare, raport la două săptămâni (fără bugetul de reclame)', time: 'lunar', price: '790 lei/lună' },
+  { name: 'SEO local complet', what: 'Tot din Maps Esențial, plus o pagină sau un articol nou pe lună și urmărirea locului tău în Google', time: 'lunar', price: '890 lei/lună' },
+  { name: 'Meta Ads', what: 'Reclame pe Facebook și Instagram: le fac, le pornesc, le ajustez, raport la două săptămâni (bugetul de reclame e separat)', time: 'lunar', price: '790 lei/lună' },
 ];
 
 export const AUTOMATIONS: PriceRow[] = [
   { name: 'Kit recenzii Google', what: 'Clienții mulțumiți primesc automat linkul de recenzie după vizită', time: '2 zile', price: '450 lei' },
   { name: 'Formular → WhatsApp + listă de clienți', what: 'Fiecare cerere ajunge pe telefonul tău și într-o listă, cu răspuns automat', time: '3–4 zile', price: '900 lei' },
   { name: 'Programări online cu reminder', what: 'Clientul își alege ora singur și primește reminder, ca să nu uite', time: '2–3 zile', price: '700 lei' },
-  { name: 'Răspuns în 1 minut la lead-uri', what: 'Cine completează formularul din reclamă primește imediat un mesaj', time: '3 zile', price: '700 lei' },
+  { name: 'Răspuns în 1 minut la cereri', what: 'Cine completează formularul din reclamă primește imediat un mesaj de la tine', time: '3 zile', price: '700 lei' },
   { name: 'Asistent AI pe site și WhatsApp', what: 'Răspunde la întrebările despre prețuri, program și servicii, și preia cererea', time: '1–2 săptămâni', price: '1.500 lei', note: '+ 150 lei/lună' },
 ];
