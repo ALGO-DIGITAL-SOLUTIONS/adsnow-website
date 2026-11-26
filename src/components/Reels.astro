@@ -2,8 +2,10 @@
 // Reels găzduite pe site (public/video), fără interfața Instagram și fără cookie-uri de la terți.
 // Se descarcă doar când ajung pe ecran; pornesc fără sunet, iar un click pornește sau oprește sunetul.
 import { REELS } from '../data/site';
+interface Props { strip?: boolean }
+const { strip = false } = Astro.props;
 ---
-<div class="reels-grid">
+<div class:list={['reels-grid', { strip }]}>
   {REELS.map((r) => (
     <figure class="reel fade-in">
       <button type="button" class="reel-frame" aria-label={`Pornește sunetul: ${r.client}, ${r.topic}`}>

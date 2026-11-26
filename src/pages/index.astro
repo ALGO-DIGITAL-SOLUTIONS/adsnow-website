@@ -3,8 +3,10 @@ import Base from '../layouts/Base.astro';
 import Faq from '../components/Faq.astro';
 import CtaFinal from '../components/CtaFinal.astro';
 import ProjectGrid from '../components/ProjectGrid.astro';
-import CaseStudies from '../components/CaseStudies.astro';
-import HeroParticles from '../components/HeroParticles.astro';
+import HeroPhone from '../components/HeroPhone.astro';
+import ProofBento from '../components/ProofBento.astro';
+import AlexIntro from '../components/AlexIntro.astro';
+import Reels from '../components/Reels.astro';
 import { SITE, BUSINESS_ID, CONTACT, SERVICES, faqSchema } from '../data/site';
 import { PACKAGES } from '../data/pricing';
 import { REVIEWS, REVIEWS_SUMMARY } from '../data/reviews';
@@ -121,7 +123,7 @@ const schema = [
   <section id="hero">
     <div class="hero-content">
       <div class="hero-eyebrow">Marketing pentru afaceri locale · Brașov</div>
-      <h1 class="hero-title">Mai mulți clienți pentru afacerea ta, fără să te ocupi tu de marketing.</h1>
+      <h1 class="hero-title">Mai mulți clienți pentru afacerea ta, <span class="grad">fără să te ocupi tu de marketing.</span></h1>
       <p class="hero-sub">Site gata în 10 zile, loc pe Google Maps când te caută cei din zonă și video-uri care chiar se văd. Le fac eu, de la cap la coadă, la prețuri pe care le vezi de acum.</p>
       <div class="hero-actions">
         <a href="/preturi" class="btn-primary">Vezi cât costă →</a>
@@ -130,20 +132,30 @@ const schema = [
       <p class="hero-proof"><span class="stars" aria-hidden="true">★★★★★</span>{REVIEWS_SUMMARY.rating} din {REVIEWS_SUMMARY.count} recenzii pe Google</p>
     </div>
     <div class="hero-visual">
-      <div class="hero-orb"></div>
-      <canvas id="heroCanvas"></canvas>
-      <p class="hero-logo-text">ADSNOW</p>
+      <HeroPhone />
     </div>
   </section>
+
+  <AlexIntro />
 
   <section id="rezultate" class="section-dark section-padding">
     <div class="container">
       <span class="eyebrow fade-in">Rezultate</span>
       <h2 class="section-title fade-in" style="color:var(--paper);">Ce s-a schimbat pentru clienții mei</h2>
-      <CaseStudies />
-      <div class="fade-in" style="margin-top:40px;">
-        <a href="/proiecte" class="btn-secondary">Vezi poveștile complete →</a>
+      <ProofBento />
+    </div>
+  </section>
+
+  <section id="reels" class="section-dark section-padding reels-band">
+    <div class="container">
+      <div class="band-head">
+        <div>
+          <span class="eyebrow fade-in">Video</span>
+          <h2 class="section-title fade-in" style="color:var(--paper);">Filmate la clienți, montate de mine</h2>
+        </div>
+        <a href="/social-media-foto-video" class="btn-secondary fade-in">Prețuri video →</a>
       </div>
+      <Reels strip />
     </div>
   </section>
 
@@ -204,21 +216,11 @@ const schema = [
   <section id="cum-lucrez" class="section-light section-padding">
     <div class="container">
       <span class="eyebrow fade-in">Cum lucrăm</span>
-      <h2 class="section-title fade-in">Simplu, direct, pe față</h2>
-      <div class="principles-grid">
-        <div class="principle-card fade-in">
-          <h3>Un singur om, de la început până la final</h3>
-          <p>Vorbești cu mine la telefon sau pe WhatsApp, și tot eu fac treaba. Ce stabilim azi vezi a doua zi.</p>
-        </div>
-        <div class="principle-card fade-in">
-          <h3>Îți spun ce merită</h3>
-          <p>Dacă ceva nu-ți aduce clienți, îți spun să păstrezi banii. Prefer un client mulțumit, care revine și mă recomandă.</p>
-        </div>
-        <div class="principle-card fade-in">
-          <h3>Vezi lunar ce ai primit</h3>
-          <p>Un raport scurt, pe înțelesul tău: câți te-au sunat, câți au cerut traseul spre tine, unde apari în Google.</p>
-        </div>
-      </div>
+      <ol class="statements">
+        <li class="fade-in"><div><strong>Un singur om, de la început până la final.</strong> Vorbești cu mine la telefon sau pe WhatsApp, și tot eu fac treaba. Ce stabilim azi vezi a doua zi.</div></li>
+        <li class="fade-in"><div><strong>Îți spun ce merită.</strong> Dacă ceva nu-ți aduce clienți, îți spun să păstrezi banii. Prefer un client mulțumit, care revine și mă recomandă.</div></li>
+        <li class="fade-in"><div><strong>Vezi lunar ce ai primit.</strong> Un raport scurt, pe înțelesul tău: câți te-au sunat, câți au cerut traseul spre tine, unde apari în Google.</div></li>
+      </ol>
     </div>
   </section>
 
@@ -287,25 +289,7 @@ const schema = [
     </div>
   </section>
 
-  <section id="despre" class="section-light section-padding">
-    <div class="container">
-      <h2 class="section-title fade-in">Cine îți face treaba</h2>
-      <div class="about-grid">
-        <div class="about-photo fade-in">
-          <img src="/assets/alex-gogu.webp" alt="Alexandru Gogu, fondator ADSNOW" width="400" height="600" loading="lazy"/>
-        </div>
-        <div>
-          <p class="about-text fade-in">Sunt Alex Gogu. Am lucrat ani la rând în proiecte mari de marketing, în țară și în afară, cu echipe și bugete mari. Acum toată experiența asta merge într-un singur loc: <strong>afacerea ta</strong>.</p>
-          <p class="about-text fade-in">La o afacere locală, fiecare client în plus se simte. De aceea mă uit la ce contează pentru tine: câți te sună, câți ajung la tine, câți revin. Restul sunt detalii de care mă ocup eu.</p>
-          <p class="about-text fade-in">Vorbești direct cu mine, de la primul mesaj până după lansare. Pe <a href="https://www.instagram.com/adsnow.ro/" target="_blank" rel="noopener" style="color:var(--cobalt);text-decoration:underline;">Instagram</a> arăt proiecte de înainte și după.</p>
-          <a href="/audit-gratuit" class="btn-primary fade-in" style="margin-top:24px;">Hai să vedem ce ți-ar trebui →</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <Faq items={faq} desc="Ce mă întreabă oamenii cel mai des. Dacă nu găsești răspunsul, scrie-mi direct." tone="muted" />
   <CtaFinal />
 
-  <HeroParticles slot="scripts" />
 </Base>

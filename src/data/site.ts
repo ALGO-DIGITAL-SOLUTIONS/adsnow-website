@@ -125,10 +125,10 @@ export const CASE_STUDIES = [
     slug: 'armour-glass',
     client: 'Armour Glass Parbrize',
     service: 'SEO local · content video',
-    stat: 'Locul 1',
-    statLabel: 'pe Google Maps la „parbrize brasov”',
+    stat: 'Top 3',
+    statLabel: 'pe Google Maps la „parbrize brasov”, singurul cu nota 5,0',
     story:
-      'Un business pornit de la zero: site, fișa Google și Instagram, toate lansate de noi. Azi fișa e prima pe hartă, cu nota 5,0 din 88 de recenzii, înaintea unor concurenți cu 311 și 227 de recenzii.',
+      'Un business pornit de la zero: site, fișa Google și Instagram, toate lansate de noi. Azi fișa e în primele 3 pe hartă, cu nota 5,0 din 88 de recenzii, lângă firme cu 311 și 227 de recenzii, pornite cu ani înainte.',
     facts: [
       'Nota 5,0 din 88 de recenzii pe Google',
       'Ultimele 3 reels făcute de noi: 1.214 vizualizări, de 4,5 ori mai mult decât urmăritorii contului',
@@ -145,6 +145,7 @@ export const CASE_STUDIES = [
     story:
       'Am preluat SEO-ul în septembrie 2026. Comparăm septembrie–noiembrie cu iunie–august: mai multe vizite pe zi, mai multe căutări pentru care apare site-ul, aceeași poziție de top pe căutarea principală.',
     facts: [
+      'În noiembrie apare în Google de 2 ori mai des decât vara',
       'Apare pentru 407 căutări diferite, față de 262 înainte',
       '„psiholog brasov”: prima pagină, cu 75% mai multe clicuri pe zi',
       'Cifre direct din Google, fără căutările după numele cabinetului',
@@ -202,4 +203,29 @@ export const REELS = [
   { id: 'DW01iJ9kw2y', client: 'Ozone Residence', topic: 'Prezentare ansamblu' },
   { id: 'DNoGnQCNWj7', client: 'Ozone Residence', topic: 'Blocuri finalizate și predate' },
   { id: 'DVIlpeUjURb', client: 'Psiholog Brașov', topic: 'Workshop despre anxietate' },
+];
+
+// Videoul de prezentare cu Alex (public/video/alex.mp4). Gol = se arată poza.
+export const ALEX_VIDEO = '';
+
+// Site-uri care se derulează în telefonul din hero (public/assets/phone/<id>.webp, 520 px lățime).
+export const PHONE_SITES = [
+  { id: 'albastruinfinit', name: 'albastruinfinit.ro' },
+  { id: 'ozoneresidence', name: 'ozoneresidence.ro' },
+  { id: 'psihologbrasov', name: 'psihologbrasov.ro' },
+];
+
+// Albastru Infinit: de câte ori a apărut site-ul în Google pe săptămână, fără căutările după nume.
+// Sursa: Google Search Console, 1 iunie – 22 noiembrie 2026. SEO preluat la 1 septembrie.
+export const SEO_CHART = {
+  start: '1 iun',
+  takeover: 13,
+  weeks: [318, 354, 310, 288, 305, 294, 304, 325, 309, 416, 345, 334, 368, 317, 394, 395, 303, 290, 324, 391, 357, 435, 521, 684, 837],
+};
+
+// Armour Glass: primele 3 rezultate pe hartă la „parbrize brasov” (Google, 26 noiembrie 2026).
+export const MAPS_PACK = [
+  { name: 'Concurent', rating: '4,8', reviews: 311 },
+  { name: 'Concurent', rating: '4,6', reviews: 227 },
+  { name: 'Armour Glass', rating: '5,0', reviews: 88, us: true },
 ];

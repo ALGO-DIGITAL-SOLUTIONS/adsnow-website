@@ -1,0 +1,73 @@
+---
+// Rezultatele clienților, arătate, nu doar spuse: graficul din Google, harta, contul de Instagram.
+import { SEO_CHART, MAPS_PACK, CASE_STUDIES } from '../data/site';
+
+const cs = Object.fromEntries(CASE_STUDIES.map((c) => [c.slug, c]));
+
+// Graficul se desenează la build, ca SVG simplu (zero JavaScript în pagină).
+const W = 640, H = 320, PAD = 8;
+const max = Math.max(...SEO_CHART.weeks) * 1.08;
+const step = (W - PAD * 2) / (SEO_CHART.weeks.length - 1);
+const pts = SEO_CHART.weeks.map((v, i) => [PAD + i * step, H - (v / max) * H]);
+const line = pts.map(([x, y], i) => `${i ? 'L' : 'M'}${x.toFixed(1)} ${y.toFixed(1)}`).join(' ');
+const area = `${line} L${pts[pts.length - 1][0].toFixed(1)} ${H} L${PAD} ${H} Z`;
+const tx = PAD + SEO_CHART.takeover * step;
+const last = pts[pts.length - 1];
+---
+<div class="bento">
+  <article class="bento-card bento-chart fade-in">
+    <div class="bento-head">
+      <span class="bento-client">Albastru Infinit · cabinet de psihoterapie</span>
+      <a href="https://albastruinfinit.ro" target="_blank" rel="noopener" class="bento-link">albastruinfinit.ro →</a>
+    </div>
+    <div class="bento-stat"><strong>2×</strong> mai des în Google</div>
+    <p class="bento-desc">De câte ori a apărut site-ul în căutări, pe săptămână. Fără căutările după numele cabinetului.</p>
+    <svg class="chart" viewBox={`0 0 ${W} ${H + 28}`} role="img" aria-label="Apariții în Google pe săptămână: în jur de 300 vara, 837 în a doua jumătate a lui noiembrie">
+      <defs>
+        <linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#2e8fcc" stop-opacity=".35"/>
+          <stop offset="1" stop-color="#2e8fcc" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <rect x={tx} y="0" width={W - PAD - tx} height={H} class="chart-zone"/>
+      <path d={area} fill="url(#chartFill)"/>
+      <path d={line} class="chart-line"/>
+      <line x1={tx} x2={tx} y1="0" y2={H} class="chart-mark"/>
+      <text x={tx + 8} y="16" class="chart-label">Am preluat SEO-ul</text>
+      <circle cx={last[0]} cy={last[1]} r="5" class="chart-dot"/>
+      <text x={PAD} y={H + 22} class="chart-axis">iunie</text>
+      <text x={tx} y={H + 22} class="chart-axis" text-anchor="middle">septembrie</text>
+      <text x={W - PAD} y={H + 22} class="chart-axis" text-anchor="end">noiembrie</text>
+    </svg>
+  </article>
+
+  <article class="bento-card bento-maps fade-in">
+    <div class="bento-head">
+      <span class="bento-client">Armour Glass · parbrize</span>
+      <a href={cs['armour-glass'].url} target="_blank" rel="noopener" class="bento-link">site →</a>
+    </div>
+    <div class="bento-stat"><strong>Top 3</strong> pe hartă, de la zero</div>
+    <div class="maps">
+      <div class="maps-q"><span class="maps-g" aria-hidden="true">G</span>parbrize brasov</div>
+      <ol class="maps-list">
+        {MAPS_PACK.map((m) => (
+          <li class:list={{ us: m.us }}>
+            <span class="maps-name">{m.us ? m.name : 'Firmă din Brașov'}</span>
+            <span class="maps-rate">{m.rating} <span class="maps-stars" aria-hidden="true">★</span> ({m.reviews})</span>
+          </li>
+        ))}
+      </ol>
+    </div>
+    <p class="bento-desc">Singurul 5,0 din top 3, lângă firme cu de 3 ori mai multe recenzii.</p>
+  </article>
+
+  <article class="bento-card bento-insta fade-in">
+    <div class="bento-head">
+      <span class="bento-client">Ozone Residence · dezvoltator imobiliar</span>
+      <a href={cs['ozone-residence'].url} target="_blank" rel="noopener" class="bento-link">Instagram →</a>
+    </div>
+    <div class="bento-stat"><strong>451</strong> urmăritori, de la zero</div>
+    <img src="/assets/ozone-instagram.webp" alt="Postări Ozone Residence pe Instagram, făcute de ADSNOW" width="1148" height="382" loading="lazy" decoding="async" class="insta-strip"/>
+    <p class="bento-desc">Firme de design interior, constructori, producători de mobilă: oamenii din piața lui.</p>
+  </article>
+</div>

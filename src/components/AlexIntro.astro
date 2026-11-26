@@ -1,0 +1,23 @@
+---
+// Alex, imediat după hero: fața omului care face treaba. Când există videoul (ALEX_VIDEO), apare el în locul pozei.
+import { ALEX_VIDEO, CONTACT } from '../data/site';
+---
+<section id="despre" class="alex section-padding">
+  <div class="container alex-grid">
+    <div class="alex-media fade-in">
+      {ALEX_VIDEO ? (
+        <video src={ALEX_VIDEO} poster="/assets/alex-gogu.webp" controls playsinline preload="none" width="400" height="600"></video>
+      ) : (
+        <img src="/assets/alex-gogu.webp" alt="Alex Gogu, fondator ADSNOW" width="400" height="600" loading="lazy" decoding="async"/>
+      )}
+    </div>
+    <div class="alex-text">
+      <p class="alex-quote fade-in">„Salut, sunt Alex. Tot ce vezi pe site fac eu: îți scriu textele, îți fac site-ul, vin la tine să filmez și mă uit lunar câți clienți ți-au venit din Google.”</p>
+      <p class="alex-more fade-in">Am lucrat ani la rând în proiecte mari de marketing, în țară și în afară. Acum toată experiența asta merge într-un singur loc: afacerea ta. Vorbești direct cu mine, de la primul mesaj până după lansare.</p>
+      <div class="alex-actions fade-in">
+        <a href={`${CONTACT.whatsapp}?text=${encodeURIComponent('Bună, Alex! Am văzut site-ul ADSNOW și aș vrea să vorbim.')}`} target="_blank" rel="noopener" class="btn-primary">Scrie-mi pe WhatsApp →</a>
+        <a href={`tel:${CONTACT.phoneIntl}`} class="btn-secondary">Sună: {CONTACT.phone}</a>
+      </div>
+    </div>
+  </div>
+</section>
