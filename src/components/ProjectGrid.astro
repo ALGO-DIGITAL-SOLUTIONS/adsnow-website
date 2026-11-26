@@ -1,8 +1,9 @@
 ---
 import { PROJECTS } from '../data/site';
-interface Props { filter?: string; limit?: number; descs?: Record<string, string> }
+interface Props { filter?: string | string[]; limit?: number; descs?: Record<string, string> }
 const { filter, limit, descs = {} } = Astro.props;
-let list = filter ? PROJECTS.filter((p) => p.services.includes(filter)) : PROJECTS;
+const fs = filter ? ([] as string[]).concat(filter) : null;
+let list = fs ? PROJECTS.filter((p) => p.services.some((x) => fs.includes(x))) : PROJECTS;
 if (limit) list = list.slice(0, limit);
 ---
 <div class="portfolio-grid">

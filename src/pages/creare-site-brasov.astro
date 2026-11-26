@@ -4,35 +4,33 @@ import PageHero from '../components/PageHero.astro';
 import Faq from '../components/Faq.astro';
 import CtaFinal from '../components/CtaFinal.astro';
 import ProjectGrid from '../components/ProjectGrid.astro';
+import PriceTable from '../components/PriceTable.astro';
 import Related from '../components/Related.astro';
 import { SITE, BUSINESS_ID, breadcrumb, faqSchema } from '../data/site';
+import { SITES } from '../data/pricing';
 
 const path = '/creare-site-brasov';
 
 const faq = [
   {
     q: 'Cât costă un site de prezentare?',
-    a: 'Intervalul tipic e 4.000-6.500 RON, în funcție de numărul de pagini, de integrări și de faptul că intră sau nu o sesiune foto. Identitatea vizuală de bază e inclusă. După auditul gratuit sau după primul call îți dau un preț fix, nu „de la”.',
+    a: 'Un landing page costă 1.200 lei, un site de până la 5 pagini (Site Start) 2.400 lei, iar unul de până la 10 pagini, cu blog și programări (Site Pro), 4.400 lei. Prețurile sunt finale, nu se adaugă TVA. Plătești 50% la început și 50% la lansare.',
   },
   {
-    q: 'În cât timp îmi e gata site-ul?',
-    a: 'Între 3 și 6 săptămâni de la avans. Cea mai mare variabilă e cât de repede răspunzi la întrebări și aprobi machetele. Proiectele bune se fac împreună, nu predând brief-ul și revenind peste o lună.',
+    q: 'Chiar e gata în 10 zile?',
+    a: 'Da, în 10 zile lucrătoare de la ce primesc materialele complete: logo, poze, prețuri, informațiile de bază. Textele le scriu eu. Din ziua 3 vezi site-ul pe un link de test, iar fiecare rundă de feedback are 48 de ore. Dacă ai nevoie de mai mult timp ca să strângi materialele, termenul începe când le primesc.',
   },
   {
-    q: 'Cu ce tehnologie construiești site-urile?',
-    a: 'Cu unelte moderne, fără WordPress și fără plugin-uri care se strică la fiecare actualizare. Rezultatul sunt site-uri care se încarcă în sub două secunde, pregătite pentru Google, livrate în săptămâni, nu în luni, și la un cost mai mic decât la o agenție tradițională.',
+    q: 'De ce se face atât de repede?',
+    a: 'Pentru că lucrez cu unelte moderne și cu AI, fără WordPress și fără plugin-uri care se strică, și pentru că nu se pierde timp între oameni: cel care discută cu tine e același care construiește. Rezultatul sunt site-uri care se încarcă în sub două secunde și sunt pregătite pentru Google din prima zi.',
   },
   {
-    q: 'Pot să modific eu site-ul după livrare?',
-    a: 'Da. La final primești un training de o oră, parolele de acces și instrucțiuni clare pentru lucrurile uzuale: texte, imagini, articole noi. Nu te închid în „trebuie să mă suni de fiecare dată”.',
-  },
-  {
-    q: 'Ce se întâmplă după ce mi-e livrat site-ul?',
-    a: 'Ai 30 de zile de suport gratuit pentru orice ajustare mică. După aceea, dacă vrei mentenanță continuă, discutăm un serviciu lunar. Dacă vrei să-l administrezi tu, site-ul îți rămâne complet.',
+    q: 'Pot să modific eu site-ul după lansare?',
+    a: 'Da. Primești un training de o oră, parolele și instrucțiuni scrise pentru lucrurile uzuale: texte, imagini, articole noi. Dacă nu vrei să te ocupi tu, mentenanța costă 150 lei pe lună și include o oră de modificări.',
   },
   {
     q: 'Faci și magazine online?',
-    a: 'Magazine simple, până în 50-100 de produse, cu plată cu cardul sau ramburs, da. Magazine complexe, cu integrări ERP și stocuri în timp real, nu. Pentru asta îți recomand pe cineva specializat.',
+    a: 'Magazine simple, până în 50-100 de produse, cu plată cu cardul sau ramburs, da, cu ofertă separată. Magazine complexe, cu integrări ERP și stocuri în timp real, nu. Pentru asta îți recomand pe cineva specializat.',
   },
 ];
 
@@ -40,15 +38,15 @@ const schema = [
   {
     '@type': 'Service',
     '@id': `${SITE}${path}#service`,
-    name: 'Creare site de prezentare și branding',
+    name: 'Site de prezentare în 10 zile',
     serviceType: 'Web design',
     description:
-      'Site de prezentare cu identitate vizuală inclusă, pentru afaceri din Brașov: design, texte, SEO tehnic, formulare, training și 30 de zile de suport.',
+      'Site de prezentare pentru afaceri locale, gata în 10 zile lucrătoare: design pentru telefon, texte incluse, SEO tehnic, legătură cu fișa Google.',
     provider: { '@id': BUSINESS_ID },
-    areaServed: { '@type': 'City', name: 'Brașov' },
+    areaServed: [{ '@type': 'City', name: 'Brașov' }, { '@type': 'Country', name: 'România' }],
     offers: {
       '@type': 'Offer',
-      priceSpecification: { '@type': 'PriceSpecification', minPrice: '4000', maxPrice: '6500', priceCurrency: 'RON' },
+      priceSpecification: { '@type': 'PriceSpecification', minPrice: '1200', maxPrice: '4400', priceCurrency: 'RON' },
     },
     url: `${SITE}${path}`,
   },
@@ -57,32 +55,33 @@ const schema = [
 ];
 ---
 <Base
-  title="Creare site de prezentare Brașov | Web design · ADSNOW"
-  ogTitle="Creare site de prezentare în Brașov | ADSNOW"
-  description="Creare site de prezentare în Brașov, cu identitate vizuală inclusă: design pentru telefon, texte care vând, SEO tehnic din prima zi. 4.000-6.500 RON, livrare în 3-6 săptămâni."
+  title="Creare site Brașov în 10 zile | de la 1.200 lei · ADSNOW"
+  ogTitle="Creare site de prezentare în Brașov, gata în 10 zile | ADSNOW"
+  description="Creare site de prezentare în Brașov, gata în 10 zile lucrătoare: design pentru telefon, texte incluse, SEO din prima zi. Landing page 1.200 lei, site 2.400 lei, site Pro 4.400 lei."
   path={path}
   schema={schema}
 >
   <PageHero
     crumb="Creare site Brașov"
-    title="Creare site de prezentare în Brașov"
-    lead="Un site care îi spune clientului în cinci secunde ce faci, pentru cine și cum te contactează. Rapid, făcut întâi pentru telefon și pregătit pentru Google din prima zi. Identitatea vizuală e inclusă."
-    primary={{ href: '/audit-gratuit', label: 'Cere ofertă prin audit gratuit →' }}
+    title="Site de prezentare, gata în 10 zile"
+    lead="Un site care îi spune clientului în cinci secunde ce faci, pentru cine și cum te contactează. Făcut întâi pentru telefon, cu texte scrise de mine și pregătit pentru Google din prima zi."
+    primary={{ href: '#preturi', label: 'Vezi prețurile →' }}
+    secondary={{ href: '/audit-gratuit', label: 'Audit gratuit' }}
     meta={[
-      { label: 'Investiție', value: '4.000 - 6.500 RON' },
-      { label: 'Livrare', value: '3-6 săptămâni' },
-      { label: 'Suport inclus', value: '30 de zile' },
-      { label: 'Plata', value: '50% avans' },
+      { label: 'Preț', value: 'de la 1.200 lei' },
+      { label: 'Livrare', value: '5–14 zile lucrătoare' },
+      { label: 'Texte', value: 'incluse' },
+      { label: 'Plata', value: '50% avans, 50% la lansare' },
     ]}
   />
 
-  <section class="section-muted section-padding">
-    <div class="container split">
-      <h2 class="section-title fade-in">Când are sens un site nou, și când nu</h2>
-      <div class="prose fade-in">
-        <p>Un site nou are sens când cel vechi te face să pierzi clienți: nu se vede bine pe telefon, se încarcă greu, nu mai spune ce faci azi sau nu apare deloc în Google. Are sens și când pornești de la zero și ai nevoie de un loc al tău, nu doar de o pagină de Facebook.</p>
-        <p>Nu are sens când site-ul tău e în regulă și problema e în altă parte: nimeni nu ajunge pe el, sau ajung, dar nu sună. <strong>Atunci îți spun asta din primul call</strong> și ne uităm la <a href="/seo-local-brasov">SEO local</a> sau la <a href="/social-media-foto-video">reclame</a>, nu la un site nou.</p>
-      </div>
+  <section id="preturi" class="section-muted section-padding">
+    <div class="container">
+      <span class="eyebrow fade-in">Prețuri</span>
+      <h2 class="section-title fade-in">Trei mărimi de site, un preț fix pentru fiecare</h2>
+      <p class="section-desc fade-in">Prețuri finale, nu se adaugă TVA. Termenul curge de la primirea materialelor complete.</p>
+      <PriceTable rows={SITES} />
+      <p class="section-desc fade-in" style="margin-top:24px;">Vrei și fișa Google pusă la punct și 4 reels de lansare? Pachetul <a href="/preturi" style="color:var(--cobalt);text-decoration:underline;">Lansare în 10 zile</a> le include pe toate, la 3.300 lei.</p>
     </div>
   </section>
 
@@ -93,15 +92,11 @@ const schema = [
       <div class="cards-grid">
         <div class="card fade-in">
           <h3>Design făcut pentru tine</h3>
-          <p>Machete desenate pentru afacerea ta, nu un șablon cumpărat. Întâi pentru telefon, pentru că de acolo vin majoritatea vizitatorilor.</p>
+          <p>Gândit pentru afacerea ta, nu un șablon cumpărat. Întâi pentru telefon, pentru că de acolo vin majoritatea vizitatorilor.</p>
         </div>
         <div class="card fade-in">
-          <h3>Identitate vizuală inclusă</h3>
-          <p>Logo, culori, fonturi și un brand book de bază, folosite apoi la fel pe site, pe social media și pe cărțile de vizită.</p>
-        </div>
-        <div class="card fade-in">
-          <h3>Texte care vând</h3>
-          <p>Scriem împreună textele, cu cuvintele pe care le folosesc clienții tăi când te caută, nu cu jargonul din domeniu.</p>
+          <h3>Texte incluse</h3>
+          <p>Le scriu eu, cu cuvintele pe care le folosesc clienții tăi când te caută. Tu doar le citești și le aprobi.</p>
         </div>
         <div class="card fade-in">
           <h3>Pregătit pentru Google</h3>
@@ -109,11 +104,15 @@ const schema = [
         </div>
         <div class="card fade-in">
           <h3>Contact fără pași în plus</h3>
-          <p>Buton de WhatsApp, telefon, formular și, unde e cazul, programări online. Cine vrea să te contacteze nu trebuie să caute.</p>
+          <p>Buton de WhatsApp, telefon, formular și, la Site Pro, programări online. Cine vrea să te contacteze nu trebuie să caute.</p>
+        </div>
+        <div class="card fade-in">
+          <h3>Se încarcă în sub 2 secunde</h3>
+          <p>Fără WordPress și fără plugin-uri care se strică la fiecare actualizare. Un site rapid ține vizitatorii și urcă mai ușor în Google.</p>
         </div>
         <div class="card fade-in">
           <h3>Predare completă</h3>
-          <p>Training de o oră, toate parolele, instrucțiuni scrise și 30 de zile de suport gratuit pentru ajustări.</p>
+          <p>Training de o oră, toate parolele și instrucțiuni scrise. Site-ul e al tău, nu te închid în „trebuie să mă suni de fiecare dată”.</p>
         </div>
       </div>
     </div>
@@ -121,29 +120,25 @@ const schema = [
 
   <section class="section-dark section-padding">
     <div class="container">
-      <h2 class="section-title fade-in" style="color:var(--paper);">Cum lucrăm</h2>
+      <h2 class="section-title fade-in" style="color:var(--paper);">Cum arată cele 10 zile</h2>
       <ol class="steps">
-        <li class="fade-in"><div><span class="step-when">săptămâna 1</span><h3>Discovery și strategie</h3><p>Înțelegem afacerea, clienții și ce trebuie să facă site-ul: să aducă programări, cereri de ofertă sau doar încredere.</p></div></li>
-        <li class="fade-in"><div><span class="step-when">săptămâna 1-2</span><h3>Structură și machete</h3><p>Ce pagini sunt, ce spune fiecare și în ce ordine. Aprobi structura înainte de design.</p></div></li>
-        <li class="fade-in"><div><span class="step-when">săptămâna 2-3</span><h3>Design</h3><p>Machete finale, pe telefon și pe calculator, cu identitatea vizuală aplicată.</p></div></li>
-        <li class="fade-in"><div><span class="step-when">săptămâna 3-5</span><h3>Dezvoltare și integrări</h3><p>Construcție, formulare, analytics, viteză. Vezi progresul pe un link de test.</p></div></li>
-        <li class="fade-in"><div><span class="step-when">lansare</span><h3>Lansare și garanție</h3><p>Testare, publicare, training și 30 de zile în care orice corecție e inclusă.</p></div></li>
+        <li class="fade-in"><div><span class="step-when">ziua 1</span><h3>Lista de materiale</h3><p>Îți trimit lista exactă: logo, poze, prețuri, programul, ce vrei să spună site-ul. Dacă nu ai poze bune, le putem face într-o zi de filmare.</p></div></li>
+        <li class="fade-in"><div><span class="step-when">zilele 1-3</span><h3>Structură, texte și design</h3><p>Scriu textele și construiesc prima variantă. Din ziua 3 o vezi pe un link de test.</p></div></li>
+        <li class="fade-in"><div><span class="step-when">zilele 4-8</span><h3>Feedback în 48 de ore</h3><p>Îmi spui ce schimbăm, eu modific în cel mult două zile. De obicei sunt suficiente două runde.</p></div></li>
+        <li class="fade-in"><div><span class="step-when">zilele 9-10</span><h3>Lansare</h3><p>Testare pe telefon și calculator, publicare pe domeniul tău, legătura cu Google, training și parolele.</p></div></li>
       </ol>
+      <p class="ten-days-note fade-in"><strong>Ritmul îl dai tu.</strong> Termenul de 10 zile începe când primesc materialele complete. Cu cât răspunzi mai repede, cu atât lansăm mai repede.</p>
     </div>
   </section>
 
   <section class="section-muted section-padding">
     <div class="container split">
-      <h2 class="section-title fade-in">Doar branding, fără site</h2>
+      <h2 class="section-title fade-in">Când are sens un site nou, și când nu</h2>
       <div class="prose fade-in">
-        <p>Dacă ai deja site sau o prezență care funcționează, dar vrei o identitate vizuală definită corect, o facem separat: logo, sistem de culori, tipografie și un brand book aplicabil oriunde.</p>
-        <ul>
-          <li>Atelier despre afacere, valori, public și concurență</li>
-          <li>Moodboard cu direcții vizuale, alegem împreună</li>
-          <li>Logo, culori, tipografie, elemente grafice</li>
-          <li>Brand book cu aplicații concrete: cărți de vizită, semnături de email, șabloane pentru social media</li>
-        </ul>
-        <p><strong>Durată: 2-4 săptămâni.</strong> Prețul se stabilește după audit, în funcție de cât de mult e de construit.</p>
+        <p>Un site nou are sens când cel vechi te face să pierzi clienți: nu se vede bine pe telefon, se încarcă greu, nu mai spune ce faci azi sau nu apare deloc în Google. Are sens și când pornești de la zero și ai nevoie de un loc al tău, nu doar de o pagină de Facebook.</p>
+        <p>Nu are sens când site-ul tău e în regulă și problema e în altă parte: nimeni nu ajunge pe el, sau ajung, dar nu sună. <strong>Atunci îți spun asta din primul mesaj</strong> și ne uităm la <a href="/seo-local-brasov">SEO local</a> sau la <a href="/automatizari">automatizări</a>, nu la un site nou.</p>
+        <h3>Doar identitate vizuală, fără site</h3>
+        <p>Kitul de identitate (logo, culori, fonturi și 10 șabloane pentru social media) costă 1.200 lei și e gata în 5-7 zile. La Site Pro, identitatea de bază e inclusă.</p>
       </div>
     </div>
   </section>
@@ -151,7 +146,7 @@ const schema = [
   <section class="section-light section-padding">
     <div class="container">
       <span class="eyebrow fade-in">Portofoliu</span>
-      <h2 class="section-title fade-in">Site-uri livrate în Brașov</h2>
+      <h2 class="section-title fade-in">Site-uri livrate</h2>
       <ProjectGrid filter="site" />
       <Related current={path} />
     </div>

@@ -237,3 +237,104 @@ body.is-preview nav { top: 22px; }
   .reviews-score { font-size: 44px; }
   .consent { left: 12px; right: 12px; bottom: 12px; }
 }
+
+/* ============ REPOZIȚIONARE 2027: prețuri, studii de caz, pachete ============ */
+
+/* Tabel de prețuri */
+.price-table { margin-top: 32px; border-top: 1px solid var(--rule-light); }
+.price-caption {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--cobalt); padding: 20px 0 8px;
+}
+.price-row {
+  display: grid; grid-template-columns: 1fr 140px 170px; gap: 24px;
+  align-items: baseline; padding: 20px 0; border-bottom: 1px solid var(--rule-light);
+}
+.price-name { font-family: var(--font-display); font-size: 19px; font-weight: 500; color: var(--ink); }
+.price-what { font-size: 15px; line-height: 1.6; color: rgba(10,14,20,0.62); margin-top: 4px; }
+.price-time {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(10,14,20,0.5);
+}
+.price-value {
+  font-family: var(--font-display); font-size: 21px; font-weight: 500;
+  color: var(--ink); text-align: right; white-space: nowrap;
+}
+.price-value small {
+  display: block; font-family: var(--font-body); font-size: 13px; font-weight: 400;
+  color: rgba(10,14,20,0.5); margin-top: 2px;
+}
+.price-table.no-time .price-row { grid-template-columns: 1fr 170px; }
+
+/* Pachete */
+.package-card .card-price { font-size: 28px; }
+.package-card .package-separate {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em;
+  color: rgba(10,14,20,0.45); text-decoration: line-through; margin-top: 4px;
+}
+.package-card .btn-secondary { margin-top: 20px; align-self: flex-start; }
+
+/* Studii de caz */
+.case-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+.case-card {
+  padding: 36px 30px; border: 1px solid rgba(244,241,236,0.14);
+  display: flex; flex-direction: column;
+}
+.section-light .case-card, .section-muted .case-card { border-color: var(--rule-light); background: var(--paper); }
+.case-card .card-kicker { color: var(--sky); }
+.section-light .case-card .card-kicker, .section-muted .case-card .card-kicker { color: var(--cobalt); }
+.case-stat {
+  font-family: var(--font-display); font-weight: 500; letter-spacing: -0.02em;
+  font-size: clamp(44px, 5vw, 64px); line-height: 1; color: var(--paper);
+}
+.section-light .case-stat, .section-muted .case-stat { color: var(--ink); }
+.case-stat-label { font-size: 16px; line-height: 1.5; margin-top: 12px; color: rgba(244,241,236,0.7); }
+.section-light .case-stat-label, .section-muted .case-stat-label { color: rgba(10,14,20,0.65); }
+.case-story { font-size: 15px; line-height: 1.7; margin-top: 20px; color: rgba(10,14,20,0.72); }
+.case-card ul { list-style: none; margin: 16px 0 20px; }
+.case-card li { font-size: 14px; line-height: 1.6; padding: 4px 0 4px 22px; position: relative; color: rgba(10,14,20,0.65); }
+.case-card li::before { content: "\2192"; position: absolute; left: 0; color: var(--cobalt); }
+.case-card .portfolio-link { margin-top: auto; }
+.case-grid.detailed { grid-template-columns: 1fr; gap: 32px; }
+.case-grid.detailed .case-card { display: grid; grid-template-columns: 280px 1fr; column-gap: 48px; }
+.case-grid.detailed .case-card > .card-kicker,
+.case-grid.detailed .case-card > .case-stat,
+.case-grid.detailed .case-card > .case-stat-label { grid-column: 1; }
+.case-grid.detailed .case-card > .case-story,
+.case-grid.detailed .case-card > ul,
+.case-grid.detailed .case-card > .portfolio-link { grid-column: 2; }
+.case-grid.detailed .case-card > .case-story { grid-row: 1 / span 2; margin-top: 0; }
+
+/* Timeline de 10 zile */
+.ten-days { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 48px; border-top: 2px solid var(--sky); }
+.ten-days > div { padding: 24px 24px 0 0; }
+.ten-days .day {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--sky);
+}
+.ten-days h3 { font-family: var(--font-display); font-size: 20px; font-weight: 500; color: var(--paper); margin: 10px 0 8px; }
+.ten-days p { font-size: 15px; line-height: 1.65; color: rgba(244,241,236,0.62); }
+.ten-days-note { margin-top: 40px; font-size: 17px; color: rgba(244,241,236,0.8); max-width: 720px; }
+.ten-days-note strong { color: var(--paper); }
+
+.hero-actions .btn-secondary { margin-left: 0; }
+.hero-proof {
+  margin-top: 24px; font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: 0.1em; text-transform: uppercase; color: rgba(10,14,20,0.55);
+}
+.hero-proof .stars { color: #e3a008; letter-spacing: 2px; margin-right: 6px; }
+
+@media (max-width: 1024px) {
+  .case-grid { grid-template-columns: 1fr; }
+  .case-grid.detailed .case-card { grid-template-columns: 1fr; }
+  .case-grid.detailed .case-card > * { grid-column: 1 !important; grid-row: auto !important; }
+  .case-grid.detailed .case-card > .case-story { margin-top: 20px; }
+  .ten-days { grid-template-columns: repeat(2, 1fr); row-gap: 24px; }
+}
+@media (max-width: 768px) {
+  .price-row { grid-template-columns: 1fr auto; gap: 8px 16px; }
+  .price-row .price-time { grid-column: 1; grid-row: 2; }
+  .price-row .price-value { grid-row: 1 / span 2; grid-column: 2; align-self: center; }
+  .price-table.no-time .price-row { grid-template-columns: 1fr auto; }
+  .ten-days { grid-template-columns: 1fr; }
+}

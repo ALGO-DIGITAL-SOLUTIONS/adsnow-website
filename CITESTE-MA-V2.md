@@ -47,3 +47,12 @@ De completat înainte de lansare (apar ca note portocalii în previzualizare):
 - exemple foto-video pe `/promovare-pensiuni` și `/social-media-foto-video`
 - studii de caz pe `/proiecte`
 - recitirea politicii de confidențialitate
+
+## Stare la 26 noiembrie 2026: repoziționare
+
+Site-ul e rescris pe noua poziționare: „marketing rapid pentru afaceri locale”, site în 10 zile, prețuri finale afișate integral (ALGO nu e plătitoare de TVA).
+
+- Prețurile stau într-un singur loc: `src/data/pricing.ts`. Studiile de caz stau în `CASE_STUDIES` din `src/data/site.ts`.
+- Pagini noi: `/preturi` și `/automatizari`. Pensiunile au ieșit din meniu și din lista de servicii; pagina rămâne, cu link în subsol, până se mută pe brandul separat.
+- Recenziile din `src/data/reviews.ts` sunt copiate exact din fișa Google, la 26 noiembrie.
+- Rămas de făcut: 2-3 reels încorporate pe `/social-media-foto-video`, numele și domeniul brandului pentru pensiuni (apoi redirect de pe `/promovare-pensiuni`).

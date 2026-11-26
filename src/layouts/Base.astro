@@ -77,7 +77,7 @@ const isActive = (href: string) => href === path;
 <nav id="navbar">
   <div class="nav-brand">
     <a href="/"><img src="/assets/logo-icon.svg" alt="ADSNOW" class="nav-logo" width="52" height="52"/></a>
-    <span class="nav-tagline">Your Online Identity Advisor</span>
+    <span class="nav-tagline">Marketing rapid pentru afaceri locale</span>
   </div>
   <div class="nav-links">
     {NAV.map((n) => <a href={n.href} class:list={['nav-link', { active: isActive(n.href) }]}>{n.label}</a>)}
@@ -101,13 +101,15 @@ const isActive = (href: string) => href === path;
   <div class="footer-grid">
     <div class="footer-col">
       <img src="/assets/logo.webp" alt="ADSNOW" class="footer-logo" width="28" height="28"/>
-      <div class="footer-tagline">Agenție de marketing digital din Brașov</div>
-      <p class="footer-brand-text">Site-uri de prezentare, SEO local, social media și foto-video pentru afaceri din Brașov și din zonă. {CONTACT.street}, {CONTACT.city}. Tel: {CONTACT.phone}.</p>
+      <div class="footer-tagline">Agenție de marketing pentru afaceri locale, Brașov</div>
+      <p class="footer-brand-text">Site-uri în 10 zile, SEO local și Google Maps, reels și automatizări. {CONTACT.street}, {CONTACT.city}. Tel: {CONTACT.phone}.</p>
     </div>
     <div class="footer-col">
       <div class="footer-col-title">Servicii</div>
       {SERVICES.map((s) => <a href={s.href}>{s.short}</a>)}
+      <a href="/preturi">Pachete și prețuri</a>
       <a href="/proiecte">Proiecte</a>
+      <a href="/promovare-pensiuni">Pentru pensiuni și cabane</a>
     </div>
     <div class="footer-col">
       <div class="footer-col-title">Contact</div>

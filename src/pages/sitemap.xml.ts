@@ -2,12 +2,14 @@
 import { SITE } from '../data/site';
 
 const PAGES: [string, string][] = [
-  ['/', '2026-09-29'],
-  ['/creare-site-brasov', '2026-09-29'],
-  ['/seo-local-brasov', '2026-09-29'],
-  ['/social-media-foto-video', '2026-09-29'],
+  ['/', '2026-11-26'],
+  ['/preturi', '2026-11-26'],
+  ['/creare-site-brasov', '2026-11-26'],
+  ['/seo-local-brasov', '2026-11-26'],
+  ['/social-media-foto-video', '2026-11-26'],
+  ['/automatizari', '2026-11-26'],
+  ['/proiecte', '2026-11-26'],
   ['/promovare-pensiuni', '2026-09-29'],
-  ['/proiecte', '2026-09-29'],
   ['/audit-gratuit', '2026-09-29'],
   ['/politica-confidentialitate', '2026-09-29'],
 ];

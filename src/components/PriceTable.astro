@@ -1,0 +1,18 @@
+---
+import type { PriceRow } from '../data/pricing';
+interface Props { rows: PriceRow[]; caption?: string; showTime?: boolean }
+const { rows, caption, showTime = true } = Astro.props;
+---
+<div class:list={['price-table', 'fade-in', { 'no-time': !showTime }]}>
+  {caption && <div class="price-caption">{caption}</div>}
+  {rows.map((r) => (
+    <div class="price-row">
+      <div class="price-main">
+        <div class="price-name">{r.name}</div>
+        <div class="price-what">{r.what}</div>
+      </div>
+      {showTime && <div class="price-time">{r.time ?? ''}</div>}
+      <div class="price-value">{r.price}{r.note && <small>{r.note}</small>}</div>
+    </div>
+  ))}
+</div>

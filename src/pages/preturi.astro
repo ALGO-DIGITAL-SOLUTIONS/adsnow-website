@@ -1,0 +1,121 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Faq from '../components/Faq.astro';
+import CtaFinal from '../components/CtaFinal.astro';
+import PriceTable from '../components/PriceTable.astro';
+import { SITE, BUSINESS_ID, breadcrumb, faqSchema } from '../data/site';
+import { PACKAGES, SITES, CONTENT_PIECES, CONTENT_PLANS, SEO, AUTOMATIONS } from '../data/pricing';
+
+const path = '/preturi';
+
+const faq = [
+  {
+    q: 'Prețurile includ TVA?',
+    a: 'Prețurile de pe site sunt finale. ALGO Digital Solutions SRL nu e plătitoare de TVA, deci nu se adaugă nimic la factură.',
+  },
+  {
+    q: 'De ce plătește o cafenea la fel ca o clinică?',
+    a: 'Pentru că primește același lucru. Lista de prețuri e una singură. Diferă doar volumul: o cafenea alege de obicei pachetul mic, o clinică pe cel mare. Nimeni nu plătește mai mult pentru că e „firmă mare”.',
+  },
+  {
+    q: 'Cum se face plata?',
+    a: 'La proiectele cu plată o dată (site-uri, filmări, automatizări): 50% la început și 50% la livrare. Abonamentele lunare se plătesc la începutul fiecărei luni.',
+  },
+  {
+    q: 'Cât durează minim un abonament?',
+    a: 'Trei luni, pentru că SEO-ul și conținutul au nevoie de timp ca să dea rezultate. După aceea te poți opri oricând, anunțând cu o lună înainte. Tot ce am făcut îți rămâne.',
+  },
+  {
+    q: 'Pot combina servicii din liste diferite?',
+    a: 'Da. Pachetele sunt combinațiile cerute cel mai des, la un preț mai mic decât separat. Dacă ai nevoie de altă combinație, o calculăm din lista de mai jos.',
+  },
+];
+
+const schema = [
+  {
+    '@type': 'WebPage',
+    '@id': `${SITE}${path}#webpage`,
+    name: 'Pachete și prețuri ADSNOW',
+    url: `${SITE}${path}`,
+    about: { '@id': BUSINESS_ID },
+    inLanguage: 'ro-RO',
+  },
+  breadcrumb([{ name: 'Prețuri', path }]),
+  faqSchema(faq),
+];
+---
+<Base
+  title="Prețuri marketing Brașov: site, SEO local, reels · ADSNOW"
+  ogTitle="Pachete și prețuri ADSNOW"
+  description="Toate prețurile ADSNOW, finale, fără TVA adăugat: site de la 1.200 lei, SEO local de la 390 lei/lună, reel de la 200 lei, automatizări de la 450 lei. Pachete cu preț fix."
+  path={path}
+  schema={schema}
+>
+  <PageHero
+    crumb="Prețuri"
+    title="Pachete și prețuri"
+    lead="Toate prețurile, la vedere. Aceeași listă pentru toată lumea: pachetele diferă prin volum, nu prin cine ești. Prețurile sunt finale, nu se adaugă TVA."
+    primary={{ href: '/audit-gratuit', label: 'Nu știi ce ți se potrivește? Audit gratuit →' }}
+    secondary={{ href: '#site-uri', label: 'Sari la listă' }}
+  />
+
+  <section class="section-muted section-padding" style="padding-top:64px;">
+    <div class="container">
+      <span class="eyebrow fade-in">Pachete</span>
+      <h2 class="section-title fade-in">Combinațiile cerute cel mai des</h2>
+      <div class="cards-grid">
+        {PACKAGES.map((p) => (
+          <div class:list={['card', 'package-card', 'fade-in', { featured: p.featured }]}>
+            <span class="card-kicker">{p.kicker}</span>
+            <h3>{p.name}</h3>
+            <p>{p.what}</p>
+            <ul>{p.includes.map((i) => <li>{i}</li>)}</ul>
+            <div class="card-price">{p.price}{p.note && <small>{p.note}</small>}</div>
+            <div class="package-separate">{p.separate}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="site-uri" class="section-light section-padding">
+    <div class="container">
+      <span class="eyebrow fade-in">Site-uri</span>
+      <h2 class="section-title fade-in">Site în 10 zile</h2>
+      <p class="section-desc fade-in">Termenul curge de la primirea materialelor complete. Plata: 50% la început, 50% la lansare. <a href="/creare-site-brasov" style="color:var(--cobalt);text-decoration:underline;">Detalii despre site-uri →</a></p>
+      <PriceTable rows={SITES} />
+    </div>
+  </section>
+
+  <section class="section-muted section-padding">
+    <div class="container">
+      <span class="eyebrow fade-in">SEO local și reclame</span>
+      <h2 class="section-title fade-in">Google Maps, căutări locale, Meta Ads</h2>
+      <p class="section-desc fade-in">Abonamentele lunare au un minim de 3 luni. <a href="/seo-local-brasov" style="color:var(--cobalt);text-decoration:underline;">Detalii despre SEO local →</a></p>
+      <PriceTable rows={SEO} />
+    </div>
+  </section>
+
+  <section class="section-light section-padding">
+    <div class="container">
+      <span class="eyebrow fade-in">Conținut</span>
+      <h2 class="section-title fade-in">Reels, video și grafică</h2>
+      <p class="section-desc fade-in">Filmările se fac în Brașov și în zona de până la o oră. <a href="/social-media-foto-video" style="color:var(--cobalt);text-decoration:underline;">Detalii despre conținut →</a></p>
+      <PriceTable rows={CONTENT_PLANS} caption="Abonamente lunare, cu postare inclusă" />
+      <PriceTable rows={CONTENT_PIECES} caption="Pe bucată" showTime={false} />
+    </div>
+  </section>
+
+  <section class="section-muted section-padding">
+    <div class="container">
+      <span class="eyebrow fade-in">Automatizări</span>
+      <h2 class="section-title fade-in">Ca să nu mai pierzi niciun client</h2>
+      <p class="section-desc fade-in"><a href="/automatizari" style="color:var(--cobalt);text-decoration:underline;">Detalii despre automatizări →</a></p>
+      <PriceTable rows={AUTOMATIONS} />
+    </div>
+  </section>
+
+  <Faq items={faq} title="Întrebări despre prețuri" tone="light" />
+  <CtaFinal />
+</Base>

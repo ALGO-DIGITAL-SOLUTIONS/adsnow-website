@@ -5,11 +5,18 @@ import Faq from '../components/Faq.astro';
 import CtaFinal from '../components/CtaFinal.astro';
 import ProjectGrid from '../components/ProjectGrid.astro';
 import Related from '../components/Related.astro';
+import PriceTable from '../components/PriceTable.astro';
+import CaseStudies from '../components/CaseStudies.astro';
+import { SEO } from '../data/pricing';
 import { SITE, BUSINESS_ID, breadcrumb, faqSchema } from '../data/site';
 
 const path = '/seo-local-brasov';
 
 const faq = [
+  {
+    q: 'Cât costă SEO local?',
+    a: 'Setup-ul fișei Google costă 600 lei, o singură dată. Apoi ai două variante lunare: Maps Esențial la 390 lei/lună (postări pe fișă, răspunsuri la recenzii, poze noi, raport) sau SEO local complet la 890 lei/lună (în plus, o pagină sau un articol local pe lună, linkuri locale și urmărirea pozițiilor). Prețuri finale, nu se adaugă TVA.',
+  },
   {
     q: 'Cât durează până se vede o schimbare?',
     a: 'Depinde de cât de aglomerat e domeniul tău în Brașov. Schimbările pe hartă apar de obicei mai repede decât cele din rezultatele organice, pentru că fișa Google se optimizează direct. Pe organic vorbim de luni, nu de săptămâni. De aceea contractul minim e de 3 luni.',
@@ -44,7 +51,7 @@ const schema = [
     areaServed: { '@type': 'City', name: 'Brașov' },
     offers: {
       '@type': 'Offer',
-      priceSpecification: { '@type': 'UnitPriceSpecification', minPrice: '1500', priceCurrency: 'RON', unitText: 'lună' },
+      priceSpecification: { '@type': 'UnitPriceSpecification', minPrice: '390', priceCurrency: 'RON', unitText: 'lună' },
     },
     url: `${SITE}${path}`,
   },
@@ -55,7 +62,7 @@ const schema = [
 <Base
   title="SEO local Brașov | Google Maps și fișa Google · ADSNOW"
   ogTitle="SEO local în Brașov | ADSNOW"
-  description="SEO local în Brașov: fișa Google Business Profile pusă în ordine, citări, pagini pe servicii, recenzii reale și raport lunar. De la 1.500 RON/lună, contract minim 3 luni."
+  description="SEO local în Brașov: fișa Google Business Profile pusă în ordine, citări, pagini pe servicii, recenzii reale și raport lunar. De la 390 lei/lună, setup 600 lei. Rezultate reale: locul 1 pe hartă pentru un client nou."
   path={path}
   schema={schema}
 >
@@ -65,11 +72,29 @@ const schema = [
     lead="Când cineva scrie pe telefon „dentist Brașov” sau „service auto aproape de mine”, Google arată întâi o hartă cu trei firme. Lucrăm ca tu să fii una dintre ele, și ca site-ul tău să apară imediat sub hartă."
     primary={{ href: '/audit-gratuit', label: 'Vezi unde stai acum. Audit gratuit →' }}
     meta={[
-      { label: 'Investiție', value: 'de la 1.500 RON/lună' },
+      { label: 'Setup Google Maps', value: '600 lei' },
+      { label: 'Lunar', value: 'de la 390 lei' },
       { label: 'Contract minim', value: '3 luni' },
       { label: 'Raportare', value: 'lunară' },
     ]}
   />
+
+  <section class="section-dark section-padding">
+    <div class="container">
+      <span class="eyebrow fade-in" style="color:var(--sky);">Rezultate</span>
+      <h2 class="section-title fade-in" style="color:var(--paper);">Ce a însemnat SEO local pentru doi clienți</h2>
+      <CaseStudies only={['armour-glass', 'albastru-infinit']} />
+    </div>
+  </section>
+
+  <section id="preturi" class="section-light section-padding">
+    <div class="container">
+      <span class="eyebrow fade-in">Prețuri</span>
+      <h2 class="section-title fade-in">Setup o dată, apoi lunar</h2>
+      <p class="section-desc fade-in">Prețuri finale, nu se adaugă TVA. Abonamentele lunare au un minim de 3 luni, pentru că efectul se vede în timp.</p>
+      <PriceTable rows={SEO.filter((r) => r.name !== 'Meta Ads')} />
+    </div>
+  </section>
 
   <section class="section-muted section-padding">
     <div class="container split">
