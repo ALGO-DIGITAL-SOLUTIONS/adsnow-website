@@ -224,28 +224,27 @@ const schema = [
 
   <section id="pentru-cine" class="section-muted section-padding">
     <div class="container">
-      <h2 class="section-title fade-in">Pentru cine lucrez</h2>
-      <div class="fit-grid">
-        <div class="fit-col fit-col-good fade-in">
-          <h3><span class="fit-icon-good">&#10003;</span> Sunt potrivit dacă ai:</h3>
-          <ul>
-            <li>O clinică, un cabinet medical, stomatologic sau de psihologie</li>
-            <li>Un service auto, un atelier sau o firmă de construcții și instalații</li>
-            <li>O cafenea, un restaurant, un salon de beauty sau o sală de sport</li>
-            <li>Un cabinet de avocatură, notariat sau contabilitate</li>
-            <li>Un dezvoltator imobiliar, o agenție de recrutare sau o firmă B2B mică</li>
-            <li>O afacere nouă care are nevoie să fie online repede</li>
-          </ul>
-        </div>
-        <div class="fit-col fit-col-bad fade-in">
-          <h3><span class="fit-icon-bad">&#10007;</span> Nu sunt potrivit dacă:</h3>
-          <ul>
-            <li>Vrei un magazin online complex, cu mii de produse și integrări ERP</li>
-            <li>Vrei rezultate în Google în 2 săptămâni. SEO e maraton, nu sprint</li>
-            <li>Vrei urmăritori cumpărați sau recenzii false</li>
-            <li>Nu ai timp deloc să răspunzi la mesaje. Proiectele rapide se fac împreună</li>
-          </ul>
-        </div>
+      <span class="eyebrow fade-in">Pentru cine</span>
+      <h2 class="section-title fade-in">Afaceri locale care vor clienți din zonă</h2>
+      <div class="sector-grid">
+        {[
+          { k: 'Sănătate', t: 'Clinici, cabinete medicale, stomatologie, psihologie' },
+          { k: 'Auto și construcții', t: 'Service-uri, ateliere, constructori, instalatori' },
+          { k: 'Ospitalitate și beauty', t: 'Cafenele, restaurante, saloane, săli de sport' },
+          { k: 'Profesii liberale', t: 'Avocatură, notariat, contabilitate' },
+          { k: 'Imobiliare și B2B', t: 'Dezvoltatori, agenții de recrutare, firme B2B mici' },
+          { k: 'Afaceri noi', t: 'Online repede, cu site, fișă Google și conținut din prima lună' },
+        ].map((s) => (
+          <div class="sector fade-in"><span class="sector-k">{s.k}</span><p>{s.t}</p></div>
+        ))}
+      </div>
+      <div class="fit-strip fade-in">
+        <h3>Colaborarea merge cel mai bine când</h3>
+        <ol>
+          <li><strong>Răspunzi în 1–2 zile.</strong> Materialele și feedbackul rapid țin site-ul în cele 10 zile.</li>
+          <li><strong>Gândești pe termen lung.</strong> SEO local aduce rezultate clare în 3–6 luni și crește de acolo.</li>
+          <li><strong>Vrei creștere reală.</strong> Clienți, urmăritori și recenzii venite organic, din oameni reali.</li>
+        </ol>
       </div>
     </div>
   </section>
