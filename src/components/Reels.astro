@@ -1,0 +1,19 @@
+---
+import { REELS } from '../data/site';
+---
+<div class="reels-grid">
+  {REELS.map((r) => (
+    <figure class="reel fade-in">
+      <div class="reel-frame">
+        <iframe
+          src={`https://www.instagram.com/reel/${r.id}/embed`}
+          title={`Reel ${r.client}: ${r.topic}`}
+          loading="lazy"
+          scrolling="no"
+          allowtransparency="true"
+        ></iframe>
+      </div>
+      <figcaption><strong>{r.client}</strong>{r.topic}</figcaption>
+    </figure>
+  ))}
+</div>

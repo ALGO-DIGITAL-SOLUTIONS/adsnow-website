@@ -7,7 +7,7 @@ import ProjectGrid from '../components/ProjectGrid.astro';
 import PriceTable from '../components/PriceTable.astro';
 import CaseStudies from '../components/CaseStudies.astro';
 import Related from '../components/Related.astro';
-import Todo from '../components/Todo.astro';
+import Reels from '../components/Reels.astro';
 import { SITE, BUSINESS_ID, breadcrumb, faqSchema } from '../data/site';
 import { CONTENT_PIECES, CONTENT_PLANS, SEO } from '../data/pricing';
 
@@ -93,7 +93,14 @@ const schema = [
       <span class="eyebrow fade-in" style="color:var(--sky);">Rezultate</span>
       <h2 class="section-title fade-in" style="color:var(--paper);">Conținut care ajunge la oamenii potriviți</h2>
       <CaseStudies only={['ozone-residence', 'armour-glass']} />
-      <Todo title="Exemple video de adăugat">2-3 reels încorporate (de exemplu ultimele 3 de la Armour Glass), cu acordul clientului. O pagină despre video convinge mai ușor cu video.</Todo>
+    </div>
+  </section>
+
+  <section id="reels" class="section-dark section-padding" style="padding-top:0;">
+    <div class="container">
+      <span class="eyebrow fade-in" style="color:var(--sky);">Exemple</span>
+      <h2 class="section-title fade-in" style="color:var(--paper);">Reels filmate și montate de noi</h2>
+      <Reels />
     </div>
   </section>
 

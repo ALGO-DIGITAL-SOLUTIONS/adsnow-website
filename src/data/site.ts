@@ -189,3 +189,12 @@ export function faqSchema(faq: { q: string; a: string }[]) {
     })),
   };
 }
+
+// Reels făcute de ADSNOW, încorporate pe pagina de conținut. Se încarcă de la Instagram doar când ajungi la ele.
+export const REELS = [
+  { id: 'DezffYPNsru', client: 'Armour Glass', topic: 'Înlocuire de parbriz în 3 pași' },
+  { id: 'DdtaZAjtq0-', client: 'Armour Glass', topic: 'Polimerizare faruri' },
+  { id: 'DW01iJ9kw2y', client: 'Ozone Residence', topic: 'Prezentare ansamblu' },
+  { id: 'DNoGnQCNWj7', client: 'Ozone Residence', topic: 'Blocuri finalizate și predate' },
+  { id: 'DVIlpeUjURb', client: 'Psiholog Brașov', topic: 'Workshop despre anxietate' },
+];
