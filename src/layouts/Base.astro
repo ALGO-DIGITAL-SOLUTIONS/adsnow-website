@@ -80,7 +80,19 @@ const isActive = (href: string) => href === path;
     <span class="nav-tagline">Marketing rapid pentru afaceri locale</span>
   </div>
   <div class="nav-links">
-    {NAV.map((n) => <a href={n.href} class:list={['nav-link', { active: isActive(n.href) }]}>{n.label}</a>)}
+    <div class="nav-drop">
+      <button type="button" class:list={['nav-link', 'nav-drop-btn', { active: SERVICES.some((x) => x.href === path) }]} aria-expanded="false" aria-haspopup="true">Servicii <span aria-hidden="true">▾</span></button>
+      <div class="nav-drop-panel">
+        {SERVICES.map((x) => (
+          <a href={x.href} class:list={['nav-drop-item', { active: isActive(x.href) }]}>
+            <span class="nav-drop-title">{x.short}</span>
+            <span class="nav-drop-meta">{x.price}</span>
+          </a>
+        ))}
+        <a href="/preturi" class="nav-drop-all">Toate pachetele și prețurile →</a>
+      </div>
+    </div>
+    {NAV.filter((n) => n.href !== '/#servicii').map((n) => <a href={n.href} class:list={['nav-link', { active: isActive(n.href) }]}>{n.label}</a>)}
     <a href="/audit-gratuit" class="nav-cta">Audit gratuit</a>
   </div>
   <button type="button" class="hamburger" id="hamburger" aria-label="Meniu">
@@ -88,9 +100,16 @@ const isActive = (href: string) => href === path;
   </button>
 </nav>
 <div class="nav-overlay" id="navOverlay">
-  <a href="/" class:list={['ov-link', { active: path === '/' }]}>Acasă</a>
-  {NAV.map((n) => <a href={n.href} class:list={['ov-link', { active: isActive(n.href) }]}>{n.label}</a>)}
-  <a href="/audit-gratuit" class="ov-link">Audit gratuit</a>
+  <div class="ov-group">
+    <span class="ov-label">Servicii</span>
+    {SERVICES.map((x) => <a href={x.href} class:list={['ov-sub', { active: isActive(x.href) }]}>{x.short}<small>{x.price}</small></a>)}
+  </div>
+  <div class="ov-group">
+    <a href="/" class:list={['ov-link', { active: path === '/' }]}>Acasă</a>
+    {NAV.filter((n) => n.href !== '/#servicii').map((n) => <a href={n.href} class:list={['ov-link', { active: isActive(n.href) }]}>{n.label}</a>)}
+  </div>
+  <a href="/audit-gratuit" class="nav-cta ov-cta">Audit gratuit în 2 minute</a>
+  <a href={CONTACT.whatsapp} class="ov-contact" target="_blank" rel="noopener">WhatsApp · {CONTACT.phone}</a>
 </div>
 
 <main>
@@ -182,6 +201,22 @@ const isActive = (href: string) => href === path;
       });
     });
   }
+  var drop = document.querySelector('.nav-drop');
+  if (drop) {
+    var dbtn = drop.querySelector('.nav-drop-btn');
+    dbtn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var open = drop.classList.toggle('open');
+      dbtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    document.addEventListener('click', function(e){
+      if (!drop.contains(e.target)) { drop.classList.remove('open'); dbtn.setAttribute('aria-expanded','false'); }
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') { drop.classList.remove('open'); dbtn.setAttribute('aria-expanded','false'); }
+    });
+  }
+
   accordion('.faq-question', '.faq-item');
   accordion('.service-toggle', '.service-card');
 

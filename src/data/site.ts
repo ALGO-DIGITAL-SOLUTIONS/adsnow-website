@@ -190,7 +190,8 @@ export function faqSchema(faq: { q: string; a: string }[]) {
   };
 }
 
-// Reels făcute de ADSNOW, încorporate pe pagina de conținut. Se încarcă de la Instagram doar când ajungi la ele.
+// Reels făcute de ADSNOW. Fișierele stau în public/video/<id>.mp4 + <id>.jpg (540x960, comprimate pentru web).
+// id = codul din linkul de Instagram al reel-ului.
 export const REELS = [
   { id: 'DezffYPNsru', client: 'Armour Glass', topic: 'Înlocuire de parbriz în 3 pași' },
   { id: 'DdtaZAjtq0-', client: 'Armour Glass', topic: 'Polimerizare faruri' },

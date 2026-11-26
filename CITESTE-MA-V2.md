@@ -55,4 +55,4 @@ Site-ul e rescris pe noua poziționare: „marketing rapid pentru afaceri locale
 - Prețurile stau într-un singur loc: `src/data/pricing.ts`. Studiile de caz stau în `CASE_STUDIES` din `src/data/site.ts`.
 - Pagini noi: `/preturi` și `/automatizari`. Pensiunile au ieșit din meniu și din lista de servicii; pagina `/promovare-pensiuni` rămâne, cu link în subsol.
 - Recenziile din `src/data/reviews.ts` sunt copiate exact din fișa Google, la 26 noiembrie.
-- Reels-urile de pe `/social-media-foto-video` vin din `REELS` în `src/data/site.ts` (iframe Instagram, încărcat leneș).
+- Reels-urile de pe `/social-media-foto-video` vin din `REELS` în `src/data/site.ts`; fișierele stau în `public/video/<id>.mp4` + `<id>.jpg` (540x960, comprimate cu ffmpeg). Fără iframe Instagram, deci fără cookie-uri de la terți.
