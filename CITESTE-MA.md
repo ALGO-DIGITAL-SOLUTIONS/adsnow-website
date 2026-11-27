@@ -10,6 +10,7 @@ Site-ul nou, construit de la zero pe branch-ul `v3`. Site-ul vechi (v2) a rămas
 - **Filme de fundal generate cu Higgsfield.** Primul și ultimul cadru sunt identice, ca bucla să nu se vadă. Se încarcă doar când ajung pe ecran, iar pe telefon prima pagină ia varianta verticală.
 - **Google Analytics se încarcă doar după „Sunt de acord”.** Se măsoară apăsările pe WhatsApp, telefon și email (`contact_whatsapp`, `contact_telefon`, `contact_email`) și trimiterea formularului (`generate_lead`).
 - **Subsolul are CUI-ul 49010279 și Reg. Com. J08/3057/2023.** În politica de confidențialitate, CUI-ul era greșit (490102793) și l-am corectat.
+- **Capitolele de pe prima pagină arată cazuri reale.** Scenele sunt generate cu Higgsfield, cu ecran verde pe telefon. Pe ecran am pus înregistrările reale ale căutărilor „parbrize brasov” (Armour Glass) și „psiholog brasov” (Albastru Infinit), urmărite cadru cu cadru cu `brand-nou/higgsfield/v3/compune.py`, ca textul să rămână cel real. Capitolul video pornește de la un reel Armour Glass dat lui Higgsfield ca referință (`caz-*.mp4` în `public/video/`).
 - **Un singur fișier de stil**, `src/styles/site.css`, fără CSS-ul vechi.
 
 ## Unde sunt lucrurile

@@ -26,7 +26,8 @@ export const wa = (text: string) => `${CONTACT.whatsapp}?text=${encodeURICompone
 export const WA_DEFAULT = wa('Bună, Alex! Am văzut site-ul ADSNOW și aș vrea să vorbim.');
 
 // Video-urile de fundal (public/video/<id>.mp4 și <id>-v.mp4 pentru telefon, plus <id>.webp ca poster).
-// Generate cu Higgsfield (Seedance 2.5), cadru de start = cadru de final, ca bucla să nu se vadă.
+// `caz` = filmul capitolului de pe prima pagină: scenă Higgsfield cu o înregistrare reală pe ecranul telefonului
+// (montată cu brand-nou/higgsfield/v3/compune.py, ca textul de pe ecran să rămână cel real).
 
 // Cele patru servicii, descrise prin ce se schimbă pentru client. Fără prețuri: prețurile stau doar pe /preturi.
 export const SERVICES = [
@@ -34,7 +35,7 @@ export const SERVICES = [
     href: '/creare-site-brasov',
     nav: 'Site-uri',
     film: 'site',
-    screen: { src: '/video/cautare-albastru.mp4', poster: '/video/cautare-albastru.webp', note: 'Înregistrare reală: căutarea „psiholog brasov” pe un telefon din Brașov, 26 noiembrie 2026. Albastru Infinit apare pe prima pagină.' },
+    caz: { film: 'caz-albastru', note: 'Pe ecran e o căutare reală, „psiholog brasov”, făcută pe 26 noiembrie 2026 din Brașov. Albastru Infinit apare pe prima pagină.' },
     title: 'Te caută cineva și află în cinci secunde ce faci',
     lead: 'Un site făcut întâi pentru telefon, cu textele scrise de mine, gata în 10 zile.',
     effects: [
@@ -47,7 +48,7 @@ export const SERVICES = [
     href: '/seo-local-brasov',
     nav: 'Google Maps',
     film: 'harta',
-    screen: { src: '/video/cautare-armour.mp4', poster: '/video/cautare-armour.webp', note: 'Înregistrare reală: căutarea „parbrize brasov” pe un telefon din Brașov, 26 noiembrie 2026. Armour Glass e în primele trei pe hartă.' },
+    caz: { film: 'caz-armour', note: 'Pe ecran e o căutare reală, „parbrize brasov”, făcută pe 26 noiembrie 2026 din Brașov. Armour Glass e în primele trei pe hartă.' },
     title: 'Când cineva din zonă caută ce vinzi, apari tu pe hartă',
     lead: 'Fișa Google pusă la punct, recenzii noi în fiecare lună și un site care spune Google ce faci.',
     effects: [
@@ -60,7 +61,7 @@ export const SERVICES = [
     href: '/social-media-foto-video',
     nav: 'Video',
     film: 'video',
-    screen: { src: '/video/DezffYPNsru.mp4', poster: '/video/DezffYPNsru.jpg', note: 'Reel filmat și montat de mine pentru Armour Glass: înlocuire de parbriz în trei pași.' },
+    caz: { film: 'caz-reel', note: 'Scenă pornită de la un reel filmat și montat de mine pentru Armour Glass: înlocuire de parbriz în trei pași.' },
     title: 'Oamenii te văd lucrând înainte să intre pe ușă',
     lead: 'Vin la tine, filmez și montez reels și video de prezentare, gata de postat.',
     effects: [

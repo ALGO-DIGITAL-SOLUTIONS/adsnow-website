@@ -44,19 +44,14 @@ const FAQ = [
       </div>
       {SERVICES.map((s) => (
         <article class="chapter">
-          <div class:list={["chapter-media", { "has-phone": s.screen }]}>
-            <Film name={s.film} class="chapter-film" />
-            {s.screen && (
-              <div class="phone" aria-hidden="true">
-                <video data-film={s.screen.src} poster={s.screen.poster} muted loop playsinline preload="none"></video>
-              </div>
-            )}
+          <div class="chapter-media">
+            <Film name={s.caz?.film ?? s.film} class="chapter-film" />
           </div>
           <div>
             <h3 class="chapter-title">{s.title}</h3>
             <p class="lead">{s.lead}</p>
             <ul class="effects">{s.effects.map((e) => <li>{e}</li>)}</ul>
-            {s.screen && <p class="chapter-note">{s.screen.note}</p>}
+            {s.caz && <p class="chapter-note">{s.caz.note}</p>}
             <a href={s.href} class="textlink">Cum lucrez la {s.nav.toLowerCase()}</a>
           </div>
         </article>
